@@ -10,6 +10,7 @@ public class GameManager : SingleTon<GameManager>
     public SoundManager soundManager;
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
+    private PlayerData _playerData;
 
 
     private void Start()
@@ -26,18 +27,21 @@ public class GameManager : SingleTon<GameManager>
         uiManager.Oxygen(Oxygen);
     }
     
-    private IEnumerator NotEnoughOxyzen()
+    private IEnumerator NotEnoughOxyzen(int i)
     {
-        notEnoughOxyzen.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        notEnoughOxyzen.gameObject.SetActive(false);
+        if (i > _playerData.Oxygen)
+        {
+            notEnoughOxyzen.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            notEnoughOxyzen.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키 입력 감지
         {
-            StartCoroutine(NotEnoughOxyzen());
+            StartCoroutine(NotEnoughOxyzen(10000));
         }
     }
 }
