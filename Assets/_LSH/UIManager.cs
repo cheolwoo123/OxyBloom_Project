@@ -1,18 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Buttons")]
+    public Button optionButton;
+    
+    [Header("Texts")]
+    public TextMeshProUGUI OxyzenText;
+
+    
+    [Header("Canvas")]
+    public Canvas UICanvas;
+    
+    private void OnEnable()
     {
-        
+        optionButton.onClick.AddListener((() => UICanvas_OnClick()));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UICanvas_OnClick()
     {
-        
+        UICanvas.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Oxyzen(int oxyzen)
+    {
+        OxyzenText.text = "- " + oxyzen.ToString();
     }
 }

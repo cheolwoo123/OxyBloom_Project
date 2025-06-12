@@ -36,7 +36,7 @@ public class SingleTon<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void Awake()
     {
         InitializeSingleton();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
