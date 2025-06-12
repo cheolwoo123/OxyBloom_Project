@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
 
     public void OxygenEmission()
     {
-        //gamemanager.instance.setoxyzen(plantdata.oxygenprod)
+        GameManager.Instance.SetOxyzen(PlantData.OxygenProd);
         emissionTimer = 0f;
     }
 

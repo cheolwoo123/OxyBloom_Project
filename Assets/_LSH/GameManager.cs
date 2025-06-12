@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : SingleTon<GameManager>
 {
     private int _oxyzen;
-    //public PlantManager  plantManager;
+    public PlantManager plantManager;
     public SoundManager soundManager;
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;

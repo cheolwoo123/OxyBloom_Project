@@ -1,18 +1,6 @@
-using UnityEngine;
-using System.Collections.Generic;
+ï»¿using UnityEngine;
 
-
-public enum PlantRarity // ÀÌ°Å ÇÕÄ¡¸é Áö¿ï°Å
-{
-    Common,
-    Rare,
-    Epic,
-    Legend,
-    Mystery
-}
-
-
-public enum PotGrade // ÀÌ°Å »Ì±â¿¡ ¾µ µî±Ş
+public enum PotGrade // ì´ê±° ë½‘ê¸°ì— ì“¸ ë“±ê¸‰
 {
     Common = 1,
     Rare = 2,
@@ -21,38 +9,33 @@ public enum PotGrade // ÀÌ°Å »Ì±â¿¡ ¾µ µî±Ş
     Mystery = 5
 }
 
-
-[System.Serializable]
-public class RarityBonus
-{
-    public PlantRarity rarity;     // µî±Ş
-    public float bonusPercent;     // º¸Á¤ ¼öÄ¡
-}
-
-
 [CreateAssetMenu(fileName = "NewPotData", menuName = "ScriptableObjects/PotData")]
 public class PotData : ScriptableObject
 {
-    [Header("±âº» Á¤º¸")]
-    public string potName;         // È­ºĞ ÀÌ¸§
-    public Sprite potIcon;            // ÀÌ¹ÌÁö
-    public PotGrade rarity;        // È­ºĞ ÀÚÃ¼ µî±Ş 
+    [Header("ê¸°ë³¸ ì •ë³´")]
+    public string potName;         // í™”ë¶„ ì´ë¦„
+    public Sprite potIcon;         // ì´ë¯¸ì§€
+    public PotGrade rarity;        // í™”ë¶„ ìì²´ ë“±ê¸‰ 
 
-    [Header("½Ä¹° µî±Şº° È®·ü º¸Á¤Ä¡ +,-ÇØ¼­ 100 ¸ÂÃç¾ßÇÔ )")]
-    public List<RarityBonus> rarityBonuses = new List<RarityBonus>();
+    [Header("ì‹ë¬¼ ë“±ê¸‰ë³„ í™•ë¥ ")]
+    public float CommonChance = 0;
+    public float RareChance = 0;
+    public float EpicChance = 0;
+    public float LegendChance = 0;
+    public float MysteryChance = 0;
 
-    [Header("ÀÚµ¿ ¼ºÀå·®")]
+    [Header("ìë™ ì„±ì¥ëŸ‰")]
     public float growthSpeedBonus = 0f;     
 
-    [Header("Å¬¸¯´ç ¼ºÀå·®")]
+    [Header("í´ë¦­ë‹¹ ì„±ì¥ëŸ‰")]
     public float clickPowerBonus = 0f;     
 
-    [Header("°­È­ ·¹º§´ç ´É·ÂÄ¡ Ãß°¡·®")]
+    [Header("ê°•í™” ë ˆë²¨ë‹¹ ëŠ¥ë ¥ì¹˜ ì¶”ê°€ëŸ‰")]
     public float upgradeMultiplier = 0.5f;  
 
-    [Header("°­È­ ºñ¿ë Áõ°¡ ¹èÀ²")]
+    [Header("ê°•í™” ë¹„ìš© ì¦ê°€ ë°°ìœ¨")]
     public float upgradeO2Multiplier = 1.5f; 
 
-    [Header("ÃÖ´ë °­È­ ·¹º§")]
+    [Header("ìµœëŒ€ ê°•í™” ë ˆë²¨")]
     public int maxLevel = 10;              
 }

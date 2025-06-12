@@ -12,17 +12,17 @@ public class Collection : MonoBehaviour
 
     public void SetCollection()
     {
-        //if (SlotPrefab != null)
-        //{
-        //    for (int i = 0; i < GameManager.Instance.PlantManager.PlantDatas.Count; i++)
-        //    {
-        //        Instantiate(SlotPrefab, Slots.transform);
+        if (SlotPrefab != null)
+        {
+            for (int i = 0; i < GameManager.Instance.plantManager.PlantDatas.Count; i++)
+            {
+                Instantiate(SlotPrefab, Slots.transform);
 
-        //        GameObject obj = SlotPrefab;
-        //        CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
-        //        collectionSlot.SetSlot(GameManager.Instance.PlantManager.PlantDatas[i])
-        //    }
-        //}
+                GameObject obj = SlotPrefab;
+                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
+                collectionSlot.SetSlot(GameManager.Instance.plantManager.PlantDatas[i]);
+            }
+        }
     }
 
 }

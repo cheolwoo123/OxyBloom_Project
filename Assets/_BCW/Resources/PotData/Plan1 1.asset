@@ -15,11 +15,11 @@ MonoBehaviour:
   potName: test
   potIcon: {fileID: 0}
   rarity: 1
-  rarityBonuses:
-  - rarity: 0
-    bonusPercent: 5
-  - rarity: 1
-    bonusPercent: -5
+  CommonChance: 20
+  RareChance: 20
+  EpicChance: 20
+  LegendChance: 20
+  MysteryChance: 20
   growthSpeedBonus: 0
   clickPowerBonus: 0
   upgradeMultiplier: 1
