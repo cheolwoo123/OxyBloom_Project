@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rarity: 0
   Name: "\uD50C\uB77C\uB85C\uC988"
+  Avility: 
   Description: "\uD0DC\uC591\uCC98\uB7FC \uBD89\uC740 \uC0C9\uC744 \uB748 \uC7A5\uBBF8\uCC98\uB7FC
     \uBCF4\uC785\uB2C8\uB2E4."
   OxygenProd: 10

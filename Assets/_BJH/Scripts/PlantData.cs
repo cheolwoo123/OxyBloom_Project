@@ -17,13 +17,12 @@ public class PlantData : ScriptableObject
     [Header("희귀도")]
     public PlantRarity Rarity;
 
-    [Header("이름과 설명")]
+    [Header("기본 정보")]
     public string Name;
     public string Description;
 
-    [Header("산소, 에너지 생산량")]
+    [Header("산소 생산량")]
     public int OxygenProd;
-    public int EnergyProd;
 
     [Header("성장 요구치")]
     public int GrowthCost;
