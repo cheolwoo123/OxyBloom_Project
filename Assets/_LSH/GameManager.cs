@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
 {
-    private int _oxyzen;
+    private int _oxygen;
     public PlantManager plantManager;
     public SoundManager soundManager;
     public UIManager uiManager;
