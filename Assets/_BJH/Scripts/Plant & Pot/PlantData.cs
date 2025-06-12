@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-//public enum PlantRarity
-//{
-//    Common, // 평범 50%
-//    Rare, // 희귀 25%
-//    Epic, // 서사 15%
-//    Legend, // 전설 7.5%
-//    Mystery  // 신비 2.5%
-//}
+public enum PlantRarity
+{
+    Common, // 평범 50%
+    Rare, // 희귀 25%
+    Epic, // 서사 15%
+    Legend, // 전설 7.5%
+    Mystery  // 신비 2.5%
+}
 
 [Serializable]
 [CreateAssetMenu(fileName = "Plant_", menuName = "Plant Data")]
