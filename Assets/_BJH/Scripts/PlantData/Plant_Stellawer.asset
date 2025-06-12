@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764de753891f9b345b6ecf0e7cdf8ac6, type: 3}
+  m_Name: Plant_Stellawer
+  m_EditorClassIdentifier: 
+  Rarity: 4
+  Name: "\uC2A4\uD154\uB77C\uC6CC"
+  Description: "\uC5EC\uC12F \uC78E\uC5D0 \uAF43\uC774 \uB9C8\uBC95\uCC98\uB7FC \uC790\uB77C\uC788\uC2B5\uB2C8\uB2E4."
+  OxygenProd: -20
+  GrowthCost: 600
+  GrowthSprite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
