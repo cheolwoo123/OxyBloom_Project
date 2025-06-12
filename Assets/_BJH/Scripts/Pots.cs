@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Pots : MonoBehaviour
 {
     [Header("현재 식물 데이터와 이미지")]
-    public PlantData Plant = null; // 현재 식물 데이터
-    public Image PlantImg = null; // 현재 식물 이미지
+    public PlantData PlantData = null; // 현재 식물 데이터
+    public SpriteRenderer PlantSpr = null; // 현재 식물 이미지
 
     [Header("식물 성장치와 다음 성장 단계")]
-    public int GrowthPower = 0; // 현재 식물 성장치
+    public int CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
+
+    private float emissionTimer = 0f; // 산소 생산 타이머
 
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>()
     {
@@ -39,7 +39,23 @@ public class Pots : MonoBehaviour
         return PlantRarity.Common;
     }
 
-    //public void plantingSeed()
+    public void Update()
+    {
+        emissionTimer += Time.deltaTime;
+
+        if (emissionTimer >= 1f)
+        {
+            OxygenEmission();
+        }
+    }
+
+    public void OxygenEmission()
+    {
+        //GameManager.Instance.SetOxyzen(PlantData.OxygenProd)
+        emissionTimer = 0f;
+    }
+
+    //public void plantingSeed() // 무작위 식물 심기
     //{
     //    if (Plant != null) return;
 
@@ -66,31 +82,32 @@ public class Pots : MonoBehaviour
     //}
 
 
-    public void GrowPlant(int amount)
+    public void GrowPlant(int amount) // 식물 성장
     {
         Debug.Log($"식물을 {amount}만큼 성장시켰습니다.");
-        GrowthPower += amount;
+        CurGrow += amount;
         NextGrowthSprite();
     }
 
-    private void NextGrowthSprite()
+    private void NextGrowthSprite() // 식물 외형 변화
     {
-        if (PlantImg.enabled != true) PlantImg.enabled = true;
+        if (PlantSpr.enabled != true) PlantSpr.enabled = true;
 
-        if (GrowthPower >= Plant.GrowthCost)
+        if (CurGrow >= PlantData.GrowthCost)
         {
-            GrowthPower = 0;
+            CurGrow = 0;
             GrowthStage++;
-            PlantImg.sprite = Plant.GrowthSprite[GrowthStage];
+            PlantSpr.sprite = PlantData.GrowthSprite[GrowthStage];
         }
     }
 
-    public void ClearPot()
+    public void ClearPot() // 화분 정리
     {
-        Plant = null;
-        PlantImg = null;
-        PlantImg.enabled = false;
-        GrowthPower = 0;
+        emissionTimer = 0f;
+        PlantData = null;
+        PlantSpr = null;
+        PlantSpr.enabled = false;
+        CurGrow = 0;
         GrowthStage = 0;
     }
 }
