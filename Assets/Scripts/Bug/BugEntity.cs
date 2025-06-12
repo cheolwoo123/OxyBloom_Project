@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class BugEntity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public BugScriptObject bugData;
+    public int CurrentHP { get; private set; }
+
+    private void OnEnable()
     {
-        
+        CurrentHP = bugData.maxHP;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        
+        CurrentHP -= damage; 
+        if (CurrentHP < 0)
+        {
+            //Die();
+        }
+    }
+
+    private void Die()
+    {
+        //오브젝트 풀링 
+        //gameObject.SetActive(false);
     }
 }
