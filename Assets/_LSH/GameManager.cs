@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
 {
-    private int _oxyzen;
+    private int _oxygen;
     //public PlantManager  plantManager;
     public SoundManager soundManager;
     public UIManager uiManager;
@@ -14,15 +14,16 @@ public class GameManager : SingleTon<GameManager>
 
     private void Start()
     {
-        uiManager.Oxyzen(Oxyzen);
+        if(uiManager != null)
+            uiManager.Oxygen(Oxygen);
     }
     
-    public int Oxyzen{get{return _oxyzen;} private set{_oxyzen = value;}}
+    public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
 
-    public void SetOxyzen(int i)
+    public void SetOxygen(int i)
     {
-        Oxyzen = Oxyzen + i;
-        uiManager.Oxyzen(Oxyzen);
+        Oxygen = Oxygen + i;
+        uiManager.Oxygen(Oxygen);
     }
     
     private IEnumerator NotEnoughOxyzen()

@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public Button optionButton;
     
     [Header("Texts")]
-    public TextMeshProUGUI OxyzenText;
+    public TextMeshProUGUI oxygenText;
 
     
     [Header("Canvas")]
@@ -28,8 +28,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void Oxyzen(int oxyzen)
+    public void Oxygen(int oxygen)
     {
-        OxyzenText.text = "- " + oxyzen.ToString();
+        oxygenText.text = "- " + oxygen.ToString();
     }
 }

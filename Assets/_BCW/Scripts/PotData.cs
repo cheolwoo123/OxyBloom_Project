@@ -2,17 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public enum PlantRarity // ÀÌ°Å ÇÕÄ¡¸é Áö¿ï°Å
-{
-    Common,
-    Rare,
-    Epic,
-    Legend,
-    Mystery
-}
-
-
-public enum PotGrade // ÀÌ°Å »Ì±â¿¡ ¾µ µî±Þ
+public enum PotGrade // ï¿½Ì°ï¿½ ï¿½Ì±â¿¡ ï¿½ï¿½ ï¿½ï¿½ï¿½
 {
     Common = 1,
     Rare = 2,
@@ -25,34 +15,34 @@ public enum PotGrade // ÀÌ°Å »Ì±â¿¡ ¾µ µî±Þ
 [System.Serializable]
 public class RarityBonus
 {
-    public PlantRarity rarity;     // µî±Þ
-    public float bonusPercent;     // º¸Á¤ ¼öÄ¡
+    public PlantRarity rarity;     // ï¿½ï¿½ï¿½
+    public float bonusPercent;     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 }
 
 
 [CreateAssetMenu(fileName = "NewPotData", menuName = "ScriptableObjects/PotData")]
 public class PotData : ScriptableObject
 {
-    [Header("±âº» Á¤º¸")]
-    public string potName;         // È­ºÐ ÀÌ¸§
-    public Sprite potIcon;            // ÀÌ¹ÌÁö
-    public PotGrade rarity;        // È­ºÐ ÀÚÃ¼ µî±Þ 
+    [Header("ï¿½âº» ï¿½ï¿½ï¿½ï¿½")]
+    public string potName;         // È­ï¿½ï¿½ ï¿½Ì¸ï¿½
+    public Sprite potIcon;            // ï¿½Ì¹ï¿½ï¿½ï¿½
+    public PotGrade rarity;        // È­ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ 
 
-    [Header("½Ä¹° µî±Þº° È®·ü º¸Á¤Ä¡ +,-ÇØ¼­ 100 ¸ÂÃç¾ßÇÔ )")]
+    [Header("ï¿½Ä¹ï¿½ ï¿½ï¿½Þºï¿½ È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ +,-ï¿½Ø¼ï¿½ 100 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ )")]
     public List<RarityBonus> rarityBonuses = new List<RarityBonus>();
 
-    [Header("ÀÚµ¿ ¼ºÀå·®")]
+    [Header("ï¿½Úµï¿½ ï¿½ï¿½ï¿½å·®")]
     public float growthSpeedBonus = 0f;     
 
-    [Header("Å¬¸¯´ç ¼ºÀå·®")]
+    [Header("Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å·®")]
     public float clickPowerBonus = 0f;     
 
-    [Header("°­È­ ·¹º§´ç ´É·ÂÄ¡ Ãß°¡·®")]
+    [Header("ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É·ï¿½Ä¡ ï¿½ß°ï¿½ï¿½ï¿½")]
     public float upgradeMultiplier = 0.5f;  
 
-    [Header("°­È­ ºñ¿ë Áõ°¡ ¹èÀ²")]
+    [Header("ï¿½ï¿½È­ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public float upgradeO2Multiplier = 1.5f; 
 
-    [Header("ÃÖ´ë °­È­ ·¹º§")]
+    [Header("ï¿½Ö´ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½")]
     public int maxLevel = 10;              
 }

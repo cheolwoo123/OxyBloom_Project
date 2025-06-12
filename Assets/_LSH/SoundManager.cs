@@ -14,11 +14,13 @@ public class SoundManager : MonoBehaviour
     {
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         effectSlider.onValueChanged.AddListener(SetSFXVolume);
+        SetBGMVolume(0.03f);
+        SetSFXVolume(0.03f);
     }
 
     public void SetBGMVolume(float value)
     {
-        audioMixer.SetFloat("BGM", Mathf.Log10(value) * 20); 
+        audioMixer.SetFloat("BGM", Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f); 
         float volume;
         audioMixer.GetFloat("BGM", out volume);
         Debug.Log("BGM changed to: " + volume);
@@ -26,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
     public void SetSFXVolume(float value)
     {
-        audioMixer.SetFloat("Effect", Mathf.Log10(value) * 20); 
+        audioMixer.SetFloat("Effect", Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f); 
         float volume;
         audioMixer.GetFloat("Effect", out volume);
         Debug.Log("Effect changed to: " + volume);
