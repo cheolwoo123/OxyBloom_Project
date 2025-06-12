@@ -14,7 +14,7 @@ public class CollectionSlot : MonoBehaviour
     {
         PlantData = Data;
         PlantImage.sprite = Data.GrowthSprite[3];
-        Name.text = $"{Data.OxygenProd} / {Data.Rarity}";
+        Name.text = $"{Data.Name} / {Data.Rarity}";
         Description.text = Data.Description;
         OxyProd.text = $"초당 산소 생산량 : {Data.OxygenProd}";
     }

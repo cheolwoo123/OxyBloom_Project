@@ -1,70 +1,77 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pot : MonoBehaviour
 {
     [Header("현재 식물 데이터와 이미지")]
-    public PlantData PlantData = null; // 현재 식물 데이터
-    //public PotData PotData = null; // 현재 화분 데이터
-    private Plant Plant;
+    public PlantData plantData = null; // 현재 식물 데이터
+    public PotData potData = null; // 현재 화분 데이터
+    private Plant plant;
 
-    //private Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>()
-    //{
-    //    { PlantRarity.Common, PotData.CommonChance },
-    //    { PlantRarity.Rare,  PotData.RareChance },
-    //    { PlantRarity.Epic,  PotData.EpicChance },
-    //    { PlantRarity.Legend,  PotData.LegendChance },
-    //    { PlantRarity.Mystery,  PotData.MysteryChance }
-    //};
+    Dictionary<PlantRarity, float> rarityChances;
 
-    //PlantRarity GetRandomRarity()
-    //{
-    //    float roll = Random.Range(0f, 100f);
-    //    float chance = 0f; // 식물에 확률이 들어갈 변수
+    public void Awake()
+    {
+        rarityChances = new Dictionary<PlantRarity, float>()
+        {
+            { PlantRarity.Common, potData?.CommonChance?? 0f },
+            { PlantRarity.Rare,  potData?.RareChance?? 0f },
+            { PlantRarity.Epic,  potData?.EpicChance?? 0f },
+            { PlantRarity.Legend,  potData?.LegendChance?? 0f },
+            { PlantRarity.Mystery,  potData?.MysteryChance?? 0f }
+        };
+    }
+    
+    PlantRarity GetRandomRarity()
+    {
+        float roll = Random.Range(0f, 100f);
+        float chance = 0f; // 식물에 확률이 들어갈 변수
 
-    //    foreach (var pair in rarityChances)
-    //    {
-    //        chance += pair.Value;
+        foreach (var pair in rarityChances)
+        {
+            chance += pair.Value;
 
-    //        if (roll <= chance)
-    //        {
-    //            return pair.Key;
-    //        }
-    //    }
-    //    return PlantRarity.Common;
-    //}
+            if (roll <= chance)
+            {
+                return pair.Key;
+            }
+        }
+        return PlantRarity.Common;
+    }
 
     public void Start()
     {
-        Plant = GetComponentInChildren<Plant>();
+        plant = GetComponentInChildren<Plant>();
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
     {
-        //if (Plant != null) return;
+        Debug.Log("버튼 눌림");
 
-        //PlantRarity targetRarity = GetRandomRarity();
+        if (plantData != null) return;
 
-        //List<PlantData> allPlants = GameManager.Instance.PlantCollection.PlantDatas;
+        PlantRarity targetRarity = GetRandomRarity();
 
-        //List<PlantData> targetPlants = allPlants.Where(p => p.Rarity == targetRarity).ToList();
+        List<PlantData> allPlants = GameManager.Instance.plantManager.PlantDatas;
 
-        //if (targetPlants.Count == 0)
-        //{
-        //    Debug.LogWarning($"희귀도 {targetRarity}에 해당하는 식물이 없습니다.");
-        //    return;
-        //}
+        List<PlantData> targetPlants = allPlants.Where(p => p.Rarity == targetRarity).ToList();
 
-        // 후보 중 무작위 선택
-        //PlantData = targetPlants[Random.Range(0, targetPlants.Count)];
-        //Plant.Seeding(PlantData);
+        if (targetPlants.Count == 0)
+        {
+            Debug.LogWarning($"희귀도 {targetRarity}에 해당하는 식물이 없습니다.");
+            return;
+        }
 
-        //Debug.Log($"{PlantData.Name}/{PlantData.Rarity}을 심었습니다!");
+        plantData = targetPlants[Random.Range(0, targetPlants.Count)];
+        plant.Seeding(plantData);
+
+        Debug.Log($"{plantData.Name}/{plantData.Rarity}을 심었습니다!");
     }
 
     public void ClearPot() // 화분 정리
     {
-        PlantData = null;
+        plantData = null;
     }
 }
 

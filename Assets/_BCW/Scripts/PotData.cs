@@ -1,8 +1,6 @@
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-
-public enum PotGrade // �̰� �̱⿡ �� ���
+public enum PotGrade // 이거 뽑기에 쓸 등급
 {
     Common = 1,
     Rare = 2,
@@ -11,38 +9,33 @@ public enum PotGrade // �̰� �̱⿡ �� ���
     Mystery = 5
 }
 
-
-[System.Serializable]
-public class RarityBonus
-{
-    public PlantRarity rarity;     // ���
-    public float bonusPercent;     // ���� ��ġ
-}
-
-
 [CreateAssetMenu(fileName = "NewPotData", menuName = "ScriptableObjects/PotData")]
 public class PotData : ScriptableObject
 {
-    [Header("�⺻ ����")]
-    public string potName;         // ȭ�� �̸�
-    public Sprite potIcon;            // �̹���
-    public PotGrade rarity;        // ȭ�� ��ü ��� 
+    [Header("기본 정보")]
+    public string potName;         // 화분 이름
+    public Sprite potIcon;         // 이미지
+    public PotGrade rarity;        // 화분 자체 등급 
 
-    [Header("�Ĺ� ��޺� Ȯ�� ����ġ +,-�ؼ� 100 ������� )")]
-    public List<RarityBonus> rarityBonuses = new List<RarityBonus>();
+    [Header("식물 등급별 확률")]
+    public float CommonChance = 0;
+    public float RareChance = 0;
+    public float EpicChance = 0;
+    public float LegendChance = 0;
+    public float MysteryChance = 0;
 
-    [Header("�ڵ� ���差")]
+    [Header("자동 성장량")]
     public float growthSpeedBonus = 0f;     
 
-    [Header("Ŭ���� ���差")]
+    [Header("클릭당 성장량")]
     public float clickPowerBonus = 0f;     
 
-    [Header("��ȭ ������ �ɷ�ġ �߰���")]
+    [Header("강화 레벨당 능력치 추가량")]
     public float upgradeMultiplier = 0.5f;  
 
-    [Header("��ȭ ��� ���� ����")]
+    [Header("강화 비용 증가 배율")]
     public float upgradeO2Multiplier = 1.5f; 
 
-    [Header("�ִ� ��ȭ ����")]
+    [Header("최대 강화 레벨")]
     public int maxLevel = 10;              
 }
