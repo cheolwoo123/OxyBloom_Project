@@ -7,6 +7,7 @@ public class Pot : MonoBehaviour
     [Header("현재 식물 데이터와 이미지")]
     public PotData potData = null; // 현재 화분 데이터
     public SpriteRenderer PotSpr; // 현재 화분 외형
+    public GameObject PlantButton;
     private Plant plant;
 
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
@@ -66,6 +67,7 @@ public class Pot : MonoBehaviour
         plant.Seeding(plant.plantData);
 
         Debug.Log($"{plant.plantData.Name}/{plant.plantData.Rarity}을 심었습니다!");
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void UpdataChance()
