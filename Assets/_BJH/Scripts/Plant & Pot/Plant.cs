@@ -26,6 +26,14 @@ public class Plant : MonoBehaviour
         NextGrowthSprite();
     }
 
+    public void DegrowPlant(float amount)
+    {
+        if (plantData == null) return;
+
+        Debug.Log($"식물에 성장치를 {amount}만큼 감소시켰습니다.");
+        CurGrow -= amount;
+    }
+
     private void NextGrowthSprite() // 식물 외형 변화
     {
         if (PlantSpr.enabled != true) PlantSpr.enabled = true;
@@ -55,4 +63,6 @@ public class Plant : MonoBehaviour
         CurGrow = 0;
         GrowthStage = 0;
     }
+    
+
 }
