@@ -10,26 +10,6 @@ public class Plant : MonoBehaviour
     public int CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
 
-    private float emissionTimer = 0f; // 산소 생산 타이머
-
-    public void Update()
-    {
-        if (PlantData == null) return;
-
-        emissionTimer += Time.deltaTime;
-
-        if (emissionTimer >= 1f)
-        {
-            OxygenEmission();
-        }
-    }
-
-    public void OxygenEmission()
-    {
-        GameManager.Instance.SetOxygen(PlantData.OxygenProd);
-        emissionTimer = 0f;
-    }
-
     public void Seeding(PlantData Data)
     {
         PlantData = Data;

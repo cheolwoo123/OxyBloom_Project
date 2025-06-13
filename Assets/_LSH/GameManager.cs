@@ -44,4 +44,9 @@ public class GameManager : SingleTon<GameManager>
             StartCoroutine(NotEnoughOxyzen(10000));
         }
     }
+
+    public PlayerData playerData()
+    {
+        return _playerData;
+    }
 }

@@ -1,9 +1,4 @@
-
-
-
-
-
-public class PlayerData
+﻿public class PlayerData
 {
     public PlantManager  plantManager;
     private int _oxygen;
