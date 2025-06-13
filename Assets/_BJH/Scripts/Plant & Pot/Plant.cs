@@ -3,7 +3,7 @@
 public class Plant : MonoBehaviour
 {
     [Header("현재 데이터와 스프라이트")]
-    public PlantData PlantData = null; // 현재 식물 데이터
+    public PlantData plantData = null; // 현재 식물 데이터
     public SpriteRenderer PlantSpr = null; // 현재 식물 스프라이트
 
     [Header("현재 성장치와 성장 단계")]
@@ -12,15 +12,16 @@ public class Plant : MonoBehaviour
 
     public void Seeding(PlantData Data)
     {
-        PlantData = Data;
+        plantData = Data;
         PlantSpr.enabled = true;
-        PlantSpr.sprite = PlantData.GrowthSprite[0];
+        PlantSpr.sprite = plantData.GrowthSprite[0];
         GrowthStage++;
     }
     
-
     public void GrowPlant(int amount) // 식물 성장
     {
+        if (plantData == null) return;
+        
         Debug.Log($"식물을 {amount}만큼 성장시켰습니다.");
         CurGrow += amount;
         NextGrowthSprite();
@@ -30,11 +31,30 @@ public class Plant : MonoBehaviour
     {
         if (PlantSpr.enabled != true) PlantSpr.enabled = true;
 
-        if (CurGrow >= PlantData.GrowthCost)
+        if (CurGrow >= plantData.GrowthCost)
         {
             CurGrow = 0;
-            GrowthStage++;
-            PlantSpr.sprite = PlantData.GrowthSprite[GrowthStage];
+
+            if (GrowthStage == 3)
+            {
+                GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
+                RemovePlant();
+                GameManager.Instance.plantManager.pot.ClearPot();
+            }
+            else
+            {
+                GrowthStage++;
+                PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+            }
         }
+    }
+
+    public void RemovePlant()
+    {
+        PlantSpr.enabled = false;
+        PlantSpr.sprite = null;
+        plantData = null;
+        CurGrow = 0;
+        GrowthStage = 0;
     }
 }

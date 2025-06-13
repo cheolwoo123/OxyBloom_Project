@@ -9,6 +9,10 @@ public class PlantShelf : MonoBehaviour
 
     private float emissionTimer = 0f; // 산소 생산 타이머
 
+    public void Start()
+    {
+        UpdateShelf();
+    }
 
     public void Update()
     {
@@ -38,13 +42,16 @@ public class PlantShelf : MonoBehaviour
             Debug.LogWarning("선반이 가득 찼습니다.");
             return;
         }
+
         plantDatas.Add(data);
         UpdateShelf();
     }
 
     private void UpdateShelf()
     {
-        for (int i = 0; i < ShelfSpr.Length; i++)
+        if (plantDatas == null) return;
+
+        for (int i = 0; i < plantDatas.Count; i++)
         {
             ShelfSpr[i].sprite = plantDatas[i].GrowthSprite[3];
         }
@@ -55,5 +62,4 @@ public class PlantShelf : MonoBehaviour
         plantDatas[index] = null;
         UpdateShelf();
     }
-
 }
