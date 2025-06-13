@@ -31,7 +31,7 @@ public class PotSlotUI : MonoBehaviour
 
         // 장착 버튼 클릭 시 해당 화분을 장착 후 인벤토리 UI를 갱신
         equipButton.onClick.AddListener(() => {
-            GameManager.Instance.plantManager.pot.potData= pot.potData;
+            GameManager.Instance.plantManager.pot.ChangePot(pot.potData);
             
             potInventory.RefreshUI();
         });

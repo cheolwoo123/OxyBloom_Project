@@ -36,6 +36,7 @@ public class Pot : MonoBehaviour
 
     public void Awake()
     {
+        plant = GetComponentInChildren<Plant>();
         UpdataChance();
     }
 
