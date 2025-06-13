@@ -11,11 +11,11 @@ public class UIManager : MonoBehaviour
     public Button optionButton;
     
     [Header("Texts")]
-    public TextMeshProUGUI OxyzenText;
+    public TextMeshProUGUI oxygenText;
 
     
     [Header("Canvas")]
-    public Canvas UICanvas;
+    public Canvas optionCanvas;
     
     private void OnEnable()
     {
@@ -24,12 +24,12 @@ public class UIManager : MonoBehaviour
 
     private void UICanvas_OnClick()
     {
-        UICanvas.gameObject.SetActive(true);
+        optionCanvas.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void Oxyzen(int oxyzen)
+    public void Oxygen(int oxygen)
     {
-        OxyzenText.text = "- " + oxyzen.ToString();
+        oxygenText.text = "- " + oxygen;
     }
 }
