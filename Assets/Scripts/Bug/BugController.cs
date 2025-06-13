@@ -50,43 +50,58 @@ public class BugController : MonoBehaviour
             if (Vector3.Distance(transform.position, randomTargetPos) < 0.1f)
             {
                 hasTargetPos = false;
+
+                Collider2D plantCollider = target.GetComponent<Collider2D>();
+                if (plantCollider != null && plantCollider.OverlapPoint(transform.position))
+                {
+                    Act(); // 벌레 특성 실행
+                }
             }
         }
         else if (entity.bugData.category == BugCategory.Beneficial)
         {
-            // 익충: 랜덤 이동
+            Camera cam = target.GetComponent<Camera>();
         }
     }
-    //public void Act()
-    //{
-    //    if (entity.bugData.category == BugCategory.Pest)
-    //    {
-    //        switch (entity.bugData.pestType)
-    //        {
-    //            case PestType.PlantDegrowth:
-    //                // 식물 성장 억제
-    //                break;
-    //            case PestType.PlantDestruct:
-    //                // 식물 데미지(식물의 체력이 0이면 파괴)
-    //                break;
-    //            case PestType.KillBeneficial:
-    //                // 익충 공격
-    //                break;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        switch (entity.bugData.beneficialType)
-    //        {
-    //            case BeneficialType.PromoteGrowth:
-    //                // 식물 성장 증가
-    //                break;
-    //            case BeneficialType.ControlOxygen:
-    //                // 산소 조절
-    //                break;
-    //        }
-    //    }
-    //}
+    public void Act()
+    {
+        if (entity.bugData.category == BugCategory.Pest)
+        {
+            Plant plant = target.GetComponent<Plant>();
+
+            if (plant == null) return;
+
+            switch (entity.bugData.pestType)
+            {
+                case PestType.PlantDegrowth:
+                    // 식물 성장 억제
+                    plant.DegrowPlant(-entity.bugData.growUp);
+                    break;
+                case PestType.PlantDestruct:
+                    // 식물 데미지(식물의 체력이 0이면 파괴)
+                    break;
+                case PestType.KillBeneficial:
+                    // 익충 공격
+                    break;
+            }
+        }
+        else
+        {
+            Plant plant = target.GetComponent<Plant>();
+            if (plant == null) return;
+
+            switch (entity.bugData.beneficialType)
+            {
+                case BeneficialType.PromoteGrowth:
+                    // 식물 성장 증가
+                    plant.GrowPlant(entity.bugData.growUp);
+                    break;
+                case BeneficialType.ControlOxygen:
+                    // 산소 조절
+                    break;
+            }
+        }
+    }
 
     public void TakeDamage(int damage)
     {
