@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class ClickEvent : MonoBehaviour
 {
@@ -13,10 +12,10 @@ public class ClickEvent : MonoBehaviour
         if (IsGamePaused) return;
 
         
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            OnClick();
-        }
+        //if (input.touchcount > 0 && input.gettouch(0).phase == touchphase.began)
+        //{
+        //    onclick();
+        //}
 
         
         if (Input.GetMouseButtonDown(0))
@@ -28,7 +27,6 @@ public class ClickEvent : MonoBehaviour
 
     void OnClick()
     {
-        
        Vector2 worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
        RaycastHit2D hit = Physics2D.Raycast(worldpos, Vector2.zero);
 
@@ -36,8 +34,15 @@ public class ClickEvent : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Flower")
             {
-                hit.collider.GetComponent<Plant>().GrowPlant(100);
+                PlayerStat stat = GameManager.Instance.player.stat;
+                float power = stat.plantMastery * ( 1 + (stat.pmLevel * 0.2f));
+
+                hit.collider.GetComponent<Plant>().GrowPlant(power);
                 Debug.Log(hit.collider.gameObject.name);
+            }
+            else
+            {
+                return;
             }
         }
     }
