@@ -7,23 +7,16 @@ public class BugEntity : MonoBehaviour
     public BugScriptObject bugData;
     public int CurrentHP { get; private set; }
 
-    private void OnEnable()
+    public void Init(BugScriptObject data)
     {
+        bugData = data;
         CurrentHP = bugData.maxHP;
     }
 
-    public void TakeDamage(int damage)
+    public void SetHP(int hp)
     {
-        CurrentHP -= damage; 
-        if (CurrentHP < 0)
-        {
-            //Die();
-        }
+        CurrentHP = hp;
     }
 
-    private void Die()
-    {
-        //오브젝트 풀링 
-        //gameObject.SetActive(false);
-    }
+    public bool IsDead => CurrentHP <= 0;
 }

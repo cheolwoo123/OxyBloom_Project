@@ -4394,6 +4394,10 @@ PrefabInstance:
       propertyPath: PlantSpr
       value: 
       objectReference: {fileID: 1085229720}
+    - target: {fileID: 4177270470918133472, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+      propertyPath: m_TagString
+      value: Flower
+      objectReference: {fileID: 0}
     - target: {fileID: 5988582660554854446, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Name
       value: Pot
