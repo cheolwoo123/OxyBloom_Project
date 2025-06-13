@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pot : MonoBehaviour
 {
     [Header("현재 식물 데이터와 이미지")]
-    public PlantData plantData = null; // 현재 식물 데이터
     public PotData potData = null; // 현재 화분 데이터
     private Plant plant;
 
@@ -49,8 +48,8 @@ public class Pot : MonoBehaviour
     {
         Debug.Log("버튼 눌림");
 
-        if (plantData != null) return;
-
+        if (plant.plantData != null) return;
+        
         PlantRarity targetRarity = GetRandomRarity();
 
         List<PlantData> allPlants = GameManager.Instance.plantManager.PlantDatas;
@@ -63,15 +62,15 @@ public class Pot : MonoBehaviour
             return;
         }
 
-        plantData = targetPlants[Random.Range(0, targetPlants.Count)];
-        plant.Seeding(plantData);
+        plant.plantData = targetPlants[Random.Range(0, targetPlants.Count)];
+        plant.Seeding(plant.plantData);
 
-        Debug.Log($"{plantData.Name}/{plantData.Rarity}을 심었습니다!");
+        Debug.Log($"{plant.plantData.Name}/{plant.plantData.Rarity}을 심었습니다!");
     }
 
     public void ClearPot() // 화분 정리
     {
-        plantData = null;
+        plant.plantData = null;
     }
 }
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ClickEvent : MonoBehaviour
@@ -36,10 +36,9 @@ public class ClickEvent : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Flower")
             {
+                hit.collider.GetComponent<Plant>().GrowPlant(100);
                 Debug.Log(hit.collider.gameObject.name);
             }
         }
     }
-
- 
 }
