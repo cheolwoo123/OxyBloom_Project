@@ -14,6 +14,6 @@ public class PotInstance
         level = 1;
     }
 
-    public float GetClickBonus() => potData.clickPowerBonus + potData.upgradeMultiplier * (level - 1);
+    
     public float GetGrowthBonus() => potData.growthSpeedBonus + potData.upgradeMultiplier * (level - 1);
 }

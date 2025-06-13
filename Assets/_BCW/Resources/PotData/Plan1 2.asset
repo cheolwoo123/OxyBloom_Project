@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Plan1 2
   m_EditorClassIdentifier: 
   potName: "\uC5D0\uD53D"
-  potIcon: {fileID: 0}
+  potIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   rarity: 3
   CommonChance: 20
   RareChance: 15
@@ -21,7 +21,6 @@ MonoBehaviour:
   LegendChance: 10
   MysteryChance: 5
   growthSpeedBonus: 0
-  clickPowerBonus: 0
   upgradeMultiplier: 1
   upgradeO2Multiplier: 1.5
   maxLevel: 5

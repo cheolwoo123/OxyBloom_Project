@@ -6,9 +6,14 @@ public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-    [SerializeField] private TextMeshProUGUI inventoryText;
-    [SerializeField] private PlayerData playerData;
-    public List<PotInstance> testPotList = new();
+    
+
+    public PlayerData player = new();
+
+    [Header("Tooltip Reference")]
+    public GameObject tooltipPanel;
+    
+
     private List<GameObject> slotObjects = new();
 
     public void RefreshUI()
@@ -17,14 +22,20 @@ public class PotInventory : MonoBehaviour
             Destroy(slot);
         slotObjects.Clear();
 
-        foreach (var pot in testPotList)
+        foreach (var pot in player.potInventory)
         {
             var go = Instantiate(slotPrefab, slotParent);
             var slot = go.GetComponent<PotSlotUI>();
-            slot.Init(pot, null, this);
+            slot.Init(pot, player, this);
             slotObjects.Add(go);
         }
 
-        inventoryText.text = $"Inventory {testPotList.Count}";
+       
+    }
+
+    public void AddPot(PotInstance pot)
+    {
+        player.potInventory.Add(pot);
+        RefreshUI();
     }
 }

@@ -25,10 +25,7 @@ public class PotData : ScriptableObject
     public float MysteryChance = 0;
 
     [Header("자동 성장량")]
-    public float growthSpeedBonus = 0f;     
-
-    [Header("클릭당 성장량")]
-    public float clickPowerBonus = 0f;     
+    public float growthSpeedBonus = 0f;        
 
     [Header("강화 레벨당 능력치 추가량")]
     public float upgradeMultiplier = 0.5f;  
