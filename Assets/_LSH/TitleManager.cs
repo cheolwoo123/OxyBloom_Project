@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
     public Button startButton;
-
+    public SceneTransition sceneTransition;
+    
     void Start()
     {
         startButton.onClick.AddListener((() => StartButton()));
@@ -20,6 +21,6 @@ public class TitleManager : MonoBehaviour
             GameManager.Instance.gameObject.SetActive(true);
         }
         
-        SceneManager.LoadScene("Gamemanager");
+        sceneTransition.FadeAndLoadScene("LSHTest");
     }
 }

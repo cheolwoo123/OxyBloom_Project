@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not Enough Oxyzen
+  m_text: Not Enough Oxygen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1235,8 +1235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionButton: {fileID: 1190439000}
-  OxyzenText: {fileID: 915793563}
-  UICanvas: {fileID: 28003283}
+  oxygenText: {fileID: 915793563}
+  optionCanvas: {fileID: 28003283}
 --- !u!4 &486541815
 Transform:
   m_ObjectHideFlags: 0
@@ -1739,7 +1739,7 @@ GameObject:
   - component: {fileID: 915793564}
   - component: {fileID: 915793563}
   m_Layer: 0
-  m_Name: OxyzenNum
+  m_Name: OxygenNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1977,8 +1977,8 @@ AudioSource:
   m_GameObject: {fileID: 966006369}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6842868891342346642, guid: fe5c7f4ddbdf2d04489a2cd206950d4f, type: 2}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5779276132333324973, guid: fe5c7f4ddbdf2d04489a2cd206950d4f, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 27a36dc82ff32054d88d76929bcd1079, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2737,7 +2737,7 @@ GameObject:
   - component: {fileID: 1620409178}
   - component: {fileID: 1620409177}
   m_Layer: 0
-  m_Name: NoOxyzenCanvas
+  m_Name: NoOxygenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3411,6 +3411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d8719174a0f3143b214f7af3ff59f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantManager: {fileID: 0}
   soundManager: {fileID: 1974412621}
   uiManager: {fileID: 486541814}
   notEnoughOxyzen: {fileID: 1620409179}
