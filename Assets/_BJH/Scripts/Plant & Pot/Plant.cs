@@ -15,7 +15,6 @@ public class Plant : MonoBehaviour
         plantData = Data;
         PlantSpr.enabled = true;
         PlantSpr.sprite = plantData.GrowthSprite[0];
-        GrowthStage++;
     }
     
     public void GrowPlant(float amount) // 식물 성장
@@ -34,16 +33,15 @@ public class Plant : MonoBehaviour
         if (CurGrow >= plantData.GrowthCost)
         {
             CurGrow = 0;
+            GrowthStage++;
 
             if (GrowthStage == 3)
             {
                 GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
                 RemovePlant();
-                GameManager.Instance.plantManager.pot.ClearPot();
             }
             else
             {
-                GrowthStage++;
                 PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
             }
         }

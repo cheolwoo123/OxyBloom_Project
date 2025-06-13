@@ -6,6 +6,7 @@ public class Pot : MonoBehaviour
 {
     [Header("현재 식물 데이터와 이미지")]
     public PotData potData = null; // 현재 화분 데이터
+    public SpriteRenderer PotSpr; // 현재 화분 외형
     private Plant plant;
 
     Dictionary<PlantRarity, float> rarityChances;
@@ -21,7 +22,7 @@ public class Pot : MonoBehaviour
             { PlantRarity.Mystery,  potData?.MysteryChance?? 0f }
         };
     }
-    
+
     PlantRarity GetRandomRarity()
     {
         float roll = Random.Range(0f, 100f);
@@ -41,13 +42,12 @@ public class Pot : MonoBehaviour
 
     public void Start()
     {
+        ChangeSprite();
         plant = GetComponentInChildren<Plant>();
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
     {
-        Debug.Log("버튼 눌림");
-
         if (plant.plantData != null) return;
         
         PlantRarity targetRarity = GetRandomRarity();
@@ -70,7 +70,13 @@ public class Pot : MonoBehaviour
 
     public void ClearPot() // 화분 정리
     {
-        plant.plantData = null;
+        potData = null;
+        PotSpr.sprite = null;
+    }
+
+    public void ChangeSprite() // 화분 변경
+    {
+        PotSpr.sprite = potData.potIcon;
     }
 }
 

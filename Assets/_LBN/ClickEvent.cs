@@ -38,7 +38,6 @@ public class ClickEvent : MonoBehaviour
                 float power = stat.plantMastery * ( 1 + (stat.pmLevel * 0.2f));
 
                 hit.collider.GetComponent<Plant>().GrowPlant(power);
-                Debug.Log(hit.collider.gameObject.name);
             }
             else
             {
