@@ -30,7 +30,10 @@ public class PlantShelf : MonoBehaviour
     {
         foreach (var plantData in plantDatas)
         {
-            GameManager.Instance.SetOxygen(plantData.OxygenProd);
+            if (plantData != null)
+            {
+                GameManager.Instance.SetOxygen(plantData.OxygenProd);
+            }
         }
         emissionTimer = 0f;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PotGachaSystem : MonoBehaviour
 {
-    //public PotInventory potInventory; 
+    public PotInventory potInventory; 
     public int GachaCost = 300; // 가챠 비용
 
     private List<PotData> allPotList; 
@@ -34,14 +34,15 @@ public class PotGachaSystem : MonoBehaviour
         // 산소쓸때 
         //if (potInventory.player.oxygen < drawCost) return;
         //potInventory.player.oxygen -= drawCost;
-
+        Debug.Log("qwe");
         // 무작위 PotData 선택
         PotData GachaData = GetRandomPot();
+        Debug.Log(GachaData);
         if (GachaData == null) return;
 
         // 인스턴스 생성 후 인벤토리에 추가
         var newPot = new PotInstance(GachaData);
-        //potInventory.AddPot(newPot);
+        potInventory.AddPot(newPot);
     }
 
     // 등급에 따라 무작위 선택
