@@ -9,19 +9,7 @@ public class Pot : MonoBehaviour
     public SpriteRenderer PotSpr; // 현재 화분 외형
     private Plant plant;
 
-    Dictionary<PlantRarity, float> rarityChances;
-
-    public void Awake()
-    {
-        rarityChances = new Dictionary<PlantRarity, float>()
-        {
-            { PlantRarity.Common, potData?.CommonChance?? 0f },
-            { PlantRarity.Rare,  potData?.RareChance?? 0f },
-            { PlantRarity.Epic,  potData?.EpicChance?? 0f },
-            { PlantRarity.Legend,  potData?.LegendChance?? 0f },
-            { PlantRarity.Mystery,  potData?.MysteryChance?? 0f }
-        };
-    }
+    Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
 
     PlantRarity GetRandomRarity()
     {
@@ -38,6 +26,17 @@ public class Pot : MonoBehaviour
             }
         }
         return PlantRarity.Common;
+    }
+
+    public void ChangePot(PotData Data)
+    {
+        potData = Data;
+        UpdataChance();
+    }
+
+    public void Awake()
+    {
+        UpdataChance();
     }
 
     public void Start()
@@ -66,6 +65,17 @@ public class Pot : MonoBehaviour
         plant.Seeding(plant.plantData);
 
         Debug.Log($"{plant.plantData.Name}/{plant.plantData.Rarity}을 심었습니다!");
+    }
+
+    public void UpdataChance()
+    {
+        rarityChances.Clear();
+
+        rarityChances[PlantRarity.Common] = potData?.CommonChance ?? 0f;
+        rarityChances[PlantRarity.Rare] = potData?.RareChance ?? 0f;
+        rarityChances[PlantRarity.Epic] = potData?.EpicChance ?? 0f;
+        rarityChances[PlantRarity.Legend] = potData?.LegendChance ?? 0f;
+        rarityChances[PlantRarity.Mystery] = potData?.MysteryChance ?? 0f;
     }
 
     public void ClearPot() // 화분 정리
