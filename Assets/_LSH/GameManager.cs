@@ -8,8 +8,7 @@ public class GameManager : SingleTon<GameManager>
     public SoundManager soundManager;
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
-    public PlayerStat playerStat;
-
+    public Player player;
 
     private void Start()
     {

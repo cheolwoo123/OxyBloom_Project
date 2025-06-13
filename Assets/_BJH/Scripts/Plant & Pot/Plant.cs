@@ -7,7 +7,7 @@ public class Plant : MonoBehaviour
     public SpriteRenderer PlantSpr = null; // 현재 식물 스프라이트
 
     [Header("현재 성장치와 성장 단계")]
-    public int CurGrow = 0; // 현재 식물 성장치
+    public float CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
 
     public void Seeding(PlantData Data)
@@ -18,7 +18,7 @@ public class Plant : MonoBehaviour
         GrowthStage++;
     }
     
-    public void GrowPlant(int amount) // 식물 성장
+    public void GrowPlant(float amount) // 식물 성장
     {
         if (plantData == null) return;
         
