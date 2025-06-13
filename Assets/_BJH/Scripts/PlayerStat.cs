@@ -1,10 +1,15 @@
-﻿public class PlayerStat
+﻿
+
+using UnityEngine;
+
+public class PlayerStat
 {
+
     public float plantMastery { get; private set; }
     public float attack { get; private set; }
     public int pmLevel { get; private set; }
     public int atkLevel { get; private set; }
-
+    public PotInstance equippedPot { get; private set; }
     public void InitStat(int pm, int atk)
     {
         plantMastery = pm;
@@ -21,5 +26,22 @@
     public void ATKLevelUp()
     {
         atkLevel++;
+    }
+    public void EquipPot(PotInstance pot)
+    {
+        equippedPot = pot;
+    }
+    public bool UpgradePot(PotInstance pot)
+    {
+
+        // 강화 비용  초기 100
+        int cost = Mathf.FloorToInt(100 * Mathf.Pow(pot.potData.upgradePotExpense, pot.level - 1));  
+        
+        GameManager.Instance.SetOxygen(-cost);
+
+       
+        pot.level++;
+
+        return true;
     }
 }

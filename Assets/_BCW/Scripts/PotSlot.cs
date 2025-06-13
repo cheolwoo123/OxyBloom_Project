@@ -35,9 +35,10 @@ public class PotSlotUI : MonoBehaviour
             potInventory.RefreshUI();
         });
 
-        
+
         // 강화 했을때 레벨이랑 생산퍼센트 갱신
-        upgradeButton.onClick.AddListener(() => {
+        upgradeButton.onClick.AddListener(() =>
+        {
             if (player.UpgradePot(pot))
             {
                 levelText.text = $"Lv.{pot.level}";
