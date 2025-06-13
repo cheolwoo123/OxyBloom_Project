@@ -10,6 +10,14 @@ public class Plant : MonoBehaviour
     public float CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
 
+    public void Start()
+    {
+        if (plantData == null)
+        {
+            GameManager.Instance.uiManager.DisplayPlantButton();
+        }
+    }
+
     public void Seeding(PlantData Data)
     {
         plantData = Data;
@@ -19,9 +27,9 @@ public class Plant : MonoBehaviour
     
     public void GrowPlant(float amount) // 식물 성장
     {
-        if (plantData == null) return;
+        if (plantData == null || GrowthStage == 3) return;
         
-        Debug.Log($"성장 {plantData.GrowthCost} + {amount}");
+        Debug.Log($"성장 {CurGrow} + {amount}");
         CurGrow += amount;
         NextGrowthSprite();
     }
@@ -30,7 +38,7 @@ public class Plant : MonoBehaviour
     {
         if (plantData == null) return;
 
-        Debug.Log($"시듬 {plantData.GrowthCost} - {amount}");
+        Debug.Log($"시듦 {CurGrow} - {amount}");
         CurGrow -= amount;
     }
 
@@ -45,13 +53,22 @@ public class Plant : MonoBehaviour
 
             if (GrowthStage == 3)
             {
-                //GameManager.Instance
+                PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+                GameManager.Instance.uiManager.DisplaySheifButton();
             }
             else
             {
                 PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
             }
         }
+    }
+
+    public void PutPlantOnSheif()
+    {
+        GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
+        RemovePlant();
+        GameManager.Instance.uiManager.DisplaySheifButton();
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void RemovePlant()
