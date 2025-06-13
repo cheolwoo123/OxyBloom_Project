@@ -1,13 +1,15 @@
-﻿public class PlayerData
+﻿public class PlayerStat
 {
-    public PlantManager  plantManager;
-    private int _oxygen;
-    
-    public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
+    private int plantMastery;
+    private int attack;
 
-    public void SetOxygen(int i)
+    public void IncreasedPM(int amount)
     {
-        Oxygen = Oxygen + i;
-        GameManager.Instance.uiManager.Oxygen(Oxygen);
+        plantMastery += amount;
+    }
+
+    public void IncreasedATK(int amount)
+    {
+        attack += amount;
     }
 }
