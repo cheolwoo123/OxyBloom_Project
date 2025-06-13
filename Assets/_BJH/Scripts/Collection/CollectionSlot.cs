@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CollectionSlot : MonoBehaviour
 {
-    public PlantData PlantData;
+    public PlantData plantData;
     public Image PlantImage;
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Description;
@@ -12,7 +12,7 @@ public class CollectionSlot : MonoBehaviour
 
     public void SetSlot(PlantData Data)
     {
-        PlantData = Data;
+        plantData = Data;
         PlantImage.sprite = Data.GrowthSprite[3];
         Name.text = $"{Data.Name} / {Data.Rarity}";
         Description.text = Data.Description;

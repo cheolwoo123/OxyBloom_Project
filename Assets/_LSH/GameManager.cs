@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
@@ -10,7 +8,7 @@ public class GameManager : SingleTon<GameManager>
     public SoundManager soundManager;
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
-    private PlayerData _playerData;
+    public PlayerStat playerStat;
 
 
     private void Start()
@@ -29,7 +27,7 @@ public class GameManager : SingleTon<GameManager>
     
     private IEnumerator NotEnoughOxyzen(int i)
     {
-        if (i > _playerData.Oxygen)
+        if (i > Oxygen)
         {
             notEnoughOxyzen.gameObject.SetActive(true);
             yield return new WaitForSeconds(2f);
