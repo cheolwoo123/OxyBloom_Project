@@ -1,16 +1,16 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PotGachaSystem : MonoBehaviour
 {
-    public PotInventory potInventory; 
-    public int GachaCost = 300; // °¡Ã­ ºñ¿ë
+    //public PotInventory potInventory; 
+    public int GachaCost = 300; // ê°€ì±  ë¹„ìš©
 
     private List<PotData> allPotList; 
 
-    // °¡Ã­¼¥ È®·ü ¹«Á¶°Ç ÃÑÇÕ 100
+    // ê°€ì± ìƒµ í™•ë¥  ë¬´ì¡°ê±´ ì´í•© 100
     private Dictionary<PotGrade, float> gradeChances = new()
     {
         { PotGrade.Common, 50f },
@@ -22,7 +22,7 @@ public class PotGachaSystem : MonoBehaviour
 
     private void Awake()
     {
-        // Resources/PotData ¾È¿¡ Æú´õ¿¡¼­ ¸ğµç µ¥ÀÌÅÍ ·ÎµåÇÔ
+        // Resources/PotData ì•ˆì— í´ë”ì—ì„œ ëª¨ë“  ë°ì´í„° ë¡œë“œí•¨
         allPotList = Resources.LoadAll<PotData>("PotData").ToList();
 
         
@@ -31,20 +31,20 @@ public class PotGachaSystem : MonoBehaviour
     // 
     public void TryGacha()
     {
-        // »ê¼Ò¾µ¶§ 
+        // ì‚°ì†Œì“¸ë•Œ 
         //if (potInventory.player.oxygen < drawCost) return;
         //potInventory.player.oxygen -= drawCost;
 
-        // ¹«ÀÛÀ§ PotData ¼±ÅÃ
+        // ë¬´ì‘ìœ„ PotData ì„ íƒ
         PotData GachaData = GetRandomPot();
         if (GachaData == null) return;
 
-        // ÀÎ½ºÅÏ½º »ı¼º ÈÄ ÀÎº¥Åä¸®¿¡ Ãß°¡
+        // ì¸ìŠ¤í„´ìŠ¤ ìƒì„± í›„ ì¸ë²¤í† ë¦¬ì— ì¶”ê°€
         var newPot = new PotInstance(GachaData);
-        potInventory.AddPot(newPot);
+        //potInventory.AddPot(newPot);
     }
 
-    // µî±Ş¿¡ µû¶ó ¹«ÀÛÀ§ ¼±ÅÃ
+    // ë“±ê¸‰ì— ë”°ë¼ ë¬´ì‘ìœ„ ì„ íƒ
     private PotGrade GetRandomGrade()
     {
         float roll = Random.Range(0f, 100f);
@@ -57,7 +57,7 @@ public class PotGachaSystem : MonoBehaviour
         return PotGrade.Common;
     }
 
-    // µî±Ş¿¡ ¸Â´Â PotData Áß ·£´ı ¼±ÅÃ
+    // ë“±ê¸‰ì— ë§ëŠ” PotData ì¤‘ ëœë¤ ì„ íƒ
     private PotData GetRandomPot()
     {
         PotGrade grade = GetRandomGrade();
