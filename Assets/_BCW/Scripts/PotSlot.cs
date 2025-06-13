@@ -48,7 +48,8 @@ public class PotSlotUI : MonoBehaviour
         });
 
         // 장착시 E표시
-        //equippedText.gameObject.SetActive(GameManager.Instance.plantManager.pot.potData = pot.potData);
+        equippedText.gameObject.SetActive(GameManager.Instance.plantManager.pot.potData == pot.potData);
+
     }
 
     // 화분마다 식물 뽑기 확률 표시
