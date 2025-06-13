@@ -6,15 +6,27 @@ public class RoundManager : MonoBehaviour
     public BugScriptObject bugData;         // 생성할 버그 데이터
     public Transform plantTransform;        // 목표 식물
 
-    void Start()
-    {
-        SpawnBug();
-    }
+    private int surviveDays; //날짜에 따라 난이도 변경
 
+
+            
+    void Update()
+    {
+        //조건 추가
+        //타이머변수 타이머가 몇초가 되면 SpawnBug() 실행
+        //일차마다 배경 변경
+
+    }
     void SpawnBug()
     {
         GameObject bugObj = Instantiate(bugPrefab, GetRandomSpawnPosition(), Quaternion.identity);
         BugController bugCtrl = bugObj.GetComponent<BugController>();
+
+        if (GameManager.Instance.plantManager.pot.GetPlant().plantData != null)
+        {
+
+        }
+        
         bugCtrl.Setup(bugData, plantTransform);
     }
 

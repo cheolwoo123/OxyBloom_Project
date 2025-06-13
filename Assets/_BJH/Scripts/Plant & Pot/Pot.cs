@@ -21,6 +21,7 @@ public class Pot : MonoBehaviour
             { PlantRarity.Legend,  potData?.LegendChance?? 0f },
             { PlantRarity.Mystery,  potData?.MysteryChance?? 0f }
         };
+        plant = GetComponentInChildren<Plant>();
     }
 
     PlantRarity GetRandomRarity()
@@ -43,7 +44,7 @@ public class Pot : MonoBehaviour
     public void Start()
     {
         ChangeSprite();
-        plant = GetComponentInChildren<Plant>();
+        
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
@@ -77,6 +78,11 @@ public class Pot : MonoBehaviour
     public void ChangeSprite() // 화분 변경
     {
         PotSpr.sprite = potData.potIcon;
+    }
+
+    public Plant GetPlant()
+    {
+        return plant;
     }
 }
 
