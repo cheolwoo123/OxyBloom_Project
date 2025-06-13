@@ -2,15 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public enum PlantRarity // 이거 합치면 지울거
-{
-    Common,
-    Rare,
-    Epic,
-    Legend,
-    Mystery
-}
-
 
 public enum PotGrade // 이거 뽑기에 쓸 등급
 {
