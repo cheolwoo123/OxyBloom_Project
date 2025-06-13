@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
   m_Name: Plan1 2
   m_EditorClassIdentifier: 
-  potName: test
+  potName: "\uC5D0\uD53D"
   potIcon: {fileID: 0}
   rarity: 3
-  rarityBonuses:
-  - rarity: 2
-    bonusPercent: 5
-  - rarity: 2
-    bonusPercent: -5
+  CommonChance: 20
+  RareChance: 15
+  EpicChance: 50
+  LegendChance: 10
+  MysteryChance: 5
   growthSpeedBonus: 0
   clickPowerBonus: 0
   upgradeMultiplier: 1
