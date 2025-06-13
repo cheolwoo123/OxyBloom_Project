@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class BugController : MonoBehaviour
 {
-    private BugEntity entity;
-    private Transform target; //식물
+    public BugEntity entity;
+    public Transform target; //식물 또는 벌레
+
+
+    private Vector3 randomTargetPos; //타깃의 랜덤위치
+    private bool hasTargetPos = false; //타깃포지션을 가지고 있는지
 
     private void Awake()
     {
         entity = GetComponent<BugEntity>();
     }
-    public void Init(BugScriptObject bugData, Transform target = null)
+
+    public void Setup(BugScriptObject bugData, Transform target)
     {
-        entity.Init(bugData);
-        this.target = target;
+        entity.Init(bugData);   
+        this.target = target;    
     }
+
     private void Update()
     {
         Move();
@@ -22,8 +28,28 @@ public class BugController : MonoBehaviour
     {
         if (entity.bugData.category == BugCategory.Pest && target != null)
         {
-            // 해충: 식물 방향으로 이동
-            transform.position = Vector3.MoveTowards(transform.position, target.position, entity.bugData.speed * Time.deltaTime);
+            // 해충 - 식물 방향으로 이동
+            if (!hasTargetPos)
+            {
+                Collider2D plantCollider = target.GetComponent<Collider2D>();
+                if(plantCollider != null)
+                {
+                    Bounds bounds = plantCollider.bounds;
+                    float x = Random.Range(bounds.min.x, bounds.max.x);
+                    float y = Random.Range(bounds.min.y, bounds.max.y);
+
+                    randomTargetPos = new Vector3(x, y, 0);
+                    hasTargetPos = true;
+                }
+                
+            }
+            transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
+
+            // 도착하면 다시 목표 초기화
+            if (Vector3.Distance(transform.position, randomTargetPos) < 0.1f)
+            {
+                hasTargetPos = false;
+            }
         }
         else if (entity.bugData.category == BugCategory.Beneficial)
         {
@@ -63,7 +89,7 @@ public class BugController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        entity.SetHP(entity.CurrentHP - damage);
+        entity.SetHP(entity.GetHP() - damage);
         if (entity.IsDead)
         {
             Die();

@@ -5,18 +5,32 @@ using UnityEngine;
 public class BugEntity : MonoBehaviour
 {
     public BugScriptObject bugData;
-    public int CurrentHP { get; private set; }
+
+    private int currentHP;
+    private float speed;
 
     public void Init(BugScriptObject data)
     {
         bugData = data;
-        CurrentHP = bugData.maxHP;
+        currentHP = bugData.maxHP;
+        speed = bugData.speed;
     }
 
     public void SetHP(int hp)
     {
-        CurrentHP = hp;
+        currentHP = hp;
     }
-
-    public bool IsDead => CurrentHP <= 0;
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public int GetHP()
+    {
+        return currentHP;
+    }
+    public bool IsDead => currentHP <= 0;
 }

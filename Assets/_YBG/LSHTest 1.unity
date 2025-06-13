@@ -2013,6 +2013,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &800032151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800032153}
+  - component: {fileID: 800032152}
+  m_Layer: 0
+  m_Name: RoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &800032152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800032151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905f7e58d96c0104c84a4d0a317a3277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bugPrefab: {fileID: 4474006265965194289, guid: aec3f6a48557f3f4dbd2c52564787cf1, type: 3}
+  bugData: {fileID: 11400000, guid: 54b9d665ca48a9b4c84ab42604759953, type: 2}
+  plantTransform: {fileID: 1606615181}
+--- !u!4 &800032153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800032151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &833697699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3420,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542717671}
   m_CullTransparentMesh: 1
+--- !u!4 &1606615181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1471137575369377271, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+  m_PrefabInstance: {fileID: 1923311745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1620409175
 GameObject:
   m_ObjectHideFlags: 0
@@ -4750,3 +4802,4 @@ SceneRoots:
   - {fileID: 787406202}
   - {fileID: 1916731718}
   - {fileID: 1923311745}
+  - {fileID: 800032153}
