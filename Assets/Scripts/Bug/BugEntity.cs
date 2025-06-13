@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class BugEntity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public BugScriptObject bugData;
+
+    private int currentHP;
+    private float speed;
+
+    public void Init(BugScriptObject data)
     {
-        
+        bugData = data;
+        currentHP = bugData.maxHP;
+        speed = bugData.speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHP(int hp)
     {
-        
+        currentHP = hp;
     }
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public int GetHP()
+    {
+        return currentHP;
+    }
+    public bool IsDead => currentHP <= 0;
 }

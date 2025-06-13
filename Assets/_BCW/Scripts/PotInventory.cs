@@ -1,49 +1,47 @@
-ï»¿//using System.Collections.Generic;
-//using UnityEngine;
-//using TMPro;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
 
-//public class PotInventory : MonoBehaviour
-//{
-//    [SerializeField] private GameObject slotPrefab;
-//    [SerializeField] private Transform slotParent;
-    
+public class PotInventory : MonoBehaviour
+{
+    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private Transform slotParent;
 
-//    public PlayerStat player = new();
+    [SerializeField]private List<PotInstance> potInventory = new();
 
- 
-    
+    public PlayerStat player = new();    
 
-//    private List<GameObject> slotObjects = new();
+    private List<GameObject> slotObjects = new();
 
-//    public void RefreshUI()
-//    {
-//        foreach (var slot in slotObjects)
-//            Destroy(slot);
-//        slotObjects.Clear();
+    public void RefreshUI()
+    {
+        foreach (var slot in slotObjects)
+            Destroy(slot);
+        slotObjects.Clear();
 
-//        foreach (var pot in player.potInventory)
-//        {
-//            var go = Instantiate(slotPrefab, slotParent);
-//            var slot = go.GetComponent<PotSlotUI>();
-//            slot.Init(pot, player, this);
-//            slotObjects.Add(go);
-//        }
+        foreach (var pot in potInventory)
+        {
+            var go = Instantiate(slotPrefab, slotParent);
+            var slot = go.GetComponent<PotSlotUI>();
+            slot.Init(pot, player, this);
+            slotObjects.Add(go);
+        }
 
        
-//    }
+    }
 
-//    public void AddPot(PotInstance pot)
-//    {
-//        foreach (var existing in player.potInventory)
-//        {
-//            if (existing.potData == pot.potData)
-//            {
-//                Debug.Log("ì¤‘ë³µëœ¸ ã……ã„± " + pot.potData.potName);
-//                return;
-//            }
-//        }
+    public void AddPot(PotInstance pot)
+    {
+        foreach (var existing in potInventory)
+        {
+            if (existing.potData == pot.potData)
+            {
+                Debug.Log("Áßº¹¶ä ¤µ¤¡ " + pot.potData.potName);
+                return;
+            }
+        }
 
-//        player.potInventory.Add(pot);
-//        RefreshUI();
-//    }
-//}
+        potInventory.Add(pot);
+        RefreshUI();
+    }
+}
