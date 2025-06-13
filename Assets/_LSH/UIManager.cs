@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     
     [Header("Canvas")]
-    public Canvas UICanvas;
+    public Canvas optionCanvas;
     
     private void OnEnable()
     {
@@ -24,12 +24,12 @@ public class UIManager : MonoBehaviour
 
     private void UICanvas_OnClick()
     {
-        UICanvas.gameObject.SetActive(true);
+        optionCanvas.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Oxygen(int oxygen)
     {
-        oxygenText.text = "- " + oxygen.ToString();
+        oxygenText.text = "- " + oxygen;
     }
 }

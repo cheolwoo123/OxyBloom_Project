@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class OptionController : MonoBehaviour
 {
+    public SceneTransition sceneTransition;
+    
     [Header("Buttons")]
     public Button titleButton;
     public Button exitButton;
@@ -19,8 +21,7 @@ public class OptionController : MonoBehaviour
     private void TitleButton()
     {
         Time.timeScale = 1f;
-        GameManager.Instance.gameObject.SetActive(false);
-        SceneManager.LoadScene("Title");
+        sceneTransition.FadeAndLoadScene("Title");
     }
     
     private void ExitButton()
