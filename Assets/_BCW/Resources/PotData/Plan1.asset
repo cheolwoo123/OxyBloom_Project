@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potName: "\uB808\uC5B4"
   potIcon: {fileID: 0}
+  Description: "\uB808\uC5B4 \uD654\uBD84"
   rarity: 2
   CommonChance: 50
   RareChance: 30
@@ -21,7 +22,6 @@ MonoBehaviour:
   LegendChance: 7
   MysteryChance: 3
   growthSpeedBonus: 0
-  clickPowerBonus: 0
   upgradeMultiplier: 1
   upgradeO2Multiplier: 1.5
   maxLevel: 5

@@ -1,4 +1,5 @@
-﻿public class PlayerStat
+﻿
+public class PlayerStat
 {
     private int plantMastery;
     private int attack;
@@ -12,4 +13,6 @@
     {
         attack += amount;
     }
+
+   
 }

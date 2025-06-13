@@ -8,10 +8,9 @@ public class PotInventory : MonoBehaviour
     [SerializeField] private Transform slotParent;
     
 
-    public PlayerData player = new();
+    public PlayerStat player = new();
 
-    [Header("Tooltip Reference")]
-    public GameObject tooltipPanel;
+ 
     
 
     private List<GameObject> slotObjects = new();
@@ -35,6 +34,15 @@ public class PotInventory : MonoBehaviour
 
     public void AddPot(PotInstance pot)
     {
+        foreach (var existing in player.potInventory)
+        {
+            if (existing.potData == pot.potData)
+            {
+                Debug.Log("Áßº¹¶ä ¤µ¤¡ " + pot.potData.potName);
+                return;
+            }
+        }
+
         player.potInventory.Add(pot);
         RefreshUI();
     }

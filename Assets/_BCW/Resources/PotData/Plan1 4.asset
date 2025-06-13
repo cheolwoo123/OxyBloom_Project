@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potName: "\uBBF8\uC2A4\uD14C\uB9AC"
   potIcon: {fileID: 0}
+  description: 
   rarity: 5
-  CommonChance: 60
-  RareChance: 10
-  EpicChance: 10
-  LegendChance: 10
-  MysteryChance: 10
+  CommonChance: 0
+  RareChance: 0
+  EpicChance: 0.5
+  LegendChance: 0.5
+  MysteryChance: 99
   growthSpeedBonus: 0
-  clickPowerBonus: 0
   upgradeMultiplier: 1
   upgradeO2Multiplier: 1.5
   maxLevel: 5
