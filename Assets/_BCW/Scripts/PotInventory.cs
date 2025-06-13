@@ -6,12 +6,10 @@ public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-    
 
-    public PlayerStat player = new();
+    [SerializeField]private List<PotInstance> potInventory = new();
 
- 
-    
+    public PlayerStat player = new();    
 
     private List<GameObject> slotObjects = new();
 
@@ -21,7 +19,7 @@ public class PotInventory : MonoBehaviour
             Destroy(slot);
         slotObjects.Clear();
 
-        foreach (var pot in player.potInventory)
+        foreach (var pot in potInventory)
         {
             var go = Instantiate(slotPrefab, slotParent);
             var slot = go.GetComponent<PotSlotUI>();
@@ -34,7 +32,7 @@ public class PotInventory : MonoBehaviour
 
     public void AddPot(PotInstance pot)
     {
-        foreach (var existing in player.potInventory)
+        foreach (var existing in potInventory)
         {
             if (existing.potData == pot.potData)
             {
@@ -43,7 +41,7 @@ public class PotInventory : MonoBehaviour
             }
         }
 
-        player.potInventory.Add(pot);
+        potInventory.Add(pot);
         RefreshUI();
     }
 }
