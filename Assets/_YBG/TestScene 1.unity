@@ -2394,6 +2394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7721699253328370222, guid: 0a86eb6cc54ce944e9f3169ab6bfc4b5, type: 3}
+      propertyPath: plantTransform
+      value: 
+      objectReference: {fileID: 1939628396}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6353,6 +6357,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+--- !u!4 &1939628396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1471137575369377271, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+  m_PrefabInstance: {fileID: 1923311745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1957949507
 GameObject:
   m_ObjectHideFlags: 0

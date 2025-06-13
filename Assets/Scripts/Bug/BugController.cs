@@ -38,7 +38,7 @@ public class BugController : MonoBehaviour
                     float x = Random.Range(bounds.min.x, bounds.max.x);
                     float y = Random.Range(bounds.min.y, bounds.max.y);
 
-
+                   
                     randomTargetPos = new Vector3(x, y, 0);
                     hasTargetPos = true;
                 }
