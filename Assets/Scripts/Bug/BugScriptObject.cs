@@ -24,9 +24,6 @@ public enum BeneficialType
 [CreateAssetMenu(fileName = "NewBug", menuName = "ScriptableObjects/Bug")]
 public class BugScriptObject : ScriptableObject
 {
-    [Header("Bug Visual")]
-    [SerializeField] public Sprite bugSprite;
-
     [Header("Bug Type")]
     public BugCategory category;
 
@@ -39,8 +36,8 @@ public class BugScriptObject : ScriptableObject
     [Header("Stat")]
     public int maxHP = 3;
     public int damage = 1;
-    public int growUp = 1;
-    public int speed = 1;
+    public int growUp = 10;
+    public float speed = 1;
 
     [Header("Oxygen Control (Option)")]
     public int oxygenAmount;
