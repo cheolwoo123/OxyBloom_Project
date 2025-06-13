@@ -3,7 +3,7 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     public GameObject bugPrefab;            // 버그 프리팹 연결
-    public BugScriptObject bugData;         // 생성할 버그 데이터
+    public BugScriptObject[] PestDataList;       // 생성할 버그 데이터
     public Transform plantTransform;        // 목표 식물
 
     private int surviveDays = 0; //날짜에 따라 난이도 변경
@@ -62,12 +62,26 @@ public class RoundManager : MonoBehaviour
         {
             return;
         }
+        BugScriptObject selectedPest;
 
         plantTransform = currentPlant.transform;
 
+        if (surviveDays < 3)
+        {
+            selectedPest = PestDataList[0]; // 쉬운 벌레
+        }
+        else if (surviveDays < 6)
+        {
+            selectedPest = PestDataList[Random.Range(0, 2)]; // 첫 2종류 중 하나
+        }
+        else
+        {
+            selectedPest = PestDataList[Random.Range(0, PestDataList.Length)]; // 전체 중 랜덤
+        }
+
         GameObject bugObj = Instantiate(bugPrefab, GetRandomSpawnPosition(), Quaternion.identity);
         BugController bugCtrl = bugObj.GetComponent<BugController>();
-        bugCtrl.Setup(bugData, plantTransform);
+        bugCtrl.Setup(selectedPest, plantTransform);
     }
 
     Vector3 GetRandomSpawnPosition()
