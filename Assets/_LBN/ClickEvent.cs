@@ -30,18 +30,14 @@ public class ClickEvent : MonoBehaviour
        Vector2 worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
        RaycastHit2D hit = Physics2D.Raycast(worldpos, Vector2.zero);
 
-        if (hit.collider.gameObject != null)
+        if (hit.collider != null)
         {
-            if(hit.collider.gameObject.tag == "Flower")
+            if (hit.collider.gameObject.CompareTag("Flower"))
             {
                 PlayerStat stat = GameManager.Instance.player.stat;
-                float power = stat.plantMastery * ( 1 + (stat.pmLevel * 0.2f));
+                float power = stat.plantMastery * (1 + (stat.pmLevel * 0.2f));
 
                 hit.collider.GetComponent<Plant>().GrowPlant(power);
-            }
-            else
-            {
-                return;
             }
         }
     }

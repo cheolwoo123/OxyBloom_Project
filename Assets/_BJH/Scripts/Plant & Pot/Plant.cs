@@ -21,7 +21,7 @@ public class Plant : MonoBehaviour
     {
         if (plantData == null) return;
         
-        Debug.Log($"식물을 {amount}만큼 성장시켰습니다.");
+        Debug.Log($"성장 {plantData.GrowthCost} + {amount}");
         CurGrow += amount;
         NextGrowthSprite();
     }
@@ -30,7 +30,7 @@ public class Plant : MonoBehaviour
     {
         if (plantData == null) return;
 
-        Debug.Log($"식물에 성장치를 {amount}만큼 감소시켰습니다.");
+        Debug.Log($"시듬 {plantData.GrowthCost} - {amount}");
         CurGrow -= amount;
     }
 
@@ -45,8 +45,7 @@ public class Plant : MonoBehaviour
 
             if (GrowthStage == 3)
             {
-                GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
-                RemovePlant();
+                //GameManager.Instance
             }
             else
             {
@@ -63,6 +62,4 @@ public class Plant : MonoBehaviour
         CurGrow = 0;
         GrowthStage = 0;
     }
-    
-
 }
