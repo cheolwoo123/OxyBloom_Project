@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
-  m_Name: Pot_Dust
+  m_Name: EpicPot_4
   m_EditorClassIdentifier: 
-  potName: "\uC6B0\uC8FC \uBA3C\uC9C0"
-  potIcon: {fileID: 21300000, guid: 5c2c5e7291f060c41baff9f7b246b9ad, type: 3}
-  description: "\uC6B0\uC8FC \uBA3C\uC9C0\uB97C \uAE01\uC5B4\uBAA8\uC544 \uB9CC\uB4E4\uC5C8\uC2B5\uB2C8\uB2E4."
-  rarity: 1
-  CommonChance: 90
-  RareChance: 7.5
-  EpicChance: 2.5
-  LegendChance: 0
-  MysteryChance: 0
+  potName: Epic
+  potIcon: {fileID: 21300000, guid: 6aba64f94e622854781797e342d35f0e, type: 3}
+  description: 
+  rarity: 3
+  CommonChance: 0
+  RareChance: 0
+  EpicChance: 0
+  LegendChance: 1
+  MysteryChance: 99
   growthSpeedBonus: 0
   upgradePot: 0.5
   upgradePotExpense: 1.5
-  maxLevel: 10
+  maxLevel: 5

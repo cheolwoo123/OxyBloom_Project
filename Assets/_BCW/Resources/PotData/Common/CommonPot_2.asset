@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
-  m_Name: Plan1 1
+  m_Name: CommonPot_2
   m_EditorClassIdentifier: 
-  potName: "\uC774\uB984 / \uCEE4\uBA3C"
-  potIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  potName: Common
+  potIcon: {fileID: 21300000, guid: 8d5ac1f3d7a6d8f4f868d67e79a09dc4, type: 3}
   description: 
   rarity: 1
-  CommonChance: 0
-  RareChance: 0
-  EpicChance: 0
-  LegendChance: 1
-  MysteryChance: 99
+  CommonChance: 20
+  RareChance: 15
+  EpicChance: 50
+  LegendChance: 10
+  MysteryChance: 5
   growthSpeedBonus: 0
-  upgradeMultiplier: 1
-  upgradeO2Multiplier: 1.5
+  upgradePot: 0.5
+  upgradePotExpense: 1.5
   maxLevel: 5
