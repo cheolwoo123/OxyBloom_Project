@@ -6624,7 +6624,7 @@ PrefabInstance:
     - target: {fileID: 1156924914622534236, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: potData
       value: 
-      objectReference: {fileID: 11400000, guid: dd3de996e1dae6d42810dab76ed338a4, type: 2}
+      objectReference: {fileID: 11400000, guid: 09a8559228984fd44a67c49c3ecef197, type: 2}
     - target: {fileID: 1471137575369377271, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.76
@@ -6635,12 +6635,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Size.y
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5bbe77d305cc29646b3ee7087605c7e2, type: 3}
+      objectReference: {fileID: 21300000, guid: 6d5899955e3e13d4685b4ebbc832f452, type: 3}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Color.b
       value: 1
