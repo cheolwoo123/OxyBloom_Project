@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
-  m_Name: Plan1 4
+  m_Name: Pot_ ScrapRobot
   m_EditorClassIdentifier: 
-  potName: "\uBBF8\uC2A4\uD14C\uB9AC"
-  potIcon: {fileID: 0}
-  description: 
+  potName: "\uACE0\uBB3C \uB85C\uBD07"
+  potIcon: {fileID: 21300000, guid: 31c46a0489150e5438bc431163d8dd83, type: 3}
+  description: "\uBC14\uD034\uBC8C\uB808 \uD55C\uB9C8\uB9AC\uAC00 \uC0B4\uACE0 \uC788\uC5C8\uC2B5\uB2C8\uB2E4. "
   rarity: 5
   CommonChance: 0
-  RareChance: 0
-  EpicChance: 0.5
-  LegendChance: 0.5
-  MysteryChance: 99
-  growthSpeedBonus: 0
-  upgradeMultiplier: 1
-  upgradeO2Multiplier: 1.5
+  RareChance: 15
+  EpicChance: 35
+  LegendChance: 30
+  MysteryChance: 20
+  growthSpeedBonus: 50
+  upgradePot: 0.5
+  upgradePotExpense: 1.5
   maxLevel: 5
