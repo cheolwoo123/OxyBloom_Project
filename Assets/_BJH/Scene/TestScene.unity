@@ -6473,7 +6473,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.106532566, g: 0.10659151, b: 0.16981131, a: 0}
+  m_BackGroundColor: {r: 0.7028302, g: 0.8663715, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6624,7 +6624,7 @@ PrefabInstance:
     - target: {fileID: 1156924914622534236, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: potData
       value: 
-      objectReference: {fileID: 11400000, guid: 09a8559228984fd44a67c49c3ecef197, type: 2}
+      objectReference: {fileID: 11400000, guid: dd3de996e1dae6d42810dab76ed338a4, type: 2}
     - target: {fileID: 1471137575369377271, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.76
@@ -6635,12 +6635,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Size.y
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d5899955e3e13d4685b4ebbc832f452, type: 3}
+      objectReference: {fileID: 21300000, guid: d9ec3a6d9a6cb934bbf3f450f0d75091, type: 3}
     - target: {fileID: 3601231394126096762, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -6682,9 +6682,17 @@ PrefabInstance:
       value: Pot
       objectReference: {fileID: 0}
     - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+      propertyPath: m_Size.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
+      propertyPath: m_Size.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f1b3e1f041dc3e04aa301bf20d19e367, type: 3}
+      objectReference: {fileID: 21300000, guid: 0758ca806cb607c49a75e314ce00daba, type: 3}
     - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
