@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rarity: 3
   Name: "\uB77C\uB514\uD398\uD0C8"
-  Description: "\uAC15\uD55C \uBC29\uC0AC\uC120\uC744 \uB0B4\uBFDC\uC5B4, \uC9C1\uC811
-    \uAD00\uB9AC\uD560 \uC218 \uC5C6\uC9C0\uB9CC \uBE60\uB978 \uC18D\uB3C4\uB85C
-    \uC131\uC7A5\uD569\uB2C8\uB2E4."
+  Description: "\uAC15\uD55C \uBC29\uC0AC\uB2A5\uC744 \uBC29\uCD9C\uD558\uB294 \uC2DD\uBB3C\uC785\uB2C8\uB2E4."
   OxygenProd: 100
   GrowthCost: 800
   GrowthSprite:

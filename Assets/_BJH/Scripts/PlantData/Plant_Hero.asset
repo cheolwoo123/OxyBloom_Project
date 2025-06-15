@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rarity: 4
   Name: "\uC601\uC6C5\uAF43"
-  Description: "\uC5EC\uC12F \uC78E\uC5D0 \uAF43\uC774 \uB9C8\uBC95\uCC98\uB7FC \uC790\uB77C\uC788\uC2B5\uB2C8\uB2E4."
+  Description: "\uD574\uAC00 \uB728\uBA74 \uB9D0\uC744 \uAC78\uC5B4\uC635\uB2C8\uB2E4."
   OxygenProd: 200
   GrowthCost: 1000
   GrowthSprite:
