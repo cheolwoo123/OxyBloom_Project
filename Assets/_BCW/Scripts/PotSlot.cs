@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +14,7 @@ public class PotSlotUI : MonoBehaviour
     private PotInstance pot;
 
 
-    // ½½·Ô UI ÃÊ±âÈ­
+    // ìŠ¬ë¡¯ UI ì´ˆê¸°í™”
     public void Init(PotInstance pot, PlayerStat player, PotInventory potInventory)
     {
         this.pot = pot;
@@ -23,21 +23,22 @@ public class PotSlotUI : MonoBehaviour
         nameText.text = pot.potData.potName;     
         levelText.text = $"Lv.{pot.level}";     
 
-        UpdateDescription(); // ¼³¸í ÅØ½ºÆ® °»½Å
+        UpdateDescription(); // ì„¤ëª… í…ìŠ¤íŠ¸ ê°±ì‹ 
 
-        // ±âÁ¸ ¹öÆ° ¸®½º³Ê Á¦°Å ÈÄ »õ·Î µî·Ï
+        // ê¸°ì¡´ ë²„íŠ¼ ë¦¬ìŠ¤ë„ˆ ì œê±° í›„ ìƒˆë¡œ ë“±ë¡
         equipButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.RemoveAllListeners();
 
-        // ÀåÂø ¹öÆ° Å¬¸¯ ½Ã ÇØ´ç È­ºĞÀ» ÀåÂø ÈÄ ÀÎº¥Åä¸® UI¸¦ °»½Å
+        // ì¥ì°© ë²„íŠ¼ í´ë¦­ ì‹œ í•´ë‹¹ í™”ë¶„ì„ ì¥ì°© í›„ ì¸ë²¤í† ë¦¬ UIë¥¼ ê°±ì‹ 
         equipButton.onClick.AddListener(() => {
             GameManager.Instance.plantManager.pot.ChangePot(pot.potData);
-            
+            GameManager.Instance.plantManager.pot.ChangeSprite();
+
             potInventory.RefreshUI();
         });
 
 
-        // °­È­ ÇßÀ»¶§ ·¹º§ÀÌ¶û »ı»êÆÛ¼¾Æ® °»½Å
+        // ê°•í™” í–ˆì„ë•Œ ë ˆë²¨ì´ë‘ ìƒì‚°í¼ì„¼íŠ¸ ê°±ì‹ 
         upgradeButton.onClick.AddListener(() =>
         {
             if (player.UpgradePot(pot))
@@ -47,20 +48,20 @@ public class PotSlotUI : MonoBehaviour
             }
         });
 
-        // ÀåÂø½Ã EÇ¥½Ã
+        // ì¥ì°©ì‹œ Eí‘œì‹œ
         equippedText.gameObject.SetActive(GameManager.Instance.plantManager.pot.potData == pot.potData);
 
     }
 
-    // È­ºĞ¸¶´Ù ½Ä¹° »Ì±â È®·ü Ç¥½Ã
+    // í™”ë¶„ë§ˆë‹¤ ì‹ë¬¼ ë½‘ê¸° í™•ë¥  í‘œì‹œ
     private void UpdateDescription()
     {
         description.text =
-            $"- ÀÚµ¿ »ê¼Ò »ı»ê·® : {pot.GetGrowthBonus()}%\n" +
-            $" - ÀÏ¹İ : {pot.potData.CommonChance}%\n" +
-            $" - ·¹¾î : {pot.potData.RareChance}%\n" +
-            $" - ¿¡ÇÈ : {pot.potData.EpicChance}%\n" +
-            $" - Àü¼³ : {pot.potData.LegendChance}%\n" +
-            $" - ¹Ì½ºÅÍ¸® : {pot.potData.MysteryChance}%";
+            $"- ìë™ ì‚°ì†Œ ìƒì‚°ëŸ‰ : {pot.GetGrowthBonus()}%\n" +
+            $" - ì¼ë°˜ : {pot.potData.CommonChance}%\n" +
+            $" - ë ˆì–´ : {pot.potData.RareChance}%\n" +
+            $" - ì—í”½ : {pot.potData.EpicChance}%\n" +
+            $" - ì „ì„¤ : {pot.potData.LegendChance}%\n" +
+            $" - ë¯¸ìŠ¤í„°ë¦¬ : {pot.potData.MysteryChance}%";
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EpicPot_1
   m_EditorClassIdentifier: 
   potName: Epic
-  potIcon: {fileID: 21300000, guid: 623659cc72fbae94cb520b1d86a5787e, type: 3}
+  potIcon: {fileID: 21300000, guid: 6d5899955e3e13d4685b4ebbc832f452, type: 3}
   description: 
   rarity: 3
   CommonChance: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
-  m_Name: EpicPot_5
+  m_Name: EpicPot_4
   m_EditorClassIdentifier: 
   potName: Epic
-  potIcon: {fileID: 21300000, guid: 863f45f8f8d190b46824d8543b3fe892, type: 3}
+  potIcon: {fileID: 21300000, guid: 3f2dda2093ce90d438abb98cf5845aa7, type: 3}
   description: 
   rarity: 3
   CommonChance: 0
