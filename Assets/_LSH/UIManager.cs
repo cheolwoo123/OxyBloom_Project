@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour
     public Button optionButton;
     public Button collectionButton;
     public Button upgradeButton;
-    
+    public Button plantButton;
+    public Button sheifButton;
+
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
 
@@ -58,4 +60,16 @@ public class UIManager : MonoBehaviour
     {
         oxygenText.text = "- " + oxygen;
     }
+
+    public void DisplaySheifButton()
+    {
+        sheifButton.gameObject.SetActive(!sheifButton.gameObject.activeSelf);
+    }
+
+
+    public void DisplayPlantButton()
+    {
+        plantButton.gameObject.SetActive(!plantButton.gameObject.activeSelf);
+    }
 }
+

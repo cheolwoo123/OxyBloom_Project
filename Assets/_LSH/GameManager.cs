@@ -32,7 +32,7 @@ public class GameManager : SingleTon<GameManager>
             yield return new WaitForSeconds(2f);
             notEnoughOxyzen.gameObject.SetActive(false);
         }
-    }
+    } 
 
     private void Update()
     {
