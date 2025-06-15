@@ -17,11 +17,10 @@ MonoBehaviour:
   Description: "\uAC15\uD55C \uBC29\uC0AC\uC120\uC744 \uB0B4\uBFDC\uC5B4, \uC9C1\uC811
     \uAD00\uB9AC\uD560 \uC218 \uC5C6\uC9C0\uB9CC \uBE60\uB978 \uC18D\uB3C4\uB85C
     \uC131\uC7A5\uD569\uB2C8\uB2E4."
-  OxygenProd: 12
-  EnergyProd: 30
-  GrowthCost: 1000
+  OxygenProd: 100
+  GrowthCost: 800
   GrowthSprite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a2f12ec3680717c44ade8299f7552da5, type: 3}
+  - {fileID: 21300000, guid: 32badfd0410cc8040b0276b5f8ba87df, type: 3}
+  - {fileID: 21300000, guid: 331fb6343940c724fb8aad2b8ffb31a6, type: 3}
+  - {fileID: 21300000, guid: 2b004ef8958478e4082bb5d8ba2ccd86, type: 3}

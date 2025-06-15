@@ -15,11 +15,10 @@ MonoBehaviour:
   Rarity: 1
   Name: "\uB124\uBDF8\uB9AC\uBE44"
   Description: "\uB369\uAD74\uC774 \uB9C8\uCE58 \uC131\uC6B4\uCC98\uB7FC \uC790\uB77C\uB0AC\uC2B5\uB2C8\uB2E4."
-  OxygenProd: 5
-  EnergyProd: 20
+  OxygenProd: 25
   GrowthCost: 400
   GrowthSprite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a2f12ec3680717c44ade8299f7552da5, type: 3}
+  - {fileID: 21300000, guid: 32badfd0410cc8040b0276b5f8ba87df, type: 3}
+  - {fileID: 21300000, guid: 331fb6343940c724fb8aad2b8ffb31a6, type: 3}
+  - {fileID: 21300000, guid: 0ee67cdb10cd0f54a9ee6197bc89d324, type: 3}
