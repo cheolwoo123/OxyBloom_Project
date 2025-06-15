@@ -7,7 +7,7 @@ public class PotGachaSystem : MonoBehaviour
 {
     public PotInventory potInventory; 
     public int GachaCost = 300; // 가챠 비용
-
+    public GachaEffect gachaEffect;
     private List<PotData> allPotList; 
 
     // 가챠샵 확률 무조건 총합 100
@@ -31,6 +31,7 @@ public class PotGachaSystem : MonoBehaviour
     // 
     public void TryGacha()
     {
+        if (gachaEffect.isPlaying) return;
         // 산소쓸때 
         //if (potInventory.player.oxygen < drawCost) return;
         //potInventory.player.oxygen -= drawCost;
@@ -43,6 +44,7 @@ public class PotGachaSystem : MonoBehaviour
         // 인스턴스 생성 후 인벤토리에 추가
         var newPot = new PotInstance(GachaData);
         potInventory.AddPot(newPot);
+        gachaEffect.PlayEffect(GachaData.rarity);
     }
 
     // 등급에 따라 무작위 선택
