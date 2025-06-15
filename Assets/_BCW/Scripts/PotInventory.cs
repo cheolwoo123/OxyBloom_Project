@@ -6,7 +6,6 @@ public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-
     [SerializeField]private List<PotInstance> potInventory = new();
 
     public PlayerStat player = new();    

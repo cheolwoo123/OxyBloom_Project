@@ -9,7 +9,7 @@ public class PlayerStat
     public float attack { get; private set; }
     public int pmLevel { get; private set; }
     public int atkLevel { get; private set; }
-    public PotInstance equippedPot { get; private set; }
+    
     public void InitStat(int pm, int atk)
     {
         plantMastery = pm;
@@ -27,21 +27,22 @@ public class PlayerStat
     {
         atkLevel++;
     }
-    public void EquipPot(PotInstance pot)
-    {
-        equippedPot = pot;
-    }
+    
     public bool UpgradePot(PotInstance pot)
     {
 
         // 강화 비용  초기 100
-        int cost = Mathf.FloorToInt(100 * Mathf.Pow(pot.potData.upgradePotExpense, pot.level - 1));  
-        
-        GameManager.Instance.SetOxygen(-cost);
-
+        int cost = Mathf.FloorToInt(100 * Mathf.Pow(pot.potData.upgradePotExpense, pot.level - 1));
        
-        pot.level++;
 
+        if (GameManager.Instance.Oxygen < cost || pot.level >= pot.potData.maxLevel)
+        {           
+            GameManager.Instance.StartCoroutine("NotEnoughOxyzen", cost);
+            return false;
+        }
+
+        GameManager.Instance.SetOxygen(-cost);
+        pot.level++;
         return true;
     }
 }
