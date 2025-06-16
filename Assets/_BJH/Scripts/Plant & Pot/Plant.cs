@@ -11,6 +11,8 @@ public class Plant : MonoBehaviour
     public float CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
 
+    public Animator animator;
+
     public void Start()
     {
         if (plantData == null)
@@ -51,6 +53,7 @@ public class Plant : MonoBehaviour
         {
             CurGrow = 0;
             GrowthStage++;
+            animator.SetTrigger("Grow");
 
             if (GrowthStage == 3)
             {
