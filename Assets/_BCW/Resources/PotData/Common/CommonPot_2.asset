@@ -21,7 +21,7 @@ MonoBehaviour:
   EpicChance: 50
   LegendChance: 10
   MysteryChance: 5
-  growthSpeedBonus: 0
+  growthSpeedBonus: 2.5
   upgradePot: 0.5
   upgradePotExpense: 1.5
   maxLevel: 5

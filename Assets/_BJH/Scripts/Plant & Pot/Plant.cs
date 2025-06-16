@@ -34,15 +34,17 @@ public class Plant : MonoBehaviour
         
         Debug.Log($"성장 {CurGrow} + {amount}");
         CurGrow += amount;
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         NextGrowthSprite();
     }
 
     public void DegrowPlant(float amount)
     {
-        if (plantData == null) return;
+        if (plantData == null || GrowthStage == 3) return;
 
         Debug.Log($"시듦 {CurGrow} - {amount}");
         CurGrow -= amount;
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
     }
 
     private void NextGrowthSprite() // 식물 외형 변화
@@ -71,6 +73,7 @@ public class Plant : MonoBehaviour
     {
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
         GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         RemovePlant();
         GameManager.Instance.uiManager.DisplaySheifButton();
         GameManager.Instance.uiManager.DisplayPlantButton();
