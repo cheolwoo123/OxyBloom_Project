@@ -36,7 +36,7 @@ public class Upgrade : MonoBehaviour
     {
         if (GameManager.Instance.Oxygen < atkCost)
         {
-            Debug.Log("산소가 부족합니다.");
+            GameManager.Instance.StartCoroutine("NotEnoughOxyzen",atkCost);
             return;
         }
         GameManager.Instance.player.stat.ATKLevelUp();
@@ -47,7 +47,7 @@ public class Upgrade : MonoBehaviour
     {
         if (GameManager.Instance.Oxygen < pmCost)
         {
-            Debug.Log("산소가 부족합니다."); 
+            GameManager.Instance.StartCoroutine("NotEnoughOxyzen", pmCost);
             return;
         }
         GameManager.Instance.player.stat.PMLevelUp();

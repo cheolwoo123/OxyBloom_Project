@@ -33,12 +33,10 @@ public class PlayerStat
 
         // 강화 비용  초기 100
         int cost = Mathf.FloorToInt(100 * Mathf.Pow(pot.potData.upgradePotExpense, pot.level - 1));
-
        
 
         if (GameManager.Instance.Oxygen < cost || pot.level >= pot.potData.maxLevel)
-        {
-           
+        {           
             GameManager.Instance.StartCoroutine("NotEnoughOxyzen", cost);
             return false;
         }
