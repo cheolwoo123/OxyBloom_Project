@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 109209519}
   - component: {fileID: 109209518}
   m_Layer: 0
-  m_Name: Cur Grow Gauge 2
+  m_Name: Back Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2817,7 +2817,7 @@ GameObject:
   - component: {fileID: 1116811959}
   - component: {fileID: 1116811958}
   m_Layer: 0
-  m_Name: Cur Grow Gauge
+  m_Name: Front Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3370,7 +3370,7 @@ GameObject:
   - component: {fileID: 1546285257}
   - component: {fileID: 1546285258}
   m_Layer: 0
-  m_Name: Gauge
+  m_Name: Growth Gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4517,10 +4517,10 @@ PrefabInstance:
     - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7622d04e1934ea84daac168cebb667ed, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8012326627965940045, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
