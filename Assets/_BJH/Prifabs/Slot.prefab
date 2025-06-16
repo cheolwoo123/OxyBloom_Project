@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e85d22a7d579f47961d483fac1db21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlantData: {fileID: 0}
+  plantData: {fileID: 0}
   PlantImage: {fileID: 2219319197162747130}
   Name: {fileID: 6138385602575512719}
   Description: {fileID: 6196692654581369643}
@@ -264,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 299.99997, y: 95}
-  m_SizeDelta: {x: 600, y: 65}
+  m_SizeDelta: {x: 500, y: 65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1025423222278821050
 CanvasRenderer:
@@ -569,7 +569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchoredPosition: {x: 25, y: -25}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4671639509502108464

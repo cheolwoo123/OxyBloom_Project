@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Plant : MonoBehaviour
     [Header("현재 성장치와 성장 단계")]
     public float CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
+
+    public Animator animator;
 
     public void Start()
     {
@@ -50,6 +53,7 @@ public class Plant : MonoBehaviour
         {
             CurGrow = 0;
             GrowthStage++;
+            animator.SetTrigger("Grow");
 
             if (GrowthStage == 3)
             {
@@ -66,6 +70,7 @@ public class Plant : MonoBehaviour
     public void PutPlantOnSheif()
     {
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
+        GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
         RemovePlant();
         GameManager.Instance.uiManager.DisplaySheifButton();
         GameManager.Instance.uiManager.DisplayPlantButton();
