@@ -21,7 +21,7 @@ public class GachaEffect : MonoBehaviour
     private Dictionary<PotGrade, GameObject> gradeToEffect;
     private Color originalColor;
     private PotGrade potGrades = PotGrade.Common;
-    public GameObject gachaPotSlot;
+  
     private void Awake()
     {
         
