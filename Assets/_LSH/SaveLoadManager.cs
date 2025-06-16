@@ -13,10 +13,12 @@ public class SaveLoadManager : MonoBehaviour
         _filePath = Path.Combine(Application.persistentDataPath, "SaveData.json");
     }
     
-    public void SetSaveData( PlayerStat playerStat, float _oxygen)  //데이터 저장용 클래스에 데이터를 넣음
+    public void SetSaveData( PlayerStat playerStat, int _oxygen)  //데이터 저장용 클래스에 데이터를 넣음
     {
         _saveData._playerStat = playerStat;
         _saveData._oxygen = _oxygen;
+
+        Save(_saveData);
     }
 
     public SaveData GetSaveData()  //데이터 리턴
@@ -38,11 +40,9 @@ public class SaveLoadManager : MonoBehaviour
             string json = File.ReadAllText(_filePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             _saveData = data;
-            //Debug.Log("불러오기 완료 / " + _saveData._oxygen);
+            Debug.Log("불러오기 완료 / " + _saveData._oxygen);
             return data;
         }
-
-        //Debug.LogWarning("저장 파일이 없습니다.");
         return null;
     }
 }

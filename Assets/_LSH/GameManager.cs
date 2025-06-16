@@ -17,7 +17,16 @@ public class GameManager : SingleTon<GameManager>
     {
         if(uiManager != null)
             uiManager.Oxygen(Oxygen);
-        saveLoadManager.Load();
+        
+        SaveData saveData = saveLoadManager.Load();
+        
+        if (saveData != null)
+        {
+            Oxygen = saveData._oxygen;
+            uiManager.Oxygen(Oxygen);
+            player.stat = saveData._playerStat;
+        }
+
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
@@ -26,6 +35,7 @@ public class GameManager : SingleTon<GameManager>
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
+        saveLoadManager.SetSaveData(player.stat,Oxygen);
     }
     
     private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기
@@ -44,7 +54,6 @@ public class GameManager : SingleTon<GameManager>
         {
             //StartCoroutine(NotEnoughOxyzen(10000));
             saveLoadManager.SetSaveData(player.stat,10000);
-            saveLoadManager.Save(saveLoadManager.GetSaveData());
             saveLoadManager.Load();
         }
         
