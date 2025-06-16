@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
     public Button plantButton;
     public Button sheifButton;
     public Button ExitCollectionButton;
+    public Button InventoryButton;
 
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
@@ -23,13 +25,16 @@ public class UIManager : MonoBehaviour
     [Header("GameObject")]
     public GameObject colletionUI;
     public GameObject upgradeUI;
-    
+    public GameObject potCollectionUI;
+
+
     private void OnEnable()
     {
         optionButton.onClick.AddListener((() => UICanvas_OnClick()));
         collectionButton.onClick.AddListener(() => DisplayCollectionUI());
         upgradeButton.onClick.AddListener(() => DisplayUpgradeUI());
         ExitCollectionButton.onClick.AddListener(() => DisplayCollectionUI());
+        InventoryButton.onClick.AddListener(() => OnpotCollectionUI());
     }
 
     private void UICanvas_OnClick()
@@ -84,6 +89,17 @@ public class UIManager : MonoBehaviour
     public void DisplayPlantButton()
     {
         plantButton.gameObject.SetActive(!plantButton.gameObject.activeSelf);
+    }
+
+    public void OnpotCollectionUI()
+    {
+        if (potCollectionUI.activeSelf)
+        {
+            potCollectionUI.SetActive(false);
+            return;
+        }
+
+        potCollectionUI.SetActive(true);
     }
 }
 
