@@ -1,6 +1,18 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
+//plantData
+//plantData = GameManager.Instance.saveLoadManager.Load().plant;  //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<PlantData>("Plant", plantData);  데이터 저장
+
+//CurGrow
+//CurGrow = GameManager.Instance.saveLoadManager.Load().curGrow;  //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<float>("CurGrow", CurGrow);  데이터 저장
+
+//GrowthStage
+//GrowthStage = GameManager.Instance.saveLoadManager.Load().growthStage;  //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<int>("Plant", GrowthStage);  데이터 저장
+
 public class Plant : MonoBehaviour
 {
     [Header("현재 데이터와 스프라이트")]
@@ -15,6 +27,8 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
+        plantData = GameManager.Instance.saveLoadManager.Load().plant;
+        
         if (plantData == null)
         {
             GameManager.Instance.uiManager.DisplayPlantButton();
@@ -26,6 +40,7 @@ public class Plant : MonoBehaviour
         plantData = Data;
         PlantSpr.enabled = true;
         PlantSpr.sprite = plantData.GrowthSprite[0];
+        
     }
     
     public void GrowPlant(float amount) // 식물 성장

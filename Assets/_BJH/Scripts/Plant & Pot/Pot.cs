@@ -2,6 +2,10 @@
 using System.Linq;
 using UnityEngine;
 
+//potData
+//potData = GameManager.Instance.saveLoadManager.Load().potData;   //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<PotData>("PotData", potData);  //데이터 저장
+
 public class Pot : MonoBehaviour
 {
     [Header("현재 식물 데이터와 이미지")]
@@ -13,7 +17,7 @@ public class Pot : MonoBehaviour
     private float timer;
 
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
-
+    
     PlantRarity GetRandomRarity()
     {
         float roll = Random.Range(0f, 100f);

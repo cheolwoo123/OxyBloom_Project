@@ -5,7 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    //public List<PotInstance> _potInventory = new();
-    public PlayerStat _playerStat = new();
-    public int _oxygen;
+    
+    public int oxygen;
+    public PlayerStat playerStat = new();
+    
+    public PotData potData;                //Pot
+    public PlantData plant;                //Plant
+    public float curGrow = 0;
+    public int growthStage;
+    public List<PlantData> plantData;  //Collection
+    public List<PlantData> plantDatas;  //PlantShelf
+    public List<PotInstance> potInventory;  //PotInventory
 }
