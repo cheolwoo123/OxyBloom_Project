@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     public Button upgradeButton;
     public Button plantButton;
     public Button sheifButton;
-    public Button ExitCollectionButton;
     public Button InventoryButton;
 
     [Header("Texts")]
@@ -33,7 +32,6 @@ public class UIManager : MonoBehaviour
         optionButton.onClick.AddListener((() => UICanvas_OnClick()));
         collectionButton.onClick.AddListener(() => DisplayCollectionUI());
         upgradeButton.onClick.AddListener(() => DisplayUpgradeUI());
-        ExitCollectionButton.onClick.AddListener(() => DisplayCollectionUI());
         InventoryButton.onClick.AddListener(() => OnpotCollectionUI());
     }
 
