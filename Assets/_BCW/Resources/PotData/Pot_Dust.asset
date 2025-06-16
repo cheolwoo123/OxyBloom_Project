@@ -22,6 +22,6 @@ MonoBehaviour:
   LegendChance: 0
   MysteryChance: 0
   growthSpeedBonus: 0
-  upgradePot: 0.5
-  upgradePotExpense: 1.5
-  maxLevel: 10
+  upgradePot: 0
+  upgradePotExpense: 0
+  maxLevel: 0
