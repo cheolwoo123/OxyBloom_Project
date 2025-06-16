@@ -1804,7 +1804,9 @@ MonoBehaviour:
   upgradeButton: {fileID: 0}
   plantButton: {fileID: 0}
   sheifButton: {fileID: 0}
+  ExitCollectionButton: {fileID: 0}
   oxygenText: {fileID: 6413470736008843122}
+  surviveDaysText: {fileID: 0}
   optionCanvas: {fileID: 193046507075326874}
   colletionUI: {fileID: 0}
   upgradeUI: {fileID: 0}
@@ -1819,6 +1821,7 @@ GameObject:
   - component: {fileID: 8415528051061758015}
   - component: {fileID: 2265090465350827307}
   - component: {fileID: 4620637120714320422}
+  - component: {fileID: 4695996718402246658}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1862,6 +1865,7 @@ MonoBehaviour:
   uiManager: {fileID: 6987834480871925125}
   notEnoughOxyzen: {fileID: 1436943400513966289}
   player: {fileID: 4620637120714320422}
+  saveLoadManager: {fileID: 4695996718402246658}
 --- !u!114 &4620637120714320422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,6 +1876,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3d7746d407e75943a4f3d3a9c66465b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4695996718402246658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300526599891402318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8700612bb58d149b1efc06c01c310f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4626381601140748767

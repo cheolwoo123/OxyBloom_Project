@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b50a3e9430ed26428f93cdfbe768ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantData: []
   SlotPrefab: {fileID: 9355999960197324, guid: 89fd63c93533ccf4da6435cbf782d876, type: 3}
   Slots: {fileID: 1290717710}
 --- !u!114 &292544889
@@ -7314,6 +7315,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 732109771}
   plantButton: {fileID: 531285968}
   sheifButton: {fileID: 1828301635}
+  ExitCollectionButton: {fileID: 0}
   oxygenText: {fileID: 6662721490071264682}
   surviveDaysText: {fileID: 0}
   optionCanvas: {fileID: 565855434364043586}
