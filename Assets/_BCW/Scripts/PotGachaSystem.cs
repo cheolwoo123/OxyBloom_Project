@@ -33,14 +33,14 @@ public class PotGachaSystem : MonoBehaviour
     {
         if (gachaEffect.isPlaying) return;
         // 산소쓸때 
-        int cost = gachaCost;
-        if (GameManager.Instance.Oxygen < cost)
-        {
+        //int cost = gachaCost;
+        //if (GameManager.Instance.Oxygen < cost)
+        //{
             
-            return;
-        }
+        //    return;
+        //}
 
-        GameManager.Instance.SetOxygen(-cost); 
+        //GameManager.Instance.SetOxygen(-cost); 
 
             // 무작위 PotData 선택
             PotData GachaData = GetRandomPot();

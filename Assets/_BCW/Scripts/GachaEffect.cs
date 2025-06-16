@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GachaEffect : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GachaEffect : MonoBehaviour
     private Dictionary<PotGrade, GameObject> gradeToEffect;
     private Color originalColor;
     private PotGrade potGrades = PotGrade.Common;
-
+    public GameObject gachaPotSlot;
     private void Awake()
     {
         
@@ -71,11 +72,13 @@ public class GachaEffect : MonoBehaviour
             HideAllEffects(); 
           
         }
+        
 
         // 최종 등급 이펙트 보여주기
         HideAllEffects();
         
         ShowEffect(finalGrade);
+
         yield return new WaitForSeconds(5f);
       
         HideAllEffects();
