@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GachaEffect : MonoBehaviour
 {
-    [Header("Dark Background (SpriteRenderer 사용)")]
+    [Header("백그라운드 배경")]
     public SpriteRenderer darkPanel; // 배경 SpriteRenderer
     public float fadeDuration = 0.5f;
 
-    [Header("Effect Prefabs")]
+    [Header("등급별 이펙트")]
     public GameObject commonEffect;
     public GameObject rareEffect;
     public GameObject epicEffect;
@@ -19,6 +19,7 @@ public class GachaEffect : MonoBehaviour
 
     private Dictionary<PotGrade, GameObject> gradeToEffect;
     private Color originalColor;
+    private PotGrade potGrades = PotGrade.Common;
 
     private void Awake()
     {
@@ -60,17 +61,23 @@ public class GachaEffect : MonoBehaviour
 
         for (int i = 0; i < shuffleCount; i++)
         {
-            HideAllEffects();
+            //HideAllEffects();
+            // PotGrade random = GetRandomGrade();
+            // ShowEffect(random);       
+            // yield return new WaitForSeconds(delay);          
             PotGrade random = GetRandomGrade();
             ShowEffect(random);
             yield return new WaitForSeconds(delay);
+            HideAllEffects(); 
+          
         }
 
         // 3. 최종 등급 이펙트 보여주기
         HideAllEffects();
+        Debug.Log("1");
         ShowEffect(finalGrade);
         yield return new WaitForSeconds(5f);
-
+        Debug.Log("2");
         HideAllEffects();
 
         // 4. 검정 → 원래 색상 복구
@@ -111,6 +118,14 @@ public class GachaEffect : MonoBehaviour
         PotGrade[] grades = {
             PotGrade.Common, PotGrade.Rare, PotGrade.Epic, PotGrade.Legendary, PotGrade.Mystery
         };
-        return grades[Random.Range(0, grades.Length)];
+        PotGrade potGrade;
+        do
+        {        
+                potGrade = grades[Random.Range(0, grades.Length)];
+        } while (potGrade == potGrades);
+
+       potGrades = potGrade;
+        return potGrades;
+        
     }
 }

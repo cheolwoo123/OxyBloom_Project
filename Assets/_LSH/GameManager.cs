@@ -22,13 +22,13 @@ public class GameManager : SingleTon<GameManager>
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
 
-    public void SetOxygen(int i)
+    public void SetOxygen(int i)  //산소 값, UI 초기화, 
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
     }
     
-    private IEnumerator NotEnoughOxyzen(int i)
+    private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기
     {
         if (i > Oxygen)
         {
@@ -47,10 +47,10 @@ public class GameManager : SingleTon<GameManager>
             saveLoadManager.Save(saveLoadManager.GetSaveData());
             saveLoadManager.Load();
         }
-    }
-
-    public void SetSaveData()
-    {
-        saveLoadManager.SetSaveData(player.stat,_oxygen);
+        
+        if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
+        {
+            soundManager.ClickSound();
+        }
     }
 }
