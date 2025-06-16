@@ -116,7 +116,8 @@ public class BugController : MonoBehaviour
 
     private void Die()
     {
-        // 오브젝트 풀로 반환
-        gameObject.SetActive(false);
+        // 오브젝트 풀 썼을때
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

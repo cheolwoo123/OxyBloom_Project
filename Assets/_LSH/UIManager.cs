@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
+    public TextMeshProUGUI surviveDaysText;
 
     [Header("Canvas")]
     public Canvas optionCanvas;
@@ -52,6 +53,11 @@ public class UIManager : MonoBehaviour
         }
 
         upgradeUI.SetActive(true);
+    }
+
+    public void DisplayDays(int day)
+    {
+        surviveDaysText.text = day.ToString() + " Days";
     }
 
     public void Oxygen(int oxygen)

@@ -1941,6 +1941,7 @@ MonoBehaviour:
   collectionButton: {fileID: 1866635056}
   upgradeButton: {fileID: 732109771}
   oxygenText: {fileID: 915793563}
+  surviveDaysText: {fileID: 1196722578}
   optionCanvas: {fileID: 0}
   colletionUI: {fileID: 292544886}
   upgradeUI: {fileID: 1745174309}

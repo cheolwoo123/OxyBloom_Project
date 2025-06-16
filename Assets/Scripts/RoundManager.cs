@@ -22,6 +22,7 @@ public class RoundManager : MonoBehaviour
         //조건 추가
         //타이머변수 타이머가 몇초가 되면 SpawnBug() 실행
         //일차마다 배경 변경
+        GetSurviveDays();
 
         if (isWaitingNextRound)
         {
@@ -110,8 +111,8 @@ public class RoundManager : MonoBehaviour
         return new Vector3(x, y, 0f);
     }
 
-    public int GetSurviveDays()
+    public void GetSurviveDays()
     {
-        return surviveDays;
+        GameManager.Instance.uiManager.DisplayDays(surviveDays);
     }
 }
