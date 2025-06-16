@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SaveData : MonoBehaviour
+public class SaveData
 {
-    private List<PotInstance> potInventory = new();
-    private PlayerStat player = new();
-    private float oxygen;
+    //public List<PotInstance> _potInventory = new();
+    public PlayerStat _playerStat = new();
+    public float _oxygen;
 }

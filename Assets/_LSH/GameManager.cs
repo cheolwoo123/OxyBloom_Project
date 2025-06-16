@@ -9,14 +9,15 @@ public class GameManager : SingleTon<GameManager>
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
     public Player player;
+    public SaveLoadManager saveLoadManager;
     
-    private SaveLoadManager saveLoadManager = new SaveLoadManager();
-    private SaveData saveData = new SaveData();
+    
 
     private void Start()
     {
         if(uiManager != null)
             uiManager.Oxygen(Oxygen);
+        saveLoadManager.Load();
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
@@ -41,7 +42,15 @@ public class GameManager : SingleTon<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키 입력 감지
         {
-            StartCoroutine(NotEnoughOxyzen(10000));
+            //StartCoroutine(NotEnoughOxyzen(10000));
+            saveLoadManager.SetSaveData(player.stat,10000);
+            saveLoadManager.Save(saveLoadManager.GetSaveData());
+            saveLoadManager.Load();
         }
+    }
+
+    public void SetSaveData()
+    {
+        saveLoadManager.SetSaveData(player.stat,_oxygen);
     }
 }

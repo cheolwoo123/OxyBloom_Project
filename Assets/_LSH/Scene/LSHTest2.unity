@@ -4933,6 +4933,7 @@ MonoBehaviour:
   uiManager: {fileID: 7317859207405664093}
   notEnoughOxyzen: {fileID: 1623134431124292105}
   player: {fileID: 5001327343051847934}
+  saveLoadManager: {fileID: 8196114189991512808}
 --- !u!1 &2021533999854907050
 GameObject:
   m_ObjectHideFlags: 0
@@ -5920,6 +5921,7 @@ GameObject:
   - component: {fileID: 8196114189991512807}
   - component: {fileID: 1880450226015743987}
   - component: {fileID: 5001327343051847934}
+  - component: {fileID: 8196114189991512808}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7313,6 +7315,7 @@ MonoBehaviour:
   plantButton: {fileID: 531285968}
   sheifButton: {fileID: 1828301635}
   oxygenText: {fileID: 6662721490071264682}
+  surviveDaysText: {fileID: 0}
   optionCanvas: {fileID: 565855434364043586}
   colletionUI: {fileID: 292544886}
   upgradeUI: {fileID: 1745174309}
@@ -7654,6 +7657,18 @@ Transform:
   - {fileID: 7191293752461153779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8196114189991512808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528666752174894230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8700612bb58d149b1efc06c01c310f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &8205789209448191977
 CanvasRenderer:
   m_ObjectHideFlags: 0
