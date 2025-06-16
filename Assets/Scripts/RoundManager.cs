@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour
     private float roundWaitTimer = 0f;
     public float roundWaitDuration = 10f; // 라운드 넘어갈 때 대기 시간
 
+    
 
     void Update()
     {
@@ -88,6 +89,7 @@ public class RoundManager : MonoBehaviour
 
         BugScriptObject pestData = bugCtrl.entity.bugData;
         bugCtrl.Setup(pestData, plantTransform);
+
     }
 
     Vector3 GetRandomSpawnPosition()
