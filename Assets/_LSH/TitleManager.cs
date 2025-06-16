@@ -21,6 +21,6 @@ public class TitleManager : MonoBehaviour
             GameManager.Instance.gameObject.SetActive(true);
         }
         
-        sceneTransition.FadeAndLoadScene("LSHTest");
+        sceneTransition.FadeAndLoadScene("LSHTest2");
     }
 }
