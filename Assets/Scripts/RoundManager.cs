@@ -119,7 +119,7 @@ public class RoundManager : MonoBehaviour
             {
                 if(bug != null)
                 {
-                    Destroy(bug.gameObject);
+                    bug.Die();
                 }
             }
 
