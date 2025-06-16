@@ -36,7 +36,7 @@ public class BugScriptObject : ScriptableObject
     [Header("Stat")]
     public float maxHP = 3;
     public float damage = 1;
-    public int growUp = 20;
+    public int growUp = 10;
     public float speed = 1;
 
     [Header("Oxygen Control (Option)")]

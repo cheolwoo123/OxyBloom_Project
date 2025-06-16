@@ -17,11 +17,14 @@ public class RoundManager : MonoBehaviour
     private float roundWaitTimer = 0f;
     public float roundWaitDuration = 10f; // 라운드 넘어갈 때 대기 시간
 
+
     void Update()
     {
         //조건 추가
         //타이머변수 타이머가 몇초가 되면 SpawnBug() 실행
         //일차마다 배경 변경
+
+
         GetSurviveDays();
 
         if (isWaitingNextRound)
@@ -50,7 +53,7 @@ public class RoundManager : MonoBehaviour
             surviveDays++;
 
             // 난이도 증가 처리(스폰시간 빨라지는거,스피드 늘어남, 개채수 다양하게 등장)
-            spawnInterval = Mathf.Max(1f, spawnInterval - 0.5f); // 스폰이 빨라짐
+            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // 스폰이 빨라짐
 
             isWaitingNextRound = true;
         }
@@ -67,13 +70,13 @@ public class RoundManager : MonoBehaviour
 
         plantTransform = currentPlant.transform;
 
-        if (surviveDays < 3)
+        if (surviveDays < 1)
         {
             selectedPest = PestDataList[0]; // 쉬운 벌레
         }
-        else if (surviveDays < 6)
+        else if (surviveDays < 3)
         {
-            selectedPest = PestDataList[Random.Range(0, 2)]; // 첫 2종류 중 하나
+            selectedPest = PestDataList[Random.Range(0, 2)]; // 2종류 중 하나
         }
         else
         {
