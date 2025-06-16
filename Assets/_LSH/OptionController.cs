@@ -18,13 +18,13 @@ public class OptionController : MonoBehaviour
         exitButton.onClick.AddListener((() => ExitButton()));
     }
 
-    private void TitleButton()
+    private void TitleButton()  //타이틀로 나가기 버튼
     {
         Time.timeScale = 1f;
         sceneTransition.FadeAndLoadScene("Title");
     }
     
-    private void ExitButton()
+    private void ExitButton()  //나가기 버튼
     {
         Time.timeScale = 1f;
         gameObject.SetActive(false);
