@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BugEater
   m_EditorClassIdentifier: 
   category: 0
-  pestType: 1
+  pestType: 3
   beneficialType: 0
-  maxHP: 3
-  damage: 5
-  growUp: 5
-  speed: 1
+  maxHP: 40
+  damage: 10
+  growUp: 0
+  speed: 1.5
   oxygenAmount: 0

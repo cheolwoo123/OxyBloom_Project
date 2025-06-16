@@ -2,27 +2,37 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    public GameObject bugPrefab;            // 버그 프리팹 연결
-    public BugScriptObject[] PestDataList;       // 생성할 버그 데이터
+    public GameObject[] bugPrefabs;            // 버그 프리팹 
     public Transform plantTransform;        // 목표 식물
+
+    private Plant currentPlant;
 
     private int surviveDays = 0; //날짜에 따라 난이도 변경
     public float difficultyIncreaseInterval = 10f; //살아남은 일수 추가해주는 조건, 난이도 증가 조건
     private float dayTimer = 0f; //날짜가 넘어가는 시간
 
-    public float spawnInterval = 3.5f;
+    public float spawnInterval = 5f;
     private float spawnTimer = 0f;
 
     private bool isWaitingNextRound = false;
     private float roundWaitTimer = 0f;
     public float roundWaitDuration = 10f; // 라운드 넘어갈 때 대기 시간
 
+
     void Update()
     {
         //조건 추가
         //타이머변수 타이머가 몇초가 되면 SpawnBug() 실행
         //일차마다 배경 변경
+        currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
+
+        if(currentPlant == null)
+        {
+            return;
+        }
+
         GetSurviveDays();
+        GetRoundTime();
 
         if (isWaitingNextRound)
         {
@@ -38,6 +48,7 @@ public class RoundManager : MonoBehaviour
 
         dayTimer += Time.deltaTime;
         spawnTimer += Time.deltaTime;
+
         if (spawnTimer >= spawnInterval)
         {
             spawnTimer = 0f;
@@ -50,7 +61,7 @@ public class RoundManager : MonoBehaviour
             surviveDays++;
 
             // 난이도 증가 처리(스폰시간 빨라지는거,스피드 늘어남, 개채수 다양하게 등장)
-            spawnInterval = Mathf.Max(1f, spawnInterval - 0.5f); // 스폰이 빨라짐
+            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // 스폰이 빨라짐
 
             isWaitingNextRound = true;
         }
@@ -58,31 +69,25 @@ public class RoundManager : MonoBehaviour
     }
     void SpawnBug()
     {
-        Plant currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
+        
         if (currentPlant == null || currentPlant.plantData == null)
         {
             return;
         }
-        BugScriptObject selectedPest;
 
-        plantTransform = currentPlant.transform;
-
-        if (surviveDays < 3)
-        {
-            selectedPest = PestDataList[0]; // 쉬운 벌레
-        }
-        else if (surviveDays < 6)
-        {
-            selectedPest = PestDataList[Random.Range(0, 2)]; // 첫 2종류 중 하나
-        }
+        int index = 0;
+        if (surviveDays < 1)
+            index = 0;
+        else if (surviveDays < 3)
+            index = Random.Range(0, 2);
         else
-        {
-            selectedPest = PestDataList[Random.Range(0, PestDataList.Length)]; // 전체 중 랜덤
-        }
+            index = Random.Range(0, bugPrefabs.Length);
 
-        GameObject bugObj = Instantiate(bugPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+        GameObject bugObj = Instantiate(bugPrefabs[index], GetRandomSpawnPosition(), Quaternion.identity);
         BugController bugCtrl = bugObj.GetComponent<BugController>();
-        bugCtrl.Setup(selectedPest, plantTransform);
+
+        BugScriptObject pestData = bugCtrl.entity.bugData;
+        bugCtrl.Setup(pestData, plantTransform);
     }
 
     Vector3 GetRandomSpawnPosition()
@@ -111,8 +116,13 @@ public class RoundManager : MonoBehaviour
         return new Vector3(x, y, 0f);
     }
 
-    public void GetSurviveDays()
+    private void GetSurviveDays()
     {
         GameManager.Instance.uiManager.DisplayDays(surviveDays);
+    }
+
+    private void GetRoundTime()
+    {
+        GameManager.Instance.uiManager.DisplayWaveTime(difficultyIncreaseInterval - dayTimer);
     }
 }

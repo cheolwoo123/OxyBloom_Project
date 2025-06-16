@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
     public TextMeshProUGUI surviveDaysText;
+    public TextMeshProUGUI roundTimeText;
 
     [Header("Canvas")]
     public Canvas optionCanvas;
@@ -67,6 +68,11 @@ public class UIManager : MonoBehaviour
     public void DisplayDays(int day)
     {
         surviveDaysText.text = day.ToString() + " Days";
+    }
+
+    public void DisplayWaveTime(float time)
+    {
+        roundTimeText.text = "웨이브 시간\n" + time.ToString("F2");
     }
 
     public void Oxygen(int oxygen)
