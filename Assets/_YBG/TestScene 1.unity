@@ -1131,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b50a3e9430ed26428f93cdfbe768ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantData: []
   SlotPrefab: {fileID: 9355999960197324, guid: 89fd63c93533ccf4da6435cbf782d876, type: 3}
   Slots: {fileID: 1290717710}
 --- !u!114 &292544889
@@ -1953,6 +1954,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 732109771}
   plantButton: {fileID: 531285968}
   sheifButton: {fileID: 0}
+  ExitCollectionButton: {fileID: 1542717673}
   oxygenText: {fileID: 915793563}
   surviveDaysText: {fileID: 1196722578}
   roundTimeText: {fileID: 473705369}
@@ -3745,6 +3747,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47e777b71becb2d43ac55f1797e5fc2d, type: 2}
   pot: {fileID: 962777944}
   plantShelf: {fileID: 756160985}
+  growthGauge: {fileID: 0}
 --- !u!4 &933229279
 Transform:
   m_ObjectHideFlags: 0
@@ -6285,6 +6288,7 @@ MonoBehaviour:
   uiManager: {fileID: 486541814}
   notEnoughOxyzen: {fileID: 1620409179}
   player: {fileID: 1916731719}
+  saveLoadManager: {fileID: 0}
 --- !u!4 &1916731718
 Transform:
   m_ObjectHideFlags: 0
@@ -6623,6 +6627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: fe5c7f4ddbdf2d04489a2cd206950d4f, type: 2}
+  clickAndioSource: {fileID: 0}
   bgmSlider: {fileID: 979872930}
   effectSlider: {fileID: 338683856}
 --- !u!4 &1974412622

@@ -80,7 +80,7 @@ public class RoundManager : MonoBehaviour
         if (surviveDays < 1)
             index = 0;
         else if (surviveDays < 3)
-            index = Random.Range(0, 2);
+            index = Random.Range(0, 1);
         else
             index = Random.Range(0, bugPrefabs.Length);
 
