@@ -29,6 +29,17 @@ public class BugController : MonoBehaviour
     }
     private void Move()
     {
+
+        Vector3 direction = (randomTargetPos - transform.position).normalized;
+
+        if (direction != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            float rotationSpeed = 240f;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
         if (entity.bugData.category == BugCategory.Pest && target != null)
         {
             // 해충 - 식물 방향으로 이동
@@ -47,6 +58,7 @@ public class BugController : MonoBehaviour
                 }
                 
             }
+
             transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
 
             // 도착하면 다시 목표 초기화

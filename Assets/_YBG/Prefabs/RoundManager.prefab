@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 905f7e58d96c0104c84a4d0a317a3277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugPrefab: {fileID: 4474006265965194289, guid: aec3f6a48557f3f4dbd2c52564787cf1, type: 3}
-  bugData: {fileID: 11400000, guid: 54b9d665ca48a9b4c84ab42604759953, type: 2}
+  bugPrefabs:
+  - {fileID: 4474006265965194289, guid: aec3f6a48557f3f4dbd2c52564787cf1, type: 3}
+  - {fileID: 5293037945366330162, guid: 1854a9e78bdab3c4b94dcd4e75bfe1b1, type: 3}
+  - {fileID: 7138422443380521440, guid: b618b1edb8afb0b439b290c0c17e509b, type: 3}
   plantTransform: {fileID: 0}
+  difficultyIncreaseInterval: 10
+  spawnInterval: 5
+  roundWaitDuration: 10

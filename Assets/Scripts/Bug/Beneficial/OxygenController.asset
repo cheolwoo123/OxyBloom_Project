@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79674d1c3ea69824fb6dd6f2128ae4a7, type: 3}
   m_Name: OxygenController
   m_EditorClassIdentifier: 
-  bugSprite: {fileID: 2086520263, guid: 1e9ee94b43a02ae479ea9465b5e17716, type: 3}
   category: 1
   pestType: 0
   beneficialType: 2
   maxHP: 3
-  damage: 0
+  bugStack: 1
   growUp: 0
   speed: 1
   oxygenAmount: 5

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlantDevourer
   m_EditorClassIdentifier: 
   category: 0
-  pestType: 0
+  pestType: 2
   beneficialType: 0
-  maxHP: 3
-  damage: 1
-  growUp: 0
+  maxHP: 30
+  bugStack: 3
+  growUp: 1
   speed: 1
   oxygenAmount: 0
