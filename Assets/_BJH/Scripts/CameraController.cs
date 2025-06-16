@@ -3,8 +3,8 @@
 public class CameraController : MonoBehaviour
 {
     public float dragSpeed = 2f;
-    public float maxDistance = 10f; // 이동 가능한 최대 거리
-    public Vector3 originPosition = Vector3.zero;
+    public float maxDistance = 10f;
+    private Vector3 originPosition;
     private Vector3 dragOrigin;
 
     void Start()
@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
         originPosition = transform.position;
     }
 
-void Update()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -29,6 +29,7 @@ void Update()
 
             Vector3 nextPosition = transform.position + move;
 
+            // 최대 거리 제한 (Y는 제외하고 계산)
             Vector3 flatOrigin = new Vector3(originPosition.x, 0, originPosition.z);
             Vector3 flatNext = new Vector3(nextPosition.x, 0, nextPosition.z);
 
