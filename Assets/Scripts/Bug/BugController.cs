@@ -9,6 +9,9 @@ public class BugController : MonoBehaviour
     private Vector3 randomTargetPos; //타깃의 랜덤위치
     private bool hasTargetPos = false; //타깃포지션을 가지고 있는지
 
+    [SerializeField] private float actCooldown = 2f; //벌레들 Act 쿨타임
+    private float lastActTime = -999f; //마지막 실행시간
+
     private void Awake()
     {
         entity = GetComponent<BugEntity>();
@@ -26,6 +29,17 @@ public class BugController : MonoBehaviour
     }
     private void Move()
     {
+
+        Vector3 direction = (randomTargetPos - transform.position).normalized;
+
+        if (direction != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            float rotationSpeed = 240f;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
         if (entity.bugData.category == BugCategory.Pest && target != null)
         {
             // 해충 - 식물 방향으로 이동
@@ -44,6 +58,7 @@ public class BugController : MonoBehaviour
                 }
                 
             }
+
             transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
 
             // 도착하면 다시 목표 초기화
@@ -54,7 +69,11 @@ public class BugController : MonoBehaviour
                 Collider2D plantCollider = target.GetComponent<Collider2D>();
                 if (plantCollider != null && plantCollider.OverlapPoint(transform.position))
                 {
-                    Act(); // 벌레 특성 실행
+                    if (Time.time - lastActTime >= actCooldown)
+                    {
+                        Act(); // 벌레 특성 실행
+                        lastActTime = Time.time;
+                    }
                 }
             }
         }
@@ -67,15 +86,16 @@ public class BugController : MonoBehaviour
     {
         if (entity.bugData.category == BugCategory.Pest)
         {
-            Plant plant = target.GetComponent<Plant>();
-
+            Plant plant = target.GetComponentInChildren<Plant>();
+            Debug.Log(plant.name);
             if (plant == null) return;
 
             switch (entity.bugData.pestType)
             {
                 case PestType.PlantDegrowth:
                     // 식물 성장 억제
-                    plant.DegrowPlant(-entity.bugData.growUp);
+                    plant.DegrowPlant(entity.bugData.growUp);
+                    Debug.Log("성장 억제");
                     break;
                 case PestType.PlantDestruct:
                     // 식물 데미지(식물의 체력이 0이면 파괴)
@@ -109,7 +129,6 @@ public class BugController : MonoBehaviour
 
         if (entity.IsDead)
         {
-            Debug.Log("Bug died");
             Die();
         }
     }
