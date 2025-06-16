@@ -47,6 +47,11 @@ public class GameManager : SingleTon<GameManager>
             saveLoadManager.Save(saveLoadManager.GetSaveData());
             saveLoadManager.Load();
         }
+        
+        if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
+        {
+            soundManager.ClickSound();
+        }
     }
 
     public void SetSaveData()
