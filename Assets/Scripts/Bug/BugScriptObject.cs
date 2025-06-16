@@ -34,9 +34,9 @@ public class BugScriptObject : ScriptableObject
     public BeneficialType beneficialType;
 
     [Header("Stat")]
-    public int maxHP = 3;
-    public int damage = 1;
-    public int growUp = 10;
+    public float maxHP = 3;
+    public float damage = 1;
+    public int growUp = 20;
     public float speed = 1;
 
     [Header("Oxygen Control (Option)")]
