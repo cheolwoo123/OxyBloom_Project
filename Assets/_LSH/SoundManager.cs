@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         effectSlider.onValueChanged.AddListener(SetEffectVolume);
         SetBGMVolume(0.03f);
-        SetEffectVolume(0.03f);
+        SetEffectVolume(0.5f);
     }
 
     public void SetBGMVolume(float value)

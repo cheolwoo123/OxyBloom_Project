@@ -50,6 +50,7 @@ public class GameManager : SingleTon<GameManager>
         
         if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
         {
+            Debug.Log("asdasd");
             soundManager.ClickSound();
         }
     }
