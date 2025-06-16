@@ -136,6 +136,7 @@ public class SaveLoadManager : MonoBehaviour
             Debug.Log("불러오기 완료 / " + _saveData.oxygen);
             return data;
         }
+        _saveData = new SaveData();  // 빈 데이터라도 초기화
         return null;
     }
     

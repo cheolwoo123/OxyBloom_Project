@@ -18,11 +18,18 @@ public class SingleTon<T> : MonoBehaviour where T : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindObjectOfType<T>();
+                // if (_instance == null)
+                // {
+                //     GameObject obj = new GameObject();
+                //     obj.name = typeof(T).Name + "_AutoCreated";
+                //     _instance = obj.AddComponent<T>();
+                // }
                 if (_instance == null)
                 {
-                    GameObject obj = new GameObject();
-                    obj.name = typeof(T).Name + "_AutoCreated";
-                    _instance = obj.AddComponent<T>();
+#if UNITY_EDITOR
+                    Debug.LogError(typeof(T).Name + " 인스턴스가 씬에 존재하지 않습니다. 자동 생성은 금지되어 있습니다.");
+#endif
+                    return null;
                 }
             }
             return _instance;

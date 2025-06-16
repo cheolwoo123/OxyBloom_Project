@@ -3,7 +3,10 @@ using System.Linq;
 using UnityEngine;
 
 //potData
-//potData = GameManager.Instance.saveLoadManager.Load().potData;   //데이터 로드
+// if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
+// {
+//     potData = GameManager.Instance.saveLoadManager.Load().potData;
+// }
 //GameManager.Instance.saveLoadManager.SetSaveData<PotData>("PotData", potData);  //데이터 저장
 
 public class Pot : MonoBehaviour

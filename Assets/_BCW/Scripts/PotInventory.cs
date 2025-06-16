@@ -2,6 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//potInventory
+// if (GameManager.Instance.saveLoadManager.Load() != null)   //ë°ì´í„° ë¡œë“œ
+// {
+//     potInventory = GameManager.Instance.saveLoadManager.Load().potInventory;
+// }
+//GameManager.Instance.saveLoadManager.SetSaveData<List<PotInstance>>("PotInstance", potInventory);  //ë°ì´í„° ì €ì¥
+
 public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
@@ -35,7 +42,7 @@ public class PotInventory : MonoBehaviour
         {
             if (existing.potData == pot.potData)
             {
-                Debug.Log("Áßº¹¶ä ¤µ¤¡ " + pot.potData.potName);
+                Debug.Log("ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ " + pot.potData.potName);
                 return;
             }
         }
