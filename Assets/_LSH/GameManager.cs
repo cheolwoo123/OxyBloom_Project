@@ -9,6 +9,9 @@ public class GameManager : SingleTon<GameManager>
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
     public Player player;
+    
+    private SaveLoadManager saveLoadManager = new SaveLoadManager();
+    private SaveData saveData = new SaveData();
 
     private void Start()
     {
