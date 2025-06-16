@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 764de753891f9b345b6ecf0e7cdf8ac6, type: 3}
-  m_Name: Plant_Nebulivy
+  m_Name: Plant_Hero
   m_EditorClassIdentifier: 
-  Rarity: 1
-  Name: "\uB124\uBDF8\uB9AC\uBE44"
-  Description: "\uC870\uAE08\uC529 \uBC18\uC9DD\uC774\uB294 \uC5F4\uB9E4\uB97C \uB9FA\uC2B5\uB2C8\uB2E4."
-  OxygenProd: 25
-  GrowthCost: 400
+  Rarity: 4
+  Name: "\uC601\uC6C5\uAF43"
+  Description: "\uD574\uAC00 \uB728\uBA74 \uB9D0\uC744 \uAC78\uC5B4\uC635\uB2C8\uB2E4."
+  OxygenProd: 200
+  GrowthCost: 1000
   GrowthSprite:
   - {fileID: 21300000, guid: a2f12ec3680717c44ade8299f7552da5, type: 3}
   - {fileID: 21300000, guid: 32badfd0410cc8040b0276b5f8ba87df, type: 3}
   - {fileID: 21300000, guid: 331fb6343940c724fb8aad2b8ffb31a6, type: 3}
-  - {fileID: 21300000, guid: 0ee67cdb10cd0f54a9ee6197bc89d324, type: 3}
+  - {fileID: 21300000, guid: 5fcda46659263ec47954992a0e19441e, type: 3}

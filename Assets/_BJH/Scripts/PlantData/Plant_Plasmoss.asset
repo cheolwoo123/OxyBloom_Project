@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rarity: 2
   Name: "\uD50C\uB77C\uC2A4\uBAA8\uC2A4"
-  Description: "\uD50C\uB77C\uC988\uB9C8\uCC98\uB7FC \uBE5B\uC744 \uB0B4 \uC678\uACC4
-    \uC0DD\uBB3C\uB4E4\uC774 \uC88B\uC544\uD569\uB2C8\uB2E4."
-  OxygenProd: 10
-  EnergyProd: 5
-  GrowthCost: 250
+  Description: "\uB2EC\uCF64\uD558\uACE0 \uD5A5\uAE30\uB85C\uC6B4 \uC5F4\uB9E4\uB97C
+    \uAC00\uC84C\uC2B5\uB2C8\uB2E4."
+  OxygenProd: 40
+  GrowthCost: 600
   GrowthSprite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a2f12ec3680717c44ade8299f7552da5, type: 3}
+  - {fileID: 21300000, guid: 32badfd0410cc8040b0276b5f8ba87df, type: 3}
+  - {fileID: 21300000, guid: 331fb6343940c724fb8aad2b8ffb31a6, type: 3}
+  - {fileID: 21300000, guid: 0758ca806cb607c49a75e314ce00daba, type: 3}
