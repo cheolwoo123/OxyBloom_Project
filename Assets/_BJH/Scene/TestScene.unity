@@ -1909,7 +1909,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 787406202}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 29407921677908797, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
       propertyPath: m_Pivot.x
@@ -2075,10 +2075,46 @@ PrefabInstance:
       propertyPath: plantShelf
       value: 
       objectReference: {fileID: 756160985}
+    - target: {fileID: 6809197970378880046, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6809623420788554672, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 738268681}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: upgradeUI
+      value: 
+      objectReference: {fileID: 1745174309}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: colletionUI
+      value: 
+      objectReference: {fileID: 292544886}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: plantButton
+      value: 
+      objectReference: {fileID: 531285968}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: sheifButton
+      value: 
+      objectReference: {fileID: 1828301635}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: upgradeButton
+      value: 
+      objectReference: {fileID: 732109771}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: surviveDaysText
+      value: 
+      objectReference: {fileID: 1937292637}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: collectionButton
+      value: 
+      objectReference: {fileID: 1866635056}
+    - target: {fileID: 6987834480871925125, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: ExitCollectionButton
+      value: 
+      objectReference: {fileID: 453188576}
     - target: {fileID: 8252575078603156900, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
       propertyPath: upgradeUI
       value: 
@@ -2111,36 +2147,43 @@ PrefabInstance:
       propertyPath: ExitCollectionButton
       value: 
       objectReference: {fileID: 453188576}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.32592592
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.32592592
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.32592592
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 176
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 312.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415528051061758015, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 579816738838325380, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 738268681}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
---- !u!4 &738268679 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1276144788654928119, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
-  m_PrefabInstance: {fileID: 738268678}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &738268680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 579816738838325380, guid: 8d863b0e9fd090e46a48a57a769e274f, type: 3}
-  m_PrefabInstance: {fileID: 738268678}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &738268681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738268680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d7746d407e75943a4f3d3a9c66465b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &739047691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,7 +2423,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 738268679}
   - {fileID: 1376792475}
   - {fileID: 292544887}
   - {fileID: 1745174310}
@@ -4913,6 +4955,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1918981954}
   - {fileID: 1487508263}
+  - {fileID: 738268678}
   - {fileID: 787406202}
   - {fileID: 1923311745}
   - {fileID: 5937075308844630439}
