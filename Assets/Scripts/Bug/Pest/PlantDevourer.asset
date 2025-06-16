@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79674d1c3ea69824fb6dd6f2128ae4a7, type: 3}
   m_Name: PlantDevourer
   m_EditorClassIdentifier: 
-  category: 0
   pestType: 2
-  beneficialType: 0
   maxHP: 30
   bugStack: 3
-  growUp: 1
-  speed: 1
+  growUp: 3
+  speed: 0.7
   oxygenAmount: 0

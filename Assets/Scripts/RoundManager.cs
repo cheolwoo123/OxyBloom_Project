@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -7,11 +8,13 @@ public class RoundManager : MonoBehaviour
 
     private Plant currentPlant;
 
+    private List<BugController> spawnedBugs = new List<BugController>();
+
     private int surviveDays = 0; //날짜에 따라 난이도 변경
     public float difficultyIncreaseInterval = 10f; //살아남은 일수 추가해주는 조건, 난이도 증가 조건
     private float dayTimer = 0f; //날짜가 넘어가는 시간
 
-    public float spawnInterval = 5f;
+    public float spawnInterval = 5f; //스폰 시간 텀
     private float spawnTimer = 0f;
 
     private bool isWaitingNextRound = false;
@@ -20,7 +23,7 @@ public class RoundManager : MonoBehaviour
 
     
 
-    void Update()
+    private void Update()
     {
         //조건 추가
         //타이머변수 타이머가 몇초가 되면 SpawnBug() 실행
@@ -61,14 +64,16 @@ public class RoundManager : MonoBehaviour
             dayTimer = 0f;
             surviveDays++;
 
-            // 난이도 증가 처리(스폰시간 빨라지는거,스피드 늘어남, 개채수 다양하게 등장)
-            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // 스폰이 빨라짐
+            // 난이도 증가 처리(스폰시간 빨라지는거,스피드 늘어남)
+            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // 스폰이 빨라짐       
 
             isWaitingNextRound = true;
         }
 
+
+        CheckSpawnedBugs();
     }
-    void SpawnBug()
+    private void SpawnBug()
     {
         
         if (currentPlant == null || currentPlant.plantData == null)
@@ -90,6 +95,36 @@ public class RoundManager : MonoBehaviour
         BugScriptObject pestData = bugCtrl.entity.bugData;
         bugCtrl.Setup(pestData, plantTransform);
 
+    }
+
+    private void CheckSpawnedBugs()
+    {
+        int totalBug = 0;
+
+        foreach(var bug in spawnedBugs)
+        {
+            if(bug == null) continue;
+
+            totalBug += bug.entity.bugData.bugStack;
+        }
+
+        if(totalBug >= 6)
+        {
+            if(currentPlant !=  null)
+            {
+                currentPlant.RemovePlant(); //식물 파괴
+            }
+
+            foreach (var bug in spawnedBugs)
+            {
+                if(bug != null)
+                {
+                    Destroy(bug.gameObject);
+                }
+            }
+
+            spawnedBugs.Clear(); //생성된 벌레 리스트 초기화
+        }
     }
 
     Vector3 GetRandomSpawnPosition()
@@ -126,5 +161,13 @@ public class RoundManager : MonoBehaviour
     private void GetRoundTime()
     {
         GameManager.Instance.uiManager.DisplayWaveTime(difficultyIncreaseInterval - dayTimer);
+    }
+
+    public void RemoveBug(BugController bug)
+    {
+        if(spawnedBugs.Contains(bug))
+        {
+            spawnedBugs.Remove(bug);
+        }
     }
 }

@@ -1955,12 +1955,14 @@ MonoBehaviour:
   plantButton: {fileID: 531285968}
   sheifButton: {fileID: 0}
   ExitCollectionButton: {fileID: 1542717673}
+  InventoryButton: {fileID: 1988257368}
   oxygenText: {fileID: 915793563}
   surviveDaysText: {fileID: 1196722578}
   roundTimeText: {fileID: 473705369}
   optionCanvas: {fileID: 0}
   colletionUI: {fileID: 292544886}
   upgradeUI: {fileID: 1745174309}
+  potCollectionUI: {fileID: 0}
 --- !u!4 &486541815
 Transform:
   m_ObjectHideFlags: 0
@@ -4606,6 +4608,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8723132726667346112, guid: 53ec277539ad32a4fbc59a553d403be3, type: 3}
   m_PrefabInstance: {fileID: 5986483647774943302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1410947136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7721699253328370222, guid: 0a86eb6cc54ce944e9f3169ab6bfc4b5, type: 3}
+  m_PrefabInstance: {fileID: 600492057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905f7e58d96c0104c84a4d0a317a3277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1418142191
 GameObject:
   m_ObjectHideFlags: 0
@@ -6289,6 +6302,7 @@ MonoBehaviour:
   notEnoughOxyzen: {fileID: 1620409179}
   player: {fileID: 1916731719}
   saveLoadManager: {fileID: 0}
+  roundManager: {fileID: 1410947136}
 --- !u!4 &1916731718
 Transform:
   m_ObjectHideFlags: 0

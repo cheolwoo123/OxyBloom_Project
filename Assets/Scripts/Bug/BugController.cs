@@ -4,7 +4,7 @@ public class BugController : MonoBehaviour
 {
     public BugEntity entity;
     public Transform target; //식물 또는 벌레
-
+    private Plant plant;
 
     private Vector3 randomTargetPos; //타깃의 랜덤위치
     private bool hasTargetPos = false; //타깃포지션을 가지고 있는지
@@ -20,7 +20,8 @@ public class BugController : MonoBehaviour
     public void Setup(BugScriptObject bugData, Transform target)
     {
         entity.Init(bugData);   
-        this.target = target;    
+        this.target = target;
+        this.plant = target.GetComponentInChildren<Plant>();
     }
 
     private void Update()
@@ -79,7 +80,6 @@ public class BugController : MonoBehaviour
     public void Act()
     {
 
-            Plant plant = target.GetComponentInChildren<Plant>();
             Debug.Log(plant.name);
             if (plant == null) return;
 
@@ -91,10 +91,11 @@ public class BugController : MonoBehaviour
                     Debug.Log("성장 억제");
                     break;
                 case PestType.PlantDestruct:
-                    // 식물 데미지(식물의 체력이 0이면 파괴)
+                // 식물 데미지(식물의 체력이 0이면 파괴)
+                    plant.DegrowPlant(entity.bugData.growUp);
                     break;
                 case PestType.OxygenLooter:
-                    // 익충 공격
+                    // 산소 감소
                     break;
             }
         
@@ -117,6 +118,7 @@ public class BugController : MonoBehaviour
     {
         // 오브젝트 풀 썼을때
         //gameObject.SetActive(false);
+        GameManager.Instance.roundManager.RemoveBug(this); //라운드 매니저의 벌레 리스트에서 제거
         Destroy(gameObject);
 
     }

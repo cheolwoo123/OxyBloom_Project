@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4104784868053651199}
   - component: {fileID: 6419648400692459527}
   m_Layer: 0
-  m_Name: Bug_OxygenGenerator
+  m_Name: Bug_OxygenLooter
   m_TagString: Bug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf3e5420b8a18445ba16fdbc028ad03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugData: {fileID: 11400000, guid: 6c3fdfec8f381e0408f95e7e15eb621f, type: 2}
+  bugData: {fileID: 11400000, guid: 00b750cf26d07c34e8d00ba839c79e49, type: 2}
 --- !u!50 &7896551080352306425
 Rigidbody2D:
   serializedVersion: 4
