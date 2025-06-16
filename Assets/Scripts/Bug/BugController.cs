@@ -40,8 +40,6 @@ public class BugController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        if (entity.bugData.category == BugCategory.Pest && target != null)
-        {
             // 해충 - 식물 방향으로 이동
             if (!hasTargetPos)
             {
@@ -76,16 +74,11 @@ public class BugController : MonoBehaviour
                     }
                 }
             }
-        }
-        else if (entity.bugData.category == BugCategory.Beneficial)
-        {
-            Camera cam = target.GetComponent<Camera>();
-        }
+        
     }
     public void Act()
     {
-        if (entity.bugData.category == BugCategory.Pest)
-        {
+
             Plant plant = target.GetComponentInChildren<Plant>();
             Debug.Log(plant.name);
             if (plant == null) return;
@@ -100,27 +93,12 @@ public class BugController : MonoBehaviour
                 case PestType.PlantDestruct:
                     // 식물 데미지(식물의 체력이 0이면 파괴)
                     break;
-                case PestType.KillBeneficial:
+                case PestType.OxygenLooter:
                     // 익충 공격
                     break;
             }
-        }
-        else
-        {
-            Plant plant = target.GetComponent<Plant>();
-            if (plant == null) return;
+        
 
-            switch (entity.bugData.beneficialType)
-            {
-                case BeneficialType.PromoteGrowth:
-                    // 식물 성장 증가
-                    plant.GrowPlant(entity.bugData.growUp);
-                    break;
-                case BeneficialType.ControlOxygen:
-                    // 산소 조절
-                    break;
-            }
-        }
     }
 
     public void TakeDamage(float damage)
@@ -140,5 +118,6 @@ public class BugController : MonoBehaviour
         // 오브젝트 풀 썼을때
         //gameObject.SetActive(false);
         Destroy(gameObject);
+
     }
 }

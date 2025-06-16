@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79674d1c3ea69824fb6dd6f2128ae4a7, type: 3}
-  m_Name: BugEater
+  m_Name: OxygenLooter
   m_EditorClassIdentifier: 
-  category: 0
   pestType: 3
-  beneficialType: 0
-  maxHP: 40
-  damage: 10
+  maxHP: 35
+  bugStack: 0
   growUp: 0
-  speed: 1.5
-  oxygenAmount: 0
+  speed: 2
+  oxygenAmount: 5
