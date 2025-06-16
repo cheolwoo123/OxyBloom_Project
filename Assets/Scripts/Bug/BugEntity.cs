@@ -6,7 +6,7 @@ public class BugEntity : MonoBehaviour
 {
     public BugScriptObject bugData;
 
-    private int currentHP;
+    private float currentHP;
     private float speed;
 
     public void Init(BugScriptObject data)
@@ -16,7 +16,7 @@ public class BugEntity : MonoBehaviour
         speed = bugData.speed;
     }
 
-    public void SetHP(int hp)
+    public void SetHP(float hp)
     {
         currentHP = hp;
     }
@@ -28,7 +28,7 @@ public class BugEntity : MonoBehaviour
     {
         return speed;
     }
-    public int GetHP()
+    public float GetHP()
     {
         return currentHP;
     }

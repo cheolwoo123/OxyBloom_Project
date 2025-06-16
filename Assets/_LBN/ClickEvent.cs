@@ -39,6 +39,17 @@ public class ClickEvent : MonoBehaviour
 
                 hit.collider.GetComponent<Plant>().GrowPlant(power);
             }
+            else if (hit.collider.gameObject.CompareTag("Bug"))
+            {
+                BugController bug = hit.collider.GetComponent<BugController>();
+                
+                if (bug != null)
+                {
+                    PlayerStat stat = GameManager.Instance.player.stat;
+                    float damage = stat.attack;
+                    bug.TakeDamage((int)damage);
+                }
+            }
         }
     }
 }

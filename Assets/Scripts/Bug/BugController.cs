@@ -103,11 +103,13 @@ public class BugController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         entity.SetHP(entity.GetHP() - damage);
+
         if (entity.IsDead)
         {
+            Debug.Log("Bug died");
             Die();
         }
     }
