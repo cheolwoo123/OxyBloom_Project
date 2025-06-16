@@ -10,7 +10,11 @@ public class UIManager : MonoBehaviour
     public Button upgradeButton;
     public Button plantButton;
     public Button sheifButton;
+<<<<<<< Updated upstream
     public Button ExitCollectionButton;
+=======
+    public Button InventoryButton;
+>>>>>>> Stashed changes
 
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
@@ -29,7 +33,11 @@ public class UIManager : MonoBehaviour
         optionButton.onClick.AddListener((() => UICanvas_OnClick()));
         collectionButton.onClick.AddListener(() => DisplayCollectionUI());
         upgradeButton.onClick.AddListener(() => DisplayUpgradeUI());
+<<<<<<< Updated upstream
         ExitCollectionButton.onClick.AddListener(() => DisplayCollectionUI());
+=======
+        InventoryButton.onClick.AddListener(() => OnpotCollectionUI());
+>>>>>>> Stashed changes
     }
 
     private void UICanvas_OnClick()
