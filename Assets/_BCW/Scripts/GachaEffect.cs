@@ -52,10 +52,10 @@ public class GachaEffect : MonoBehaviour
     {
         isPlaying = true;
 
-        // 1. 원래 색상 → 검정색 페이드
+        // 원래 색상 → 검정색 페이드
         yield return StartCoroutine(FadePanelColor(originalColor, new Color(0f, 0f, 0f, 1.0f)));
 
-        // 2. 랜덤 등급 이펙트 셔플
+        // 랜덤 등급 이펙트 셔플
         int shuffleCount = 6;
         float delay = 1.0f;
 
@@ -72,15 +72,15 @@ public class GachaEffect : MonoBehaviour
           
         }
 
-        // 3. 최종 등급 이펙트 보여주기
+        // 최종 등급 이펙트 보여주기
         HideAllEffects();
-        Debug.Log("1");
+        
         ShowEffect(finalGrade);
         yield return new WaitForSeconds(5f);
-        Debug.Log("2");
+      
         HideAllEffects();
 
-        // 4. 검정 → 원래 색상 복구
+        // 원래 색상 복구
         yield return StartCoroutine(FadePanelColor(darkPanel.color, originalColor));
 
         isPlaying = false;
