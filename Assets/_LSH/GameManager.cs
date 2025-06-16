@@ -10,14 +10,14 @@ public class GameManager : SingleTon<GameManager>
     public Canvas notEnoughOxyzen;
     public Player player;
     public SaveLoadManager saveLoadManager;
-    
+    public RoundManager roundManager;
     
 
     private void Start()
     {
         if(uiManager != null)
             uiManager.Oxygen(Oxygen);
-        saveLoadManager.Load();
+        //saveLoadManager.Load();
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}

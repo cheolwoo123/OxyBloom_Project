@@ -88,6 +88,7 @@ public class Pot : MonoBehaviour
         plant.Seeding(plant.plantData);
 
         Debug.Log($"{plant.plantData.Name}/{plant.plantData.Rarity}을 심었습니다!");
+        GameManager.Instance.roundManager.StartNextRound();
         GameManager.Instance.uiManager.DisplayPlantButton();
     }
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   bugPrefabs:
   - {fileID: 4474006265965194289, guid: aec3f6a48557f3f4dbd2c52564787cf1, type: 3}
   - {fileID: 5293037945366330162, guid: 1854a9e78bdab3c4b94dcd4e75bfe1b1, type: 3}
-  - {fileID: 7138422443380521440, guid: b618b1edb8afb0b439b290c0c17e509b, type: 3}
+  - {fileID: 6123173076263707068, guid: b618b1edb8afb0b439b290c0c17e509b, type: 3}
   plantTransform: {fileID: 0}
   difficultyIncreaseInterval: 10
   spawnInterval: 5

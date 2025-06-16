@@ -86,5 +86,7 @@ public class Plant : MonoBehaviour
         plantData = null;
         CurGrow = 0;
         GrowthStage = 0;
+
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 }
