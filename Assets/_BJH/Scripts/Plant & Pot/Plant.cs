@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class Plant : MonoBehaviour
     public void PutPlantOnSheif()
     {
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
+        GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
         RemovePlant();
         GameManager.Instance.uiManager.DisplaySheifButton();
         GameManager.Instance.uiManager.DisplayPlantButton();
