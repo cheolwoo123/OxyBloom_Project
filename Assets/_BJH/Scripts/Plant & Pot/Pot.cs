@@ -10,6 +10,8 @@ public class Pot : MonoBehaviour
     public GameObject PlantButton;
     private Plant plant;
 
+    private float timer;
+
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
 
     PlantRarity GetRandomRarity()
@@ -29,12 +31,6 @@ public class Pot : MonoBehaviour
         return PlantRarity.Common;
     }
 
-    public void ChangePot(PotData Data)
-    {
-        potData = Data;
-        UpdataChance();
-    }
-
     public void Awake()
     {
         plant = GetComponentInChildren<Plant>();
@@ -44,7 +40,32 @@ public class Pot : MonoBehaviour
     public void Start()
     {
         ChangeSprite();
-        
+    }
+
+    public void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= 1f)
+        {
+            AutomaticGrowth();
+            timer = 0f; 
+        }
+    }
+
+    public void AutomaticGrowth()
+    {
+        if (plant == null) return;
+
+        plant.CurGrow += potData.growthSpeedBonus;
+
+        Debug.Log($"식물 {potData.growthSpeedBonus}만큼 자동 성장");
+    }
+
+    public void ChangePot(PotData Data)
+    {
+        potData = Data;
+        UpdataChance();
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
