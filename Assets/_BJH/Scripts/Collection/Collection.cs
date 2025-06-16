@@ -1,28 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
+    public List<PlantData> plantData;
     public GameObject SlotPrefab;
     public Transform Slots;
 
-    public void Start()
+    public void AddColletion(PlantData data)
     {
-        SetCollection();
-    }
+        plantData.Add(data);
 
-    public void SetCollection()
-    {
         if (SlotPrefab != null)
         {
-            for (int i = 0; i < GameManager.Instance.plantManager.PlantDatas.Count; i++)
-            {
-                Instantiate(SlotPrefab, Slots.transform);
+            Instantiate(SlotPrefab, Slots.transform);
 
-                GameObject obj = SlotPrefab;
-                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
-                collectionSlot.SetSlot(GameManager.Instance.plantManager.PlantDatas[i]);
-            }
+            GameObject obj = SlotPrefab;
+            CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
+            collectionSlot.SetSlot(data);
         }
     }
-
 }

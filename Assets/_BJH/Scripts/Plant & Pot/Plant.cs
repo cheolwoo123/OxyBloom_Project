@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Plant : MonoBehaviour
     [Header("현재 성장치와 성장 단계")]
     public float CurGrow = 0; // 현재 식물 성장치
     public int GrowthStage = 0; // 현재 식물 성장 단계
+
+    public Animator animator;
 
     public void Start()
     {
@@ -31,15 +34,17 @@ public class Plant : MonoBehaviour
         
         Debug.Log($"성장 {CurGrow} + {amount}");
         CurGrow += amount;
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         NextGrowthSprite();
     }
 
     public void DegrowPlant(float amount)
     {
-        if (plantData == null) return;
+        if (plantData == null || GrowthStage == 3) return;
 
         Debug.Log($"시듦 {CurGrow} - {amount}");
         CurGrow -= amount;
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
     }
 
     private void NextGrowthSprite() // 식물 외형 변화
@@ -50,6 +55,7 @@ public class Plant : MonoBehaviour
         {
             CurGrow = 0;
             GrowthStage++;
+            animator.SetTrigger("Grow");
 
             if (GrowthStage == 3)
             {
@@ -66,6 +72,8 @@ public class Plant : MonoBehaviour
     public void PutPlantOnSheif()
     {
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
+        GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
+        GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         RemovePlant();
         GameManager.Instance.uiManager.DisplaySheifButton();
         GameManager.Instance.uiManager.DisplayPlantButton();

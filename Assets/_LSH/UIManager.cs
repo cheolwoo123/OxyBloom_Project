@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Button upgradeButton;
     public Button plantButton;
     public Button sheifButton;
+    public Button ExitCollectionButton;
 
     [Header("Texts")]
     public TextMeshProUGUI oxygenText;
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
         optionButton.onClick.AddListener((() => UICanvas_OnClick()));
         collectionButton.onClick.AddListener(() => DisplayCollectionUI());
         upgradeButton.onClick.AddListener(() => DisplayUpgradeUI());
+        ExitCollectionButton.onClick.AddListener(() => DisplayCollectionUI());
     }
 
     private void UICanvas_OnClick()

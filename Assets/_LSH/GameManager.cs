@@ -9,22 +9,26 @@ public class GameManager : SingleTon<GameManager>
     public UIManager uiManager;
     public Canvas notEnoughOxyzen;
     public Player player;
+    public SaveLoadManager saveLoadManager;
+    
+    
 
     private void Start()
     {
         if(uiManager != null)
             uiManager.Oxygen(Oxygen);
+        saveLoadManager.Load();
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
 
-    public void SetOxygen(int i)
+    public void SetOxygen(int i)  //산소 값, UI 초기화, 
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
     }
     
-    private IEnumerator NotEnoughOxyzen(int i)
+    private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기
     {
         if (i > Oxygen)
         {
@@ -38,7 +42,15 @@ public class GameManager : SingleTon<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키 입력 감지
         {
-            StartCoroutine(NotEnoughOxyzen(10000));
+            //StartCoroutine(NotEnoughOxyzen(10000));
+            saveLoadManager.SetSaveData(player.stat,10000);
+            saveLoadManager.Save(saveLoadManager.GetSaveData());
+            saveLoadManager.Load();
+        }
+        
+        if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
+        {
+            soundManager.ClickSound();
         }
     }
 }

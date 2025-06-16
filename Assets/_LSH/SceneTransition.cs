@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransition : MonoBehaviour  // 씬 전환용 클래스
 {
-    public Image fadePanel;
+    public Image fadePanel;  //페이드인, 아웃 연출용 이미지
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class SceneTransition : MonoBehaviour
 
     private void Start()
     {
-        fadePanel.DOFade(0, 1f).OnComplete(() =>
+        fadePanel.DOFade(0, 1f).OnComplete(() =>   //fadePanel가 사라진 후 fadePanel - false
         {
             fadePanel.gameObject.SetActive(false);
         });

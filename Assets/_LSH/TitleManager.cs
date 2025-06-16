@@ -14,13 +14,13 @@ public class TitleManager : MonoBehaviour
         startButton.onClick.AddListener((() => StartButton()));
     }
 
-    private void StartButton()
+    private void StartButton()  //시작 버튼을 누르면 연출 후 씬 전환
     {
         if (GameManager.Instance != null)
         {
             GameManager.Instance.gameObject.SetActive(true);
         }
         
-        sceneTransition.FadeAndLoadScene("LSHTest");
+        sceneTransition.FadeAndLoadScene("LSHTest2");
     }
 }
