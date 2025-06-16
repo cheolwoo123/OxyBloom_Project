@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantSucker
   m_EditorClassIdentifier: 
   pestType: 1
-  maxHP: 60
+  maxHP: 35
   bugStack: 1
   growUp: 10
   speed: 0.45

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pestType: 2
   maxHP: 30
-  bugStack: 3
+  bugStack: 2
   growUp: 3
   speed: 0.7
   oxygenAmount: 0

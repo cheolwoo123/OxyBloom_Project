@@ -21,7 +21,7 @@ public class BugController : MonoBehaviour
     {
         entity.Init(bugData);   
         this.target = target;
-        this.plant = target.GetComponentInChildren<Plant>();
+        plant = target.GetComponentInChildren<Plant>();
     }
 
     private void Update()
