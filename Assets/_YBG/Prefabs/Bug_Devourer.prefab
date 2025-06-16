@@ -231,4 +231,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 7439080491822721845}
   target: {fileID: 0}
+  bugAnimator: {fileID: 5559346235565253508}
   actCooldown: 2
