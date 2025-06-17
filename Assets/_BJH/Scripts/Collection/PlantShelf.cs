@@ -11,6 +11,7 @@ public class PlantShelf : MonoBehaviour
 
     public void Start()
     {
+        plantDatas = GameManager.Instance.GetSaveData().plantDatas;
         UpdateShelf();
     }
 
@@ -48,7 +49,7 @@ public class PlantShelf : MonoBehaviour
                 break;
             }
         }
-
+        GameManager.Instance.saveLoadManager.SetSaveData("PlantDatas", plantDatas);
         UpdateShelf();
     }
 
@@ -72,20 +73,12 @@ public class PlantShelf : MonoBehaviour
         if (plantDatas[index] == null) return;
 
         plantDatas[index] = null;
+        GameManager.Instance.saveLoadManager.SetSaveData("PlantDatas", plantDatas);
         UpdateShelf();
 
     }
-
-    //private void LoadPlantData()
-    //{
-    //    if (GameManager.Instance.GetSaveData().plantDatas != null)
-    //    {
-    //        plantDatas = GameManager.Instance.GetSaveData().plantDatas;
-    //    }
-    //}
-
-    //public void SavePlantData()
-    //{
-    //    GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);
-    //}
 }
+
+//plantDatas
+// plantDatas = GameManager.Instance.GetSaveData().plantDatas;   //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData("PlantDatas", plantDatas);  //데이터 저장

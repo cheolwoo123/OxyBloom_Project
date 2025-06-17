@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Collection : MonoBehaviour
@@ -6,7 +7,12 @@ public class Collection : MonoBehaviour
     public List<PlantData> plantData;
     public GameObject SlotPrefab;
     public Transform Slots;
-    
+
+    private void Start()
+    {
+        plantData = GameManager.Instance.GetSaveData().plantData;
+    }
+
     public void AddColletion(PlantData data)
     {
         plantData.Add(data);

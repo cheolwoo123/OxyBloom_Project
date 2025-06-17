@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-//plantData = GameManager.Instance.saveLoadManager.Load().plantData;
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantData", plantData);
+// potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);  //데이터 저장
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -97,7 +97,7 @@ public class SaveLoadManager : MonoBehaviour
                 }
                 break;
             case "PlantDatas":
-                if (value is List<PlantData> PlantDatasValue)
+                if (value is PlantData[] PlantDatasValue)
                 {
                     _saveData.plantDatas = PlantDatasValue; 
                 }
@@ -144,7 +144,6 @@ public class SaveLoadManager : MonoBehaviour
             string json = File.ReadAllText(_filePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             _saveData = data;
-            Debug.Log("불러오기 완료 / " + _saveData.oxygen);
             return _saveData;
         }
         _saveData = new SaveData();  // 빈 데이터라도 초기화
