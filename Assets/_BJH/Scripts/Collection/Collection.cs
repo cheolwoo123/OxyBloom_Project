@@ -23,4 +23,4 @@ public class Collection : MonoBehaviour
 }
 //plantData
 // plantData = GameManager.Instance.GetSaveData().plantData;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantData", plantData);  //데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("PlantData", plantData);  //데이터 저장

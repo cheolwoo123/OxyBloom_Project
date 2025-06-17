@@ -35,7 +35,7 @@ public class GameManager : SingleTon<GameManager>
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
-        saveLoadManager.SetSaveData<int>("Oxygen", Oxygen);
+        saveLoadManager.SetSaveData("Oxygen", Oxygen);
     }
     
     private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기
@@ -53,7 +53,7 @@ public class GameManager : SingleTon<GameManager>
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키 입력 감지
         {
             //StartCoroutine(NotEnoughOxyzen(10000));
-            saveLoadManager.SetSaveData<int>("Oxygen", 10000);
+            saveLoadManager.SetSaveData("Oxygen", 10000);
             saveLoadManager.Load();
             uiManager.Oxygen(Oxygen);
         }

@@ -68,4 +68,4 @@ public class PlantShelf : MonoBehaviour
 }
 //plantDatas
 // plantDatas = GameManager.Instance.GetSaveData().plantDatas;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);  //데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("PlantDatas", plantDatas);  //데이터 저장
