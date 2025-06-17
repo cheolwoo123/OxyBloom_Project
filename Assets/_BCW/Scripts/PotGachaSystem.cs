@@ -23,8 +23,13 @@ public class PotGachaSystem : MonoBehaviour
     private void Awake()
     {
         // Resources/PotData 안에 폴더에서 모든 데이터 로드함
-        allPotList = Resources.LoadAll<PotData>("PotData").ToList();
-        
+        //allPotList = Resources.LoadAll<PotData>("PotData").ToList();
+
+
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Common"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Rare"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Epic"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Legendary"));
 
     }
 
