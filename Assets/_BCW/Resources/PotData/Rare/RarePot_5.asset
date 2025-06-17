@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
   m_Name: RarePot_5
   m_EditorClassIdentifier: 
-  potName: Rare
+  potName: "\uB808\uC5B4\uD55C \uD654\uBD84"
   potIcon: {fileID: 21300000, guid: 9dcf8aacea6fc184ebd011c5ac0ee587, type: 3}
-  description: 
+  description: "\uBCF4\uC774\uC9C0 \uC54A\uB294 \uC815\uC131\uC774 \uB290\uAEF4\uC9C0\uB294
+    \uD654\uBD84"
   rarity: 2
-  CommonChance: 0
-  RareChance: 0
-  EpicChance: 0
-  LegendChance: 0
+  CommonChance: 70
+  RareChance: 20
+  EpicChance: 9
+  LegendChance: 1
   MysteryChance: 0
   growthSpeedBonus: 7.5
   upgradePot: 0.5

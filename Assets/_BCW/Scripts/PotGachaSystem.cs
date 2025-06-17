@@ -13,19 +13,24 @@ public class PotGachaSystem : MonoBehaviour
     // 가챠샵 확률 무조건 총합 100
     private Dictionary<PotGrade, float> gradeChances = new()
     {
-        { PotGrade.Common, 50f },
+        { PotGrade.Common, 1f },
         { PotGrade.Rare, 30f },
         { PotGrade.Epic, 12f },
         { PotGrade.Legendary, 7f },
-        { PotGrade.Mystery, 1f }
+        { PotGrade.Mystery, 50f }
     };
 
     private void Awake()
     {
         // Resources/PotData 안에 폴더에서 모든 데이터 로드함
-        allPotList = Resources.LoadAll<PotData>("PotData").ToList();
+        allPotList = Resources.LoadAll<PotData>("PotData/Common").ToList();
 
-        
+
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Common"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Rare"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Epic"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Legend"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Mystery"));
     }
 
     // 
@@ -33,17 +38,17 @@ public class PotGachaSystem : MonoBehaviour
     {
         if (gachaEffect.isPlaying) return;
         // 산소쓸때 
-        //int cost = gachaCost;
-        //if (GameManager.Instance.Oxygen < cost)
-        //{
-            
-        //    return;
-        //}
+        int cost = gachaCost;
+        if (GameManager.Instance.Oxygen < cost)
+        {
 
-        //GameManager.Instance.SetOxygen(-cost); 
+            return;
+        }
 
-            // 무작위 PotData 선택
-            PotData GachaData = GetRandomPot();
+        GameManager.Instance.SetOxygen(-cost);
+
+        // 무작위 PotData 선택
+        PotData GachaData = GetRandomPot();
         Debug.Log(GachaData);
         if (GachaData == null) return;
 
