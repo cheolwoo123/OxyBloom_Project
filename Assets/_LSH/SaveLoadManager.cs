@@ -116,6 +116,16 @@ public class SaveLoadManager : MonoBehaviour
                     Debug.LogWarning("Invalid type");
                 }
                 break;
+            case "SurviveDays":
+                if (value is int SurviveDaysValue)
+                {
+                    _saveData.surviveDays = SurviveDaysValue; 
+                }
+                else
+                {
+                    Debug.LogWarning("Invalid type");
+                }
+                break;
         }
         Save(_saveData);
     }

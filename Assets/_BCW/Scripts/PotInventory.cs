@@ -46,4 +46,4 @@ public class PotInventory : MonoBehaviour
 }
 //potInventory
 // potInventory = GameManager.Instance.GetSaveData().potInventory;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PotInstance>>("PotInstance", potInventory);  //데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("PotInstance", potInventory);  //데이터 저장
