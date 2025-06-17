@@ -62,6 +62,7 @@ public class PlantShelf : MonoBehaviour
 
     public void ClearShelf(int index)
     {
+        if (plantDatas[index] == null) return;
         plantDatas[index] = null;
         UpdateShelf();
     }
