@@ -26,7 +26,7 @@ public class PlantShelf : MonoBehaviour
         }
     }
 
-    public void OxygenEmission()
+    private void OxygenEmission()
     {
         foreach (var plantData in plantDatas)
         {
@@ -52,21 +52,38 @@ public class PlantShelf : MonoBehaviour
 
     private void UpdateShelf()
     {
-        if (plantDatas == null) return;
-
         for (int i = 0; i < plantDatas.Count; i++)
         {
-            ShelfSpr[i].sprite = plantDatas[i].GrowthSprite[3];
+            if (plantDatas[i] != null)
+            {
+                ShelfSpr[i].sprite = plantDatas[i].GrowthSprite[3];
+            }
+            else
+            {
+                ShelfSpr[i].sprite = null; 
+            }
         }
     }
 
     public void ClearShelf(int index)
     {
         if (plantDatas[index] == null) return;
+
         plantDatas[index] = null;
         UpdateShelf();
+
+    }
+
+    private void LoadPlantData()
+    {
+        if (GameManager.Instance.GetSaveData().plantDatas != null)
+        {
+            plantDatas = GameManager.Instance.GetSaveData().plantDatas;
+        }
+    }
+
+    public void SavePlantData()
+    {
+        GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);
     }
 }
-//plantDatas
-// plantDatas = GameManager.Instance.GetSaveData().plantDatas;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);  //데이터 저장
