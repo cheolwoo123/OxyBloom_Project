@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 
-//PlayerStat
-// stat = GameManager.Instance.GetSaveData().playerStat;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("PlayerStat", stat);  //데이터 저장
-
 public class Player : MonoBehaviour
 {
     public PlayerStat stat;
-
-    public void Awake()
+    
+    public void Start()
     {
-        stat = new PlayerStat();
-        {
-            stat.InitStat(9, 9);
-        }
+        LoadPlayerData();
     }
 
-    private void Start()
+    private void SavePlayerData()
     {
-        stat = GameManager.Instance.GetSaveData().playerStat;
+        GameManager.Instance.saveLoadManager.SetSaveData("PlayerStat", stat);  //데이터 저장
+    }
+
+    public void LoadPlayerData()
+    {
+        if (GameManager.Instance.GetSaveData().playerStat == null)
+        {
+            stat.InitStat(9, 9);  //초기화
+            return;
+        }
+
+        stat = GameManager.Instance.GetSaveData().playerStat; 
     }
 }
