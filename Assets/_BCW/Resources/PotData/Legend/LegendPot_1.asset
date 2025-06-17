@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
   m_Name: LegendPot_1
   m_EditorClassIdentifier: 
-  potName: Legend_1
+  potName: "\uB808\uC804\uB4DC \uD654\uBD84"
   potIcon: {fileID: 0}
-  description: 
+  description: "\uBB54\uAC00 \uC2E0\uC131\uD55C \uAE30\uC6B4\uC774 \uB290\uAEF4\uC9C0\uB294
+    \uD654\uBD84"
   rarity: 4
   CommonChance: 10
   RareChance: 30
