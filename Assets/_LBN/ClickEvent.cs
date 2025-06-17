@@ -52,7 +52,7 @@ public class ClickEvent : MonoBehaviour
                 if (bug != null)
                 {
                     PlayerStat stat = GameManager.Instance.player.stat;
-                    float damage = stat.atkLevel;
+                    float damage = 20 + (stat.atkLevel * 15f) ;
                     bug.TakeDamage((int)damage);
                 }
             }
