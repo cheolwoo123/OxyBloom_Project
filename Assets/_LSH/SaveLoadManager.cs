@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +12,16 @@ public class SaveLoadManager : MonoBehaviour
     private string _filePath;
     private SaveData _saveData = new SaveData();  //데이터 저장용 클래스
 
-    private void Awake()
+    private void OnEnable()
     {
         _filePath = Path.Combine(Application.persistentDataPath, "SaveData.json");
     }
-    
+
+    private void Start()
+    {
+        _saveData = GameManager.Instance.GetSaveData();
+    }
+
     public void SetSaveData<T>( string name, T value)  //데이터 저장용 클래스에 데이터를 넣음
     {
         switch (name)
@@ -90,7 +96,7 @@ public class SaveLoadManager : MonoBehaviour
                     Debug.LogWarning("Invalid type");
                 }
                 break;
-            case "plantDatas":
+            case "PlantDatas":
                 if (value is List<PlantData> PlantDatasValue)
                 {
                     _saveData.plantDatas = PlantDatasValue; 
@@ -113,11 +119,6 @@ public class SaveLoadManager : MonoBehaviour
         }
         Save(_saveData);
     }
-
-    public SaveData GetSaveData()  //데이터 리턴
-    {
-        return _saveData;
-    }
     
     public void Save(SaveData data)  //데이터를 json으로 저장
     {
@@ -134,10 +135,10 @@ public class SaveLoadManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             _saveData = data;
             Debug.Log("불러오기 완료 / " + _saveData.oxygen);
-            return data;
+            return _saveData;
         }
         _saveData = new SaveData();  // 빈 데이터라도 초기화
-        return null;
+        return _saveData;
     }
     
     public void DeleteSaveData()  //데이터 삭제

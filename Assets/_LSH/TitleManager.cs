@@ -16,7 +16,7 @@ public class TitleManager : MonoBehaviour
 
     private void StartButton()  //시작 버튼을 누르면 연출 후 씬 전환
     {
-        sceneTransition.FadeAndLoadScene("LSHTest4");
+        sceneTransition.FadeAndLoadScene("MainScenes");
         // if (GameManager.Instance != null)
         // {
         //     GameManager.Instance.gameObject.SetActive(true);

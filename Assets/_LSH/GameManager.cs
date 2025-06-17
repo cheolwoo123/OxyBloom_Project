@@ -11,28 +11,21 @@ public class GameManager : SingleTon<GameManager>
     public Player player;
     public SaveLoadManager saveLoadManager;
     
-    
-    private void Awake()
-    {
-        if (saveLoadManager == null)
-            saveLoadManager = GetComponent<SaveLoadManager>();
-    }
+    private SaveData saveData;
 
     private void OnEnable()
     {
-        SaveData data = saveLoadManager.Load();
-        if (data != null)
-        {
-            _oxygen = data.oxygen;
-            uiManager.Oxygen(Oxygen);
-        }
-        else
-        {
-            _oxygen = 0;
-        }
+        saveData = saveLoadManager.Load();
+        Debug.Log("saveData = " + saveData.oxygen);
         
-        if(uiManager != null)
-            uiManager.Oxygen(Oxygen);
+        if (saveData != null)
+        {
+            Oxygen = saveData.oxygen;
+            
+            Debug.Log("Oxygen = "+Oxygen);
+            if(uiManager != null)
+                uiManager.Oxygen(Oxygen);
+        }
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
@@ -61,11 +54,17 @@ public class GameManager : SingleTon<GameManager>
             //StartCoroutine(NotEnoughOxyzen(10000));
             saveLoadManager.SetSaveData<int>("Oxygen", 10000);
             saveLoadManager.Load();
+            uiManager.Oxygen(Oxygen);
         }
         
         if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
         {
             soundManager.ClickSound();
         }
+    }
+    
+    public SaveData GetSaveData()
+    {
+        return saveData;
     }
 }

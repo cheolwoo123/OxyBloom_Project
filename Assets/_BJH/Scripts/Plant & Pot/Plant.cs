@@ -2,25 +2,16 @@
 using UnityEngine;
 
 //plantData
-// if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
-// {
-//     plantData = GameManager.Instance.saveLoadManager.Load().plant;
-// }
+// plantData = GameManager.Instance.GetSaveData().plant;   //데이터 로드
 //GameManager.Instance.saveLoadManager.SetSaveData<PlantData>("Plant", plantData);  데이터 저장
 
 //CurGrow
-// if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
-// {
-//     CurGrow = GameManager.Instance.saveLoadManager.Load().curGrow;
-// }
+// CurGrow = GameManager.Instance.GetSaveData().curGrow;  //데이터 로드
 //GameManager.Instance.saveLoadManager.SetSaveData<float>("CurGrow", CurGrow);  데이터 저장
 
 //GrowthStage
-// if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
-// {
-//     GrowthStage = GameManager.Instance.saveLoadManager.Load().growthStage;
-// }
-//GameManager.Instance.saveLoadManager.SetSaveData<int>("Plant", GrowthStage);  데이터 저장
+// GrowthStage = GameManager.Instance.GetSaveData().growthStage;   //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<int>("GrowthStage", GrowthStage);  데이터 저장
 
 public class Plant : MonoBehaviour
 {
@@ -36,11 +27,6 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
-        if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
-        {
-            plantData = GameManager.Instance.saveLoadManager.Load().plant;
-        }
-        
         if (plantData == null)
         {
             GameManager.Instance.uiManager.DisplayPlantButton();

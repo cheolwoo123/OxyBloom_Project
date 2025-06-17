@@ -2,10 +2,7 @@
 using UnityEngine;
 
 //plantDatas
-// if (GameManager.Instance.saveLoadManager.Load() != null)   //데이터 로드
-// {
-//     plantDatas = GameManager.Instance.saveLoadManager.Load().plantDatas;
-// }
+// plantDatas = GameManager.Instance.GetSaveData().plantDatas;   //데이터 로드
 //GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);  //데이터 저장
 
 public class PlantShelf : MonoBehaviour
