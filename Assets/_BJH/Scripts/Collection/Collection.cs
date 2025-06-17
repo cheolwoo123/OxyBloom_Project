@@ -10,7 +10,7 @@ public class Collection : MonoBehaviour
 
     private void Start()
     {
-        plantData = GameManager.Instance.GetSaveData().plantData;
+        LoadCollectionData();
     }
 
     public void AddColletion(PlantData data)
@@ -27,8 +27,24 @@ public class Collection : MonoBehaviour
             CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
             collectionSlot.SetSlot(data);
         }
+
+        SaveCollectionData();
+    }
+
+    private void SaveCollectionData()
+    {
+        GameManager.Instance.saveLoadManager.SetSaveData("PlantData", plantData);
+    }
+
+    public void LoadCollectionData()
+    {
+        if (GameManager.Instance.GetSaveData().plantData != null)
+        {
+            plantData = GameManager.Instance.GetSaveData().plantData;
+        }
+        else
+        {
+            plantData = new List<PlantData>();
+        }
     }
 }
-//plantData
-// plantData = GameManager.Instance.GetSaveData().plantData;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("PlantData", plantData);  //데이터 저장

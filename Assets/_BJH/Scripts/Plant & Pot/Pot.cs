@@ -7,9 +7,11 @@ public class Pot : MonoBehaviour
     [Header("현재 식물 데이터와 이미지")]
     public PotData potData = null; // 현재 화분 데이터
     public SpriteRenderer PotSpr; // 현재 화분 외형
-    public GameObject PlantButton;
-    private Plant plant;
 
+    [Header("식물 심기 버튼")]
+    public GameObject PlantButton;
+
+    private Plant plant;
     private float timer;
 
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
@@ -39,7 +41,7 @@ public class Pot : MonoBehaviour
 
     public void Start()
     {
-        potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
+        LoadPotData();
         ChangeSprite();
     }
 
@@ -67,7 +69,7 @@ public class Pot : MonoBehaviour
     {
         potData = Data;
         UpdataChance();
-        GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);
+        SavePotData();
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
@@ -109,6 +111,7 @@ public class Pot : MonoBehaviour
     {
         potData = null;
         PotSpr.sprite = null;
+        SavePotData();
     }
 
     public void ChangeSprite() // 화분 변경
@@ -120,9 +123,16 @@ public class Pot : MonoBehaviour
     {
         return plant;
     }
+
+    private void SavePotData()
+    {
+        GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);
+    }
+
+    public void LoadPotData()
+    {
+        if (GameManager.Instance.GetSaveData().potData == null) return;
+
+        potData = GameManager.Instance.GetSaveData().potData;
+    }
 }
-
-//potData
-// potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);  //데이터 저장
-
