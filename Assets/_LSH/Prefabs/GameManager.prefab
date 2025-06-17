@@ -1935,13 +1935,14 @@ MonoBehaviour:
   upgradeButton: {fileID: 0}
   plantButton: {fileID: 0}
   sheifButton: {fileID: 0}
-  ExitCollectionButton: {fileID: 0}
+  InventoryButton: {fileID: 0}
   oxygenText: {fileID: 6413470736008843122}
   surviveDaysText: {fileID: 0}
   roundTimeText: {fileID: 0}
   optionCanvas: {fileID: 193046507075326874}
   colletionUI: {fileID: 0}
   upgradeUI: {fileID: 0}
+  potCollectionUI: {fileID: 0}
 --- !u!1 &4300526599891402318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +1999,7 @@ MonoBehaviour:
   notEnoughOxyzen: {fileID: 1436943400513966289}
   player: {fileID: 4620637120714320422}
   saveLoadManager: {fileID: 4695996718402246658}
+  roundManager: {fileID: 0}
 --- !u!114 &4620637120714320422
 MonoBehaviour:
   m_ObjectHideFlags: 0

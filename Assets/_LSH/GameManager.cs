@@ -10,11 +10,9 @@ public class GameManager : SingleTon<GameManager>
     public Canvas notEnoughOxyzen;
     public Player player;
     public SaveLoadManager saveLoadManager;
-    private SaveData saveData;
-
     public RoundManager roundManager;
     
-
+    private SaveData saveData;
 
     private void OnEnable()
     {
