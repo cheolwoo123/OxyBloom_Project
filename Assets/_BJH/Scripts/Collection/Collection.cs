@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-//plantData
-// plantData = GameManager.Instance.GetSaveData().plantData;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantData", plantData);  //데이터 저장
-
 public class Collection : MonoBehaviour
 {
     public List<PlantData> plantData;
@@ -25,3 +21,6 @@ public class Collection : MonoBehaviour
         }
     }
 }
+//plantData
+// plantData = GameManager.Instance.GetSaveData().plantData;   //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantData", plantData);  //데이터 저장

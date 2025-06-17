@@ -2,10 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-//potInventory
-// potInventory = GameManager.Instance.GetSaveData().potInventory;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PotInstance>>("PotInstance", potInventory);  //데이터 저장
-
 public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
@@ -48,3 +44,6 @@ public class PotInventory : MonoBehaviour
         RefreshUI();
     }
 }
+//potInventory
+// potInventory = GameManager.Instance.GetSaveData().potInventory;   //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<List<PotInstance>>("PotInstance", potInventory);  //데이터 저장
