@@ -15,4 +15,9 @@ public class Player : MonoBehaviour
             stat.InitStat(9, 9);
         }
     }
+
+    private void Start()
+    {
+        stat = GameManager.Instance.GetSaveData().playerStat;
+    }
 }

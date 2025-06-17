@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlantShelf : MonoBehaviour
 {
@@ -40,16 +39,20 @@ public class PlantShelf : MonoBehaviour
 
     public void AddToShelf(PlantData data)
     {
+        plantDatas[GetEmptyIndex()] = data;
+        UpdateShelf();
+    }
+
+    public int GetEmptyIndex() // 진열장 빈 공간 찾기
+    {
         for (int i = 0; i < plantDatas.Length; i++)
         {
             if (plantDatas[i] == null)
             {
-                plantDatas[i] = data;
-                break;
+                return i;
             }
         }
-
-        UpdateShelf();
+        return -1;
     }
 
     private void UpdateShelf()

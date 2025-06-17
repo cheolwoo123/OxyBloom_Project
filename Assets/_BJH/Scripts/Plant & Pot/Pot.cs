@@ -39,6 +39,7 @@ public class Pot : MonoBehaviour
 
     public void Start()
     {
+        potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
         ChangeSprite();
     }
 
@@ -66,6 +67,7 @@ public class Pot : MonoBehaviour
     {
         potData = Data;
         UpdataChance();
+        GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);
     }
 
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)

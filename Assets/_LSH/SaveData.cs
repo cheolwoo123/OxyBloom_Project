@@ -16,7 +16,7 @@ public class SaveData
     
     public List<PlantData> plantData;  //Collection
     
-    public List<PlantData> plantDatas;  //PlantShelf
+    public PlantData[] plantDatas;  //PlantShelf
     
     public List<PotInstance> potInventory;  //PotInventory
 

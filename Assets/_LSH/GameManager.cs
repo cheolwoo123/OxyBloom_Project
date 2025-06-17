@@ -17,13 +17,11 @@ public class GameManager : SingleTon<GameManager>
     private void OnEnable()
     {
         saveData = saveLoadManager.Load();
-        Debug.Log("saveData = " + saveData.oxygen);
         
         if (saveData != null)
         {
             Oxygen = saveData.oxygen;
             
-            Debug.Log("Oxygen = "+Oxygen);
             if(uiManager != null)
                 uiManager.Oxygen(Oxygen);
         }
@@ -55,6 +53,7 @@ public class GameManager : SingleTon<GameManager>
             //StartCoroutine(NotEnoughOxyzen(10000));
             saveLoadManager.SetSaveData("Oxygen", 10000);
             saveLoadManager.Load();
+            Oxygen = 10000;
             uiManager.Oxygen(Oxygen);
         }
         

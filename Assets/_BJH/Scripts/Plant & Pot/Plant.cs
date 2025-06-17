@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
+        plantData = GameManager.Instance.GetSaveData().plant;
+        CurGrow = GameManager.Instance.GetSaveData().curGrow;
+        GrowthStage = GameManager.Instance.GetSaveData().growthStage;
+        
         GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
@@ -24,6 +27,7 @@ public class Plant : MonoBehaviour
         PlantSpr.enabled = true;
         PlantSpr.sprite = plantData.GrowthSprite[0];
         
+        GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);
     }
     
     public void GrowPlant(float amount) // 식물 성장
@@ -34,6 +38,8 @@ public class Plant : MonoBehaviour
         CurGrow += amount;
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         NextGrowthSprite();
+        
+        GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);
     }
 
     public void DegrowPlant(float amount)
@@ -43,6 +49,8 @@ public class Plant : MonoBehaviour
         Debug.Log($"시듦 {CurGrow} - {amount}");
         CurGrow -= amount;
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
+        
+        GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);
     }
 
     private void NextGrowthSprite() // 식물 외형 변화
@@ -54,6 +62,9 @@ public class Plant : MonoBehaviour
             CurGrow = 0;
             GrowthStage++;
             animator.SetTrigger("Grow");
+            
+            GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);
+            GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  //데이터 저장
 
             if (GrowthStage == 3)
             {
@@ -70,6 +81,8 @@ public class Plant : MonoBehaviour
 
     public void PutPlantOnSheif()
     {
+        if (GameManager.Instance.plantManager.plantShelf.GetEmptyIndex() == -1) return; //선반에 식물이 꽉 찼을 때
+
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         GameManager.Instance.uiManager.DisplaySheifButton();
@@ -84,17 +97,21 @@ public class Plant : MonoBehaviour
         CurGrow = 0;
         GrowthStage = 0;
         
+        GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);
+        GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  //데이터 저장
+        GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  //데이터 저장
+        
         GameManager.Instance.uiManager.DisplayPlantButton();
     }
 }
 //plantData
 // plantData = GameManager.Instance.GetSaveData().plant;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);  //데이터 저장
 
 //CurGrow
 // CurGrow = GameManager.Instance.GetSaveData().curGrow;  //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  //데이터 저장
 
 //GrowthStage
 // GrowthStage = GameManager.Instance.GetSaveData().growthStage;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  //데이터 저장
