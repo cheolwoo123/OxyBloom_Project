@@ -48,7 +48,7 @@ public class Collection : MonoBehaviour
 
                 GameObject obj = SlotPrefab;
                 CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
-                collectionSlot.SetSlot(data);
+                //collectionSlot.SetSlot(data);
             }
         }
         else
