@@ -4,8 +4,8 @@ public class ClickEvent : MonoBehaviour
 {
   
     public static bool IsGamePaused = false;
+    public GameObject clickEffect;
 
-   
 
     void Update()
     {
@@ -28,7 +28,11 @@ public class ClickEvent : MonoBehaviour
     void OnClick()
     {
        Vector2 worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-       RaycastHit2D hit = Physics2D.Raycast(worldpos, Vector2.zero);
+        if (clickEffect != null)
+        {
+            Instantiate(clickEffect, worldpos, Quaternion.identity);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(worldpos, Vector2.zero);
 
         if (hit.collider != null)
         {
