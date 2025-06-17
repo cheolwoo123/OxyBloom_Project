@@ -8,9 +8,6 @@ public class Pot : MonoBehaviour
     public PotData potData = null; // 현재 화분 데이터
     public SpriteRenderer PotSpr; // 현재 화분 외형
 
-    [Header("식물 심기 버튼")]
-    public GameObject PlantButton;
-
     private Plant plant;
     private float timer;
 
@@ -60,9 +57,7 @@ public class Pot : MonoBehaviour
     {
         if (plant.plantData == null) return;
 
-        plant.CurGrow += potData.growthSpeedBonus;
-
-        Debug.Log($"식물 {potData.growthSpeedBonus}만큼 자동 성장");
+        plant.GrowPlant(potData.growthSpeedBonus);
     }
 
     public void ChangePot(PotData Data)

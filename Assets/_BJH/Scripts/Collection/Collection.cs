@@ -41,6 +41,15 @@ public class Collection : MonoBehaviour
         if (GameManager.Instance.GetSaveData().plantData != null)
         {
             plantData = GameManager.Instance.GetSaveData().plantData;
+
+            if (SlotPrefab != null)
+            {
+                Instantiate(SlotPrefab, Slots.transform);
+
+                GameObject obj = SlotPrefab;
+                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
+                collectionSlot.SetSlot(data);
+            }
         }
         else
         {

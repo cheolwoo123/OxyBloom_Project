@@ -18,13 +18,11 @@ public class PlayerStat
     public void PMLevelUp()
     {
         pmLevel++;
-        GameManager.Instance.saveLoadManager.SetSaveData("PlayerStat", this);
     }
 
     public void ATKLevelUp()
     {
         atkLevel++;
-        GameManager.Instance.saveLoadManager.SetSaveData("PlayerStat", this);
     }
 
     public bool UpgradePot(PotInstance pot)
