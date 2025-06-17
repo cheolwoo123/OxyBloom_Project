@@ -63,10 +63,10 @@ public class UIManager : MonoBehaviour
 
         upgradeUI.SetActive(true);
     }
-    //public void DisPlayBugStack(int count,int fullStack)
-    //{
-    //    bugStackBar.fillAmount = (float)count / fullStack;
-    //}
+    public void DisPlayBugStack(int count, int fullStack)
+    {
+        bugStackBar.fillAmount = (float)count / fullStack;
+    }
     public void DisplayDays(int day)
     {
         surviveDaysText.text = day.ToString() + " Days";
@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void PlantDestroyClearUI()
     {
         plantButton.gameObject.SetActive(true);
-        //GameManager.Instance.uiManager.bugStackBar.fillAmount = 0;
+        GameManager.Instance.uiManager.bugStackBar.fillAmount = 0;
     }
 }
 

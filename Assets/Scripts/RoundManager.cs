@@ -210,12 +210,12 @@ public class RoundManager : MonoBehaviour
     }
 
 
-    //private void GetBugStack()
-    //{
-    //    GameManager.Instance.uiManager.DisPlayBugStack(totalBugStack,pollutionLv);
-    //}
+    private void GetBugStack()
+    {
+        GameManager.Instance.uiManager.DisPlayBugStack(totalBugStack, pollutionLv);
+    }
 
-   
+
     public void StartNextRound()
     {
         isWaitingNextRound = false;
