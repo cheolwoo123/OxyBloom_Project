@@ -17,11 +17,11 @@ MonoBehaviour:
   description: E...VE?
   rarity: 5
   CommonChance: 0
-  RareChance: 15
+  RareChance: 0
   EpicChance: 35
-  LegendChance: 30
+  LegendChance: 45
   MysteryChance: 20
   growthSpeedBonus: 35
   upgradePot: 0.5
   upgradePotExpense: 1.5
-  maxLevel: 5
+  maxLevel: 10

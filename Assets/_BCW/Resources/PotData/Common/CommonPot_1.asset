@@ -16,11 +16,11 @@ MonoBehaviour:
   potIcon: {fileID: 21300000, guid: 01b08faf21ecccd4294282ec0330b5bf, type: 3}
   description: 
   rarity: 1
-  CommonChance: 0
-  RareChance: 0
-  EpicChance: 0
-  LegendChance: 1
-  MysteryChance: 99
+  CommonChance: 90
+  RareChance: 7
+  EpicChance: 3
+  LegendChance: 0
+  MysteryChance: 0
   growthSpeedBonus: 2.5
   upgradePot: 0.5
   upgradePotExpense: 1.5
