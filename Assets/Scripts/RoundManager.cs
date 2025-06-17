@@ -15,7 +15,7 @@ public class RoundManager : MonoBehaviour
     public float difficultyIncreaseInterval = 10f; //살아남은 일수 추가해주는 조건, 난이도 증가 조건
     private float dayTimer = 0f; //날짜가 넘어가는 시간
 
-    public float spawnInterval = 5f; //스폰 시간 텀
+    public float spawnInterval = 8f; //스폰 시간 텀
     private float spawnTimer = 0f;
 
     private bool isWaitingNextRound = true;
@@ -114,6 +114,7 @@ public class RoundManager : MonoBehaviour
         else
             index = Random.Range(0, bugPrefabs.Length);
 
+        Debug.Log(index+"-인덱스 번호");
         PestType pestType = bugPrefabs[index].GetComponent<BugController>().entity.bugData.pestType;
         Vector3 spawnPos = GetRandomSpawnPosition(pestType);
 

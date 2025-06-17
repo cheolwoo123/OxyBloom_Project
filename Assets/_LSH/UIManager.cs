@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void PlantDestroyClearUI()
     {
         plantButton.gameObject.SetActive(true);
-        GameManager.Instance.uiManager.bugStackBar.fillAmount = 0;
+        //GameManager.Instance.uiManager.bugStackBar.fillAmount = 0;
     }
 }
 
