@@ -29,8 +29,8 @@ public class PotGachaSystem : MonoBehaviour
         allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Common"));
         allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Rare"));
         allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Epic"));
-        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Legendary"));
-
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Legend"));
+        allPotList.AddRange(Resources.LoadAll<PotData>("PotData/Mystery"));
     }
 
     // 
@@ -38,17 +38,17 @@ public class PotGachaSystem : MonoBehaviour
     {
         if (gachaEffect.isPlaying) return;
         // 산소쓸때 
-        //int cost = gachaCost;
-        //if (GameManager.Instance.Oxygen < cost)
-        //{
-            
-        //    return;
-        //}
+        int cost = gachaCost;
+        if (GameManager.Instance.Oxygen < cost)
+        {
 
-        //GameManager.Instance.SetOxygen(-cost); 
+            return;
+        }
 
-            // 무작위 PotData 선택
-            PotData GachaData = GetRandomPot();
+        GameManager.Instance.SetOxygen(-cost);
+
+        // 무작위 PotData 선택
+        PotData GachaData = GetRandomPot();
         Debug.Log(GachaData);
         if (GachaData == null) return;
 
