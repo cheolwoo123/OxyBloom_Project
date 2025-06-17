@@ -15,8 +15,6 @@ public class Plant : MonoBehaviour
     public void Start()
     {
         LoadPlantData();
-        PlantSpriteChange();
-        PlantButtonControl();
     }
 
     public void Seeding(PlantData Data)
@@ -123,7 +121,7 @@ public class Plant : MonoBehaviour
 
     private void LoadPlantData()
     {
-        if (GameManager.Instance.GetSaveData() == null)
+        if (GameManager.Instance.GetSaveData().plantData == null)
         {
             GameManager.Instance.uiManager.DisplayPlantButton();
             return;
@@ -132,13 +130,7 @@ public class Plant : MonoBehaviour
         plantData = GameManager.Instance.GetSaveData().plant;  // 데이터
         CurGrow = GameManager.Instance.GetSaveData().curGrow;  // 성장치
         GrowthStage = GameManager.Instance.GetSaveData().growthStage;   // 성장 단계
-        
-        Debug.Log(plantData + " / " + CurGrow + " / " + GrowthStage);
+
+        PlantSpriteChange();
     }
-
-
-        //GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);  // 데이터
-        //GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  // 성장치
-        //GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  // 성장 단계
-
 }
