@@ -84,7 +84,12 @@ public class RoundManager : MonoBehaviour
             surviveDays++;
 
             // 난이도 증가 처리(스폰시간 빨라지는거,스피드 늘어남)
-            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // 스폰이 빨라짐       
+            spawnInterval = Mathf.Max(2f, spawnInterval - 0.05f); // 스폰이 빨라짐       
+
+            if (surviveDays % 5 == 0) //5일차에 한번씩
+            {
+                UpgradeSpawnedBugs();
+            }
 
             isWaitingNextRound = true;
         }
@@ -116,7 +121,15 @@ public class RoundManager : MonoBehaviour
         
         BugScriptObject pestData = bugCtrl.entity.bugData;
         bugCtrl.Setup(pestData, plantTransform);
-        
+
+        // 난이도에 따라 능력치 보정
+        int levelMulti = surviveDays / 5;
+        float hpMulti = 1f + (levelMulti * 0.1f);    // surviveDays 당 체력 10% 증가
+        float speedMulti = 1f + (levelMulti * 0.05f); // surviveDays 당 속도 5% 증가
+
+        bugCtrl.entity.SetHP(pestData.maxHP * hpMulti);
+        bugCtrl.entity.SetSpeed(pestData.speed * speedMulti);
+
         spawnedBugs.Add(bugCtrl);
     }
 
@@ -214,5 +227,25 @@ public class RoundManager : MonoBehaviour
         
     }
 
- 
+    private void UpgradeSpawnedBugs()
+    {
+        float hpIncreaseRate = 0.1f;   // 체력 10% 증가
+        float speedIncreaseRate = 0.05f; // 속도 5% 증가
+
+        foreach (var bug in spawnedBugs)
+        {
+            if (bug == null) continue;
+
+            BugEntity entity = bug.entity;
+            if (entity == null) continue;
+
+            // 현재 HP 대비 증가 (기본 maxHP 대비 증가도 가능)
+            float newHP = entity.GetHP() * (1 + hpIncreaseRate);
+            entity.SetHP(newHP);
+
+            float newSpeed = entity.GetSpeed() * (1 + speedIncreaseRate);
+            entity.SetSpeed(newSpeed);
+        }
+    }
+
 }
