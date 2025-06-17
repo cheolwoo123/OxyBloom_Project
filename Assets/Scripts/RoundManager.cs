@@ -96,6 +96,7 @@ public class RoundManager : MonoBehaviour
 
 
         CheckSpawnedBugs();
+        //OxygenLooterWarning(); 산소벌레 출현 경고 추후 추가
     }
     private void SpawnBug()
     {
@@ -223,9 +224,24 @@ public class RoundManager : MonoBehaviour
 
     private void OxygenLooterWarning()
     {
-        //산소 강탈자가 있으면 왼쪽아이콘에 산소 벌레 떴다는 경고실행
-        
+        // 산소 강탈자가 하나라도 존재하면 true
+        bool hasOxygenLooter = false;
+
+        foreach (var bug in spawnedBugs)
+        {
+            if (bug == null || bug.entity == null) continue;
+
+            if (bug.entity.bugData.pestType == PestType.OxygenLooter)
+            {
+                hasOxygenLooter = true;
+                break;
+            }
+        }
+
+        // UIManager에 OxygenLooter 경고 보여주는 함수 호출 (아이콘은 나중에 연결)
+        //GameManager.Instance.uiManager.
     }
+
 
     private void UpgradeSpawnedBugs()
     {
