@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -70,6 +69,8 @@ public class Plant : MonoBehaviour
 
     public void PutPlantOnSheif()
     {
+        if (GameManager.Instance.plantManager.plantShelf.GetEmptyIndex() == -1) return; //선반에 식물이 꽉 찼을 때
+
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
         GameManager.Instance.uiManager.DisplaySheifButton();

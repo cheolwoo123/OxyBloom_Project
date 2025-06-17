@@ -9,6 +9,8 @@ public class Collection : MonoBehaviour
     
     public void AddColletion(PlantData data)
     {
+        if (plantData.Contains(data)) return; // 중복 추가 방지
+
         plantData.Add(data);
         
         if (SlotPrefab != null)
