@@ -11,11 +11,13 @@ public class OptionController : MonoBehaviour
     [Header("Buttons")]
     public Button titleButton;
     public Button exitButton;
+    public Button DeleteDataButton;
 
     void Start()
     {
         titleButton.onClick.AddListener((() => TitleButton()));
         exitButton.onClick.AddListener((() => ExitButton()));
+        DeleteDataButton.onClick.AddListener(() => DeleteData());
     }
 
     private void TitleButton()  //타이틀로 나가기 버튼
@@ -28,5 +30,12 @@ public class OptionController : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameObject.SetActive(false);
+    }
+    
+    private void DeleteData()
+    {
+        Time.timeScale = 1f;
+        sceneTransition.FadeAndLoadScene("Title");
+        GameManager.Instance.saveLoadManager.DeleteSaveData();
     }
 }

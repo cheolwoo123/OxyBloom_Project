@@ -12,12 +12,21 @@ public class GameManager : SingleTon<GameManager>
     public SaveLoadManager saveLoadManager;
     public RoundManager roundManager;
     
+    private SaveData saveData;
 
-    private void Start()
+    private void OnEnable()
     {
-        if(uiManager != null)
-            uiManager.Oxygen(Oxygen);
-        //saveLoadManager.Load();
+        saveData = saveLoadManager.Load();
+        Debug.Log("saveData = " + saveData.oxygen);
+        
+        if (saveData != null)
+        {
+            Oxygen = saveData.oxygen;
+            
+            Debug.Log("Oxygen = "+Oxygen);
+            if(uiManager != null)
+                uiManager.Oxygen(Oxygen);
+        }
     }
     
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
@@ -26,6 +35,7 @@ public class GameManager : SingleTon<GameManager>
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
+        saveLoadManager.SetSaveData<int>("Oxygen", Oxygen);
     }
     
     private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기
@@ -43,14 +53,19 @@ public class GameManager : SingleTon<GameManager>
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키 입력 감지
         {
             //StartCoroutine(NotEnoughOxyzen(10000));
-            saveLoadManager.SetSaveData(player.stat,10000);
-            saveLoadManager.Save(saveLoadManager.GetSaveData());
+            saveLoadManager.SetSaveData<int>("Oxygen", 10000);
             saveLoadManager.Load();
+            uiManager.Oxygen(Oxygen);
         }
         
         if (Input.GetMouseButtonDown(0)) // 왼쪽 클릭
         {
             soundManager.ClickSound();
         }
+    }
+    
+    public SaveData GetSaveData()
+    {
+        return saveData;
     }
 }

@@ -35,7 +35,7 @@ public class PotInventory : MonoBehaviour
         {
             if (existing.potData == pot.potData)
             {
-                Debug.Log("Áßº¹¶ä ¤µ¤¡ " + pot.potData.potName);
+                Debug.Log("ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ " + pot.potData.potName);
                 return;
             }
         }
@@ -44,3 +44,6 @@ public class PotInventory : MonoBehaviour
         RefreshUI();
     }
 }
+//potInventory
+// potInventory = GameManager.Instance.GetSaveData().potInventory;   //ë°ì´í„° ë¡œë“œ
+//GameManager.Instance.saveLoadManager.SetSaveData<List<PotInstance>>("PotInstance", potInventory);  //ë°ì´í„° ì €ì¥
