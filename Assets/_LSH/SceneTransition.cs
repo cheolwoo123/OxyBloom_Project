@@ -25,7 +25,7 @@ public class SceneTransition : MonoBehaviour  // 씬 전환용 클래스
         fadePanel.gameObject.SetActive(true);
         fadePanel.DOFade(1, 1f).OnComplete(() =>
         {
-            GameManager.Instance.gameObject.SetActive(false);
+            //GameManager.Instance.gameObject.SetActive(false);
             SceneManager.LoadScene(sceneName);
         });
     }

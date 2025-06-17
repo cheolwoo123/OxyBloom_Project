@@ -13,7 +13,7 @@ public class Pot : MonoBehaviour
     private float timer;
 
     Dictionary<PlantRarity, float> rarityChances = new Dictionary<PlantRarity, float>();
-
+    
     PlantRarity GetRandomRarity()
     {
         float roll = Random.Range(0f, 100f);
@@ -120,5 +120,7 @@ public class Pot : MonoBehaviour
     }
 }
 
-
+//potData
+// potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
+//GameManager.Instance.saveLoadManager.SetSaveData<PotData>("PotData", potData);  //데이터 저장
 
