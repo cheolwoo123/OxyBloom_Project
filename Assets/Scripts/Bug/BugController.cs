@@ -149,7 +149,7 @@ public class BugController : MonoBehaviour
    
 
     public void Die()
-    { 
+    {
         bugAnimator.SetBool("isDead", true);
 
         this.enabled = false;
@@ -159,7 +159,6 @@ public class BugController : MonoBehaviour
 
     private void DestroyBug()
     {
-        GameManager.Instance.roundManager.RemoveBug(this);
         Destroy(gameObject);
     }
 }
