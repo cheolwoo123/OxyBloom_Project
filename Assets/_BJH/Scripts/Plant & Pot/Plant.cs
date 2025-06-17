@@ -15,10 +15,7 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
-        if (plantData == null)
-        {
-            GameManager.Instance.uiManager.DisplayPlantButton();
-        }
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void Seeding(PlantData Data)
@@ -86,22 +83,18 @@ public class Plant : MonoBehaviour
         plantData = null;
         CurGrow = 0;
         GrowthStage = 0;
-
-        if (GameManager.Instance.plantManager.plantShelf.plantDatas.Count <= 3 )
-        {
-            //Debug.Log("씨앗 심기 버튼생성");
-            GameManager.Instance.uiManager.DisplayPlantButton();
-        }
+        
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 }
 //plantData
 // plantData = GameManager.Instance.GetSaveData().plant;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<PlantData>("Plant", plantData);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);  데이터 저장
 
 //CurGrow
 // CurGrow = GameManager.Instance.GetSaveData().curGrow;  //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<float>("CurGrow", CurGrow);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  데이터 저장
 
 //GrowthStage
 // GrowthStage = GameManager.Instance.GetSaveData().growthStage;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<int>("GrowthStage", GrowthStage);  데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  데이터 저장

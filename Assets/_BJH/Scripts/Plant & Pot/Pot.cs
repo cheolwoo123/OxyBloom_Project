@@ -122,5 +122,5 @@ public class Pot : MonoBehaviour
 
 //potData
 // potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<PotData>("PotData", potData);  //데이터 저장
+//GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);  //데이터 저장
 

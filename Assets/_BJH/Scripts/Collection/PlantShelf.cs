@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlantShelf : MonoBehaviour
 {
-    public List<PlantData> plantDatas;
+    public PlantData[] plantDatas = new PlantData[4];
 
     public SpriteRenderer[] ShelfSpr = new SpriteRenderer[4];
 
@@ -26,7 +26,7 @@ public class PlantShelf : MonoBehaviour
         }
     }
 
-    public void OxygenEmission()
+    private void OxygenEmission()
     {
         foreach (var plantData in plantDatas)
         {
@@ -40,32 +40,52 @@ public class PlantShelf : MonoBehaviour
 
     public void AddToShelf(PlantData data)
     {
-        if (plantDatas.Count == 4)
+        for (int i = 0; i < plantDatas.Length; i++)
         {
-            Debug.LogWarning("선반이 가득 찼습니다.");
-            return;
+            if (plantDatas[i] == null)
+            {
+                plantDatas[i] = data;
+                break;
+            }
         }
 
-        plantDatas.Add(data);
         UpdateShelf();
     }
 
     private void UpdateShelf()
     {
-        if (plantDatas == null) return;
-
-        for (int i = 0; i < plantDatas.Count; i++)
+        for (int i = 0; i < plantDatas.Length; i++)
         {
-            ShelfSpr[i].sprite = plantDatas[i].GrowthSprite[3];
+            if (plantDatas[i] != null)
+            {
+                ShelfSpr[i].sprite = plantDatas[i].GrowthSprite[3];
+            }
+            else
+            {
+                ShelfSpr[i].sprite = null; 
+            }
         }
     }
 
     public void ClearShelf(int index)
     {
+        if (plantDatas[index] == null) return;
+
         plantDatas[index] = null;
         UpdateShelf();
+
     }
+
+    //private void LoadPlantData()
+    //{
+    //    if (GameManager.Instance.GetSaveData().plantDatas != null)
+    //    {
+    //        plantDatas = GameManager.Instance.GetSaveData().plantDatas;
+    //    }
+    //}
+
+    //public void SavePlantData()
+    //{
+    //    GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);
+    //}
 }
-//plantDatas
-// plantDatas = GameManager.Instance.GetSaveData().plantDatas;   //데이터 로드
-//GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);  //데이터 저장
