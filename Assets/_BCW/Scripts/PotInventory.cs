@@ -12,6 +12,11 @@ public class PotInventory : MonoBehaviour
 
     private List<GameObject> slotObjects = new();
 
+    private void Start()
+    {
+        potInventory = GameManager.Instance.GetSaveData().potInventory;
+    }
+    
     public void RefreshUI()
     {
         foreach (var slot in slotObjects)
@@ -41,6 +46,7 @@ public class PotInventory : MonoBehaviour
         }
 
         potInventory.Add(pot);
+        GameManager.Instance.saveLoadManager.SetSaveData("PotInstance", potInventory);  //데이터 저장
         RefreshUI();
     }
 }
