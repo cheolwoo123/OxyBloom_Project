@@ -17,4 +17,4 @@ MonoBehaviour:
   bugStack: 0
   growUp: 0
   speed: 2
-  oxygenAmount: 5
+  oxygenAmount: 10

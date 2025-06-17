@@ -57,7 +57,7 @@ public class PotSlotUI : MonoBehaviour
     private void UpdateDescription()
     {
         description.text =
-            $"- 자동 산소 생산량 : {pot.GetGrowthBonus()}%\n" +
+            $" - 자동 산소 생산량 : {pot.GetGrowthBonus()}\n" +
             $" - 일반 : {pot.potData.CommonChance}%\n" +
             $" - 레어 : {pot.potData.RareChance}%\n" +
             $" - 에픽 : {pot.potData.EpicChance}%\n" +

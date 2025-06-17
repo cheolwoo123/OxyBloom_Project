@@ -40,6 +40,7 @@ public class Upgrade : MonoBehaviour
             return;
         }
         GameManager.Instance.player.stat.ATKLevelUp();
+        GameManager.Instance.SetOxygen(-atkCost);
         UpdateUpgradeUI();
     }
 
@@ -51,6 +52,7 @@ public class Upgrade : MonoBehaviour
             return;
         }
         GameManager.Instance.player.stat.PMLevelUp();
+        GameManager.Instance.SetOxygen(-pmCost);
         UpdateUpgradeUI();
     }
 }

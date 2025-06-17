@@ -3,7 +3,7 @@ using UnityEngine;
 public class BugController : MonoBehaviour
 {
     public BugEntity entity;
-    public Transform target; //식물 또는 벌레
+    public Transform target; 
     private Plant plant;
 
     public Animator bugAnimator; 
@@ -32,7 +32,44 @@ public class BugController : MonoBehaviour
     }
     private void Move()
     {
+        if (entity.bugData.pestType == PestType.OxygenLooter)
+        {
+            // 고정된 범위 안에서만 계속 움직임
+            if (!hasTargetPos)
+            {
+                float x = Random.Range(-11f, -5f);
+                float y = Random.Range(-5f, 5f);
+                randomTargetPos = new Vector3(x, y, 0f);
+                hasTargetPos = true;
+            }
 
+            transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, randomTargetPos) < 0.1f)
+            {
+                hasTargetPos = false;
+
+                // Act 주기적으로 실행
+                if (Time.time - lastActTime >= actCooldown)
+                {
+                    Act();
+                    lastActTime = Time.time;
+                }
+            }
+
+            // 방향 회전
+            Vector3 dir = (randomTargetPos - transform.position).normalized;
+            if (dir != Vector3.zero)
+            {
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 240f * Time.deltaTime);
+            }
+
+            return; // 아래 일반 해충 이동은 건너뜀
+        }
+
+        // 일반 해충 이동
         Vector3 direction = (randomTargetPos - transform.position).normalized;
 
         if (direction != Vector3.zero)
@@ -43,41 +80,35 @@ public class BugController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-            // 해충 - 식물 방향으로 이동
-            if (!hasTargetPos)
+        if (!hasTargetPos)
+        {
+            Collider2D plantCollider = target.GetComponent<Collider2D>();
+            if (plantCollider != null)
             {
-                Collider2D plantCollider = target.GetComponent<Collider2D>();
-                if(plantCollider != null)
-                {
-                    Bounds bounds = plantCollider.bounds;
-                    float x = Random.Range(bounds.min.x, bounds.max.x);
-                    float y = Random.Range(bounds.min.y, bounds.max.y);
-
-                   
-                    randomTargetPos = new Vector3(x, y, 0);
-                    hasTargetPos = true;
-                }
-                
+                Bounds bounds = plantCollider.bounds;
+                float x = Random.Range(bounds.min.x, bounds.max.x);
+                float y = Random.Range(bounds.min.y, bounds.max.y);
+                randomTargetPos = new Vector3(x, y, 0);
+                hasTargetPos = true;
             }
+        }
 
-            transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, randomTargetPos, entity.GetSpeed() * Time.deltaTime);
 
-            // 도착하면 다시 목표 초기화
-            if (Vector3.Distance(transform.position, randomTargetPos) < 0.1f)
+        if (Vector3.Distance(transform.position, randomTargetPos) < 0.1f)
+        {
+            hasTargetPos = false;
+
+            Collider2D plantCollider = target.GetComponent<Collider2D>();
+            if (plantCollider != null && plantCollider.OverlapPoint(transform.position))
             {
-                hasTargetPos = false;
-
-                Collider2D plantCollider = target.GetComponent<Collider2D>();
-                if (plantCollider != null && plantCollider.OverlapPoint(transform.position))
+                if (Time.time - lastActTime >= actCooldown)
                 {
-                    if (Time.time - lastActTime >= actCooldown)
-                    {
-                        Act(); // 벌레 특성 실행
-                        lastActTime = Time.time;
-                    }
+                    Act();
+                    lastActTime = Time.time;
                 }
             }
-        
+        }
     }
     public void Act()
     {
@@ -97,7 +128,8 @@ public class BugController : MonoBehaviour
                     plant.DegrowPlant(entity.bugData.growUp);
                     break;
                 case PestType.OxygenLooter:
-                    // 산소 감소
+                // 산소 감소
+                    GameManager.Instance.SetOxygen(-entity.bugData.oxygenAmount);
                     break;
             }
         
