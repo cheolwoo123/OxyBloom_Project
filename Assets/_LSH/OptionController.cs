@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionController : MonoBehaviour
@@ -11,6 +8,7 @@ public class OptionController : MonoBehaviour
     [Header("Buttons")]
     public Button titleButton;
     public Button exitButton;
+    public Button SaveButton;
     public Button DeleteDataButton;
 
     void Start()
@@ -18,6 +16,7 @@ public class OptionController : MonoBehaviour
         titleButton.onClick.AddListener((() => TitleButton()));
         exitButton.onClick.AddListener((() => ExitButton()));
         DeleteDataButton.onClick.AddListener(() => DeleteData());
+        SaveButton.onClick.AddListener(() => GameManager.Instance.saveLoadManager.Save());  //저장 버튼 클릭시 저장 
     }
 
     private void TitleButton()  //타이틀로 나가기 버튼

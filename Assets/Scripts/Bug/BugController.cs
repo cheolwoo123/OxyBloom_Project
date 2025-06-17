@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BugController : MonoBehaviour
@@ -14,9 +15,15 @@ public class BugController : MonoBehaviour
     [SerializeField] private float actCooldown = 2f; //벌레들 Act 쿨타임
     private float lastActTime = -999f; //마지막 실행시간
 
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     private void Awake()
     {
         entity = GetComponent<BugEntity>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+         originalColor = spriteRenderer.color;
     }
 
     public void Setup(BugScriptObject bugData, Transform target)
@@ -140,6 +147,8 @@ public class BugController : MonoBehaviour
     {
         entity.SetHP(entity.GetHP() - damage);
 
+        StartCoroutine(FlashRed());
+
         if (entity.IsDead)
         {
             Die();
@@ -160,5 +169,13 @@ public class BugController : MonoBehaviour
     private void DestroyBug()
     {
         Destroy(gameObject);
+    }
+
+    private IEnumerator FlashRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(1f);
+        spriteRenderer.color = originalColor;
+
     }
 }

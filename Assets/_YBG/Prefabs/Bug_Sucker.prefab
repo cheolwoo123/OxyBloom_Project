@@ -233,3 +233,4 @@ MonoBehaviour:
   target: {fileID: 606847321043998745, guid: 2aa6d9e3e6890544e96298d35d5cac9d, type: 3}
   bugAnimator: {fileID: 3763981014423266558}
   actCooldown: 2
+  spriteRenderer: {fileID: 5625872448014145372}

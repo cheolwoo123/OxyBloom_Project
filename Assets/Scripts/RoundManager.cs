@@ -1,54 +1,61 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class RoundManager : MonoBehaviour
 {
-    public GameObject[] bugPrefabs;            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
-    public Transform plantTransform;        // ï¿½ï¿½Ç¥ ï¿½Ä¹ï¿½
-    public Transform plantShelfTransform; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    public GameObject[] bugPrefabs;            // ¹ö±× ÇÁ¸®ÆÕ 
+    public Transform plantTransform;        // ¸ñÇ¥ ½Ä¹°
+    public Transform plantShelfTransform; //¼±¹İ À§Ä¡
 
     private Plant currentPlant;
 
     private List<BugController> spawnedBugs = new List<BugController>();
 
-    private int surviveDays = 0; //ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
-    public float difficultyIncreaseInterval = 10f; //ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    private float dayTimer = 0f; //ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½Ã°ï¿½
+    private int surviveDays = 0; //³¯Â¥¿¡ µû¶ó ³­ÀÌµµ º¯°æ
+    public float difficultyIncreaseInterval = 10f; //»ì¾Æ³²Àº ÀÏ¼ö Ãß°¡ÇØÁÖ´Â Á¶°Ç, ³­ÀÌµµ Áõ°¡ Á¶°Ç
+    private float dayTimer = 0f; //³¯Â¥°¡ ³Ñ¾î°¡´Â ½Ã°£
 
-    public float spawnInterval = 5f; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½
+    public float spawnInterval = 5f; //½ºÆù ½Ã°£ ÅÒ
     private float spawnTimer = 0f;
 
     private bool isWaitingNextRound = true;
     private float roundWaitTimer = 0f;
-    public float roundWaitDuration = 10f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¥ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float roundWaitDuration = 10f; // ¶ó¿îµå ³Ñ¾î°¥ ¶§ ´ë±â ½Ã°£
 
     public int totalBugStack = 0;
     public int pollutionLv = 10;
 
     private bool isProcessingBugCheck = false;
+    private bool isRoundInitialized = false;
 
-    private void Start()
+    public void InitRound() // ¼¼ÀÌºê ·Îµå ÀÌÈÄ¿¡ È£Ãâ
     {
-        surviveDays = GameManager.Instance.GetSaveData().surviveDays;   //ë°ì´í„° ë¡œë“œ
+        currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
+        isWaitingNextRound = false;
+        dayTimer = 0f;
+        spawnTimer = 0f;
     }
 
     private void Update()
     {
-        //ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
-        //Å¸ï¿½Ì¸Óºï¿½ï¿½ï¿½ Å¸ï¿½Ì¸Ó°ï¿½ ï¿½ï¿½ï¿½Ê°ï¿½ ï¿½Ç¸ï¿½ SpawnBug() ï¿½ï¿½ï¿½ï¿½
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
 
-        if(currentPlant == null || currentPlant.plantData == null)
+        if (!isRoundInitialized)
         {
-            return;
+            currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
+            if (currentPlant != null && currentPlant.plantData != null)
+            {
+                InitRound();
+                isRoundInitialized = true;
+            }
+            else
+            {
+                return; // ¾ÆÁ÷ ÇÃ·£Æ® ¾øÀ¸¸é ¾Æ¹«°Íµµ ¾È ÇÔ
+            }
         }
 
         GetSurviveDays();
-        GetRoundTime();
-        GetBugStack();
+        //GetBugStack();
 
         if (isWaitingNextRound)
         {
@@ -59,7 +66,7 @@ public class RoundManager : MonoBehaviour
                 roundWaitTimer = 0f;
 
             }
-            return; // ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            return; // ´ë±â Áß¿¡´Â ¾Æ·¡ ½ÇÇàÇÏÁö ¾ÊÀ½
         }
 
         dayTimer += Time.deltaTime;
@@ -75,16 +82,21 @@ public class RoundManager : MonoBehaviour
         {
             dayTimer = 0f;
             surviveDays++;
-            GameManager.Instance.saveLoadManager.SetSaveData("SurviveDays", surviveDays);  //ë°ì´í„° ì €ì¥
-            
-            // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½,ï¿½ï¿½ï¿½Çµï¿½ ï¿½Ã¾î³²)
-            spawnInterval = Mathf.Max(1f, spawnInterval - 0.1f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½       
 
-            //isWaitingNextRound = true;
+            // ³­ÀÌµµ Áõ°¡ Ã³¸®(½ºÆù½Ã°£ »¡¶óÁö´Â°Å,½ºÇÇµå ´Ã¾î³²)
+            spawnInterval = Mathf.Max(2f, spawnInterval - 0.05f); // ½ºÆùÀÌ »¡¶óÁü       
+
+            if (surviveDays % 5 == 0) //5ÀÏÂ÷¿¡ ÇÑ¹ø¾¿
+            {
+                UpgradeSpawnedBugs();
+            }
+
+            isWaitingNextRound = true;
         }
 
 
         CheckSpawnedBugs();
+        //OxygenLooterWarning(); »ê¼Ò¹ú·¹ ÃâÇö °æ°í ÃßÈÄ Ãß°¡
     }
     private void SpawnBug()
     {
@@ -94,7 +106,7 @@ public class RoundManager : MonoBehaviour
             return;
         }
 
-        int index = 0;
+        int index;
         if (surviveDays < 1)
             index = 0;
         else if (surviveDays < 3)
@@ -110,7 +122,15 @@ public class RoundManager : MonoBehaviour
         
         BugScriptObject pestData = bugCtrl.entity.bugData;
         bugCtrl.Setup(pestData, plantTransform);
-        
+
+        // ³­ÀÌµµ¿¡ µû¶ó ´É·ÂÄ¡ º¸Á¤
+        int levelMulti = surviveDays / 5;
+        float hpMulti = 1f + (levelMulti * 0.1f);    // surviveDays ´ç Ã¼·Â 10% Áõ°¡
+        float speedMulti = 1f + (levelMulti * 0.05f); // surviveDays ´ç ¼Óµµ 5% Áõ°¡
+
+        bugCtrl.entity.SetHP(pestData.maxHP * hpMulti);
+        bugCtrl.entity.SetSpeed(pestData.speed * speedMulti);
+
         spawnedBugs.Add(bugCtrl);
     }
 
@@ -135,8 +155,8 @@ public class RoundManager : MonoBehaviour
                 if (spawnedBugs[i] != null)
                 {
                     var bug = spawnedBugs[i];
-                    spawnedBugs.RemoveAt(i); // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-                    bug.Die();               // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+                    spawnedBugs.RemoveAt(i); // ¸®½ºÆ®¿¡¼­ Á¦°Å
+                    bug.Die();               // Á×À½ Ã³¸®
                 }
             }
 
@@ -144,7 +164,6 @@ public class RoundManager : MonoBehaviour
             totalBugStack = 0;
             surviveDays--;
             isWaitingNextRound = true;
-            GameManager.Instance.saveLoadManager.SetSaveData("SurviveDays", surviveDays);  //ë°ì´í„° ì €ì¥
             GameManager.Instance.uiManager.PlantDestroyClearUI();
         }
 
@@ -155,8 +174,8 @@ public class RoundManager : MonoBehaviour
     {
         if (pestType == PestType.OxygenLooter)
         {
-            float spawnX = plantShelfTransform.position.x - 1f; // ï¿½ï¿½ï¿½İºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-            float spawnY = plantShelfTransform.position.y + Random.Range(-2f, 2f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+            float spawnX = plantShelfTransform.position.x - 1f; // ¼±¹İº¸´Ù Á¶±İ ´õ ¿ŞÂÊ
+            float spawnY = plantShelfTransform.position.y + Random.Range(-2f, 2f); // ¼±¹İÀ» ±âÁØÀ¸·Î À§¾Æ·¡·Î ·£´ı À§Ä¡
             return new Vector3(spawnX, spawnY, 0f);
         }
 
@@ -168,9 +187,9 @@ public class RoundManager : MonoBehaviour
         float x = Random.Range(bottomLeft.x, topRight.x);
         float y;
 
-        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Æ·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (50% È®ï¿½ï¿½)
+        // À§ÂÊ ¶Ç´Â ¾Æ·¡ÂÊ¿¡¼­ »ı¼º (50% È®·ü)
         bool spawnAbove = Random.value > 0.5f;
-        float offset = 1f; // Ä«ï¿½Ş¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ó¸¶³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        float offset = 1f; // Ä«¸Ş¶ó ¹ÛÀ¸·Î ¾ó¸¶³ª ¶³¾îÁ®¼­ »ı¼ºÇÒÁö
 
         if (spawnAbove)
         {
@@ -189,15 +208,11 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.uiManager.DisplayDays(surviveDays);
     }
 
-    private void GetRoundTime()
-    {
-        GameManager.Instance.uiManager.DisplayWaveTime(difficultyIncreaseInterval - dayTimer);
-    }
 
-    private void GetBugStack()
-    {
-        GameManager.Instance.uiManager.DisPlayBugStack(totalBugStack,pollutionLv);
-    }
+    //private void GetBugStack()
+    //{
+    //    GameManager.Instance.uiManager.DisPlayBugStack(totalBugStack,pollutionLv);
+    //}
 
    
     public void StartNextRound()
@@ -206,7 +221,47 @@ public class RoundManager : MonoBehaviour
         dayTimer = 0;
         spawnTimer = 0f;
     }
+
+    private void OxygenLooterWarning()
+    {
+        // »ê¼Ò °­Å»ÀÚ°¡ ÇÏ³ª¶óµµ Á¸ÀçÇÏ¸é true
+        bool hasOxygenLooter = false;
+
+        foreach (var bug in spawnedBugs)
+        {
+            if (bug == null || bug.entity == null) continue;
+
+            if (bug.entity.bugData.pestType == PestType.OxygenLooter)
+            {
+                hasOxygenLooter = true;
+                break;
+            }
+        }
+
+        // UIManager¿¡ OxygenLooter °æ°í º¸¿©ÁÖ´Â ÇÔ¼ö È£Ãâ (¾ÆÀÌÄÜÀº ³ªÁß¿¡ ¿¬°á)
+        //GameManager.Instance.uiManager.
+    }
+
+
+    private void UpgradeSpawnedBugs()
+    {
+        float hpIncreaseRate = 0.1f;   // Ã¼·Â 10% Áõ°¡
+        float speedIncreaseRate = 0.05f; // ¼Óµµ 5% Áõ°¡
+
+        foreach (var bug in spawnedBugs)
+        {
+            if (bug == null) continue;
+
+            BugEntity entity = bug.entity;
+            if (entity == null) continue;
+
+            // ÇöÀç HP ´ëºñ Áõ°¡ (±âº» maxHP ´ëºñ Áõ°¡µµ °¡´É)
+            float newHP = entity.GetHP() * (1 + hpIncreaseRate);
+            entity.SetHP(newHP);
+
+            float newSpeed = entity.GetSpeed() * (1 + speedIncreaseRate);
+            entity.SetSpeed(newSpeed);
+        }
+    }
+
 }
-//surviveDays
-// surviveDays = GameManager.Instance.GetSaveData().surviveDays;   //ë°ì´í„° ë¡œë“œ
-//GameManager.Instance.saveLoadManager.SetSaveData("SurviveDays", surviveDays);  //ë°ì´í„° ì €ì¥

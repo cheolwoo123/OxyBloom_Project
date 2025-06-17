@@ -39,7 +39,7 @@ public class Upgrade : MonoBehaviour
             GameManager.Instance.StartCoroutine("NotEnoughOxyzen",atkCost);
             return;
         }
-        GameManager.Instance.player.stat.ATKLevelUp();
+        GameManager.Instance.player.ATKLevelUp();
         GameManager.Instance.SetOxygen(-atkCost);
         UpdateUpgradeUI();
     }
@@ -51,7 +51,7 @@ public class Upgrade : MonoBehaviour
             GameManager.Instance.StartCoroutine("NotEnoughOxyzen", pmCost);
             return;
         }
-        GameManager.Instance.player.stat.PMLevelUp();
+        GameManager.Instance.player.PMLevelUp();
         GameManager.Instance.SetOxygen(-pmCost);
         UpdateUpgradeUI();
     }
