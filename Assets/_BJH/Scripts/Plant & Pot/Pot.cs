@@ -55,7 +55,7 @@ public class Pot : MonoBehaviour
 
     public void AutomaticGrowth()
     {
-        if (plant == null) return;
+        if (plant.plantData == null) return;
 
         plant.CurGrow += potData.growthSpeedBonus;
 

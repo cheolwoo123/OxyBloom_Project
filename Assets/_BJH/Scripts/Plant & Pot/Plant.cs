@@ -60,6 +60,7 @@ public class Plant : MonoBehaviour
             if (GrowthStage == 3)
             {
                 PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+                GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
                 GameManager.Instance.uiManager.DisplaySheifButton();
             }
             else
@@ -72,11 +73,9 @@ public class Plant : MonoBehaviour
     public void PutPlantOnSheif()
     {
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
-        GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
-        RemovePlant();
         GameManager.Instance.uiManager.DisplaySheifButton();
-        GameManager.Instance.uiManager.DisplayPlantButton();
+        RemovePlant();
     }
 
     public void RemovePlant()
@@ -87,6 +86,9 @@ public class Plant : MonoBehaviour
         CurGrow = 0;
         GrowthStage = 0;
 
-        GameManager.Instance.uiManager.DisplayPlantButton();
+        if (GameManager.Instance.plantManager.plantShelf.plantDatas.Count >= 3 )
+        {
+            GameManager.Instance.uiManager.DisplayPlantButton();
+        }
     }
 }

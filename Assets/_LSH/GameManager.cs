@@ -33,7 +33,7 @@ public class GameManager : SingleTon<GameManager>
         if (i > Oxygen)
         {
             notEnoughOxyzen.gameObject.SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             notEnoughOxyzen.gameObject.SetActive(false);
         }
     } 
