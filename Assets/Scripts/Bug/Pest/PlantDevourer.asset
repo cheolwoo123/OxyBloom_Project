@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantDevourer
   m_EditorClassIdentifier: 
   pestType: 2
-  maxHP: 30
+  maxHP: 250
   bugStack: 2
   growUp: 3
   speed: 0.7

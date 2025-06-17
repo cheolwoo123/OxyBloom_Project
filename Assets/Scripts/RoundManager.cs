@@ -55,7 +55,7 @@ public class RoundManager : MonoBehaviour
         }
 
         GetSurviveDays();
-        //GetBugStack();
+        GetBugStack();
 
         if (isWaitingNextRound)
         {
