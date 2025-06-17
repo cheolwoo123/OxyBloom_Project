@@ -40,7 +40,6 @@ public class RoundManager : MonoBehaviour
         }
 
         GetSurviveDays();
-        GetRoundTime();
         GetBugStack();
 
         if (isWaitingNextRound)
@@ -180,10 +179,6 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.uiManager.DisplayDays(surviveDays);
     }
 
-    private void GetRoundTime()
-    {
-        GameManager.Instance.uiManager.DisplayWaveTime(difficultyIncreaseInterval - dayTimer);
-    }
 
     private void GetBugStack()
     {
@@ -196,5 +191,11 @@ public class RoundManager : MonoBehaviour
         isWaitingNextRound = false;
         dayTimer = 0;
         spawnTimer = 0f;
+    }
+
+    private void OxygenLooterWarning()
+    {
+        //산소 강탈자가 있으면 왼쪽아이콘에 산소 벌레 떴다는 경고실행
+        //얘를 어디다 놔야 잘놨다는 소리를 들을까
     }
 }
