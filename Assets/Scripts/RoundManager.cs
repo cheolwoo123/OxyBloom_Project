@@ -5,6 +5,7 @@ public class RoundManager : MonoBehaviour
 {
     public GameObject[] bugPrefabs;            // 버그 프리팹 
     public Transform plantTransform;        // 목표 식물
+    public Transform plantShelfTransform; //선반 위치
 
     private Plant currentPlant;
 
@@ -75,7 +76,7 @@ public class RoundManager : MonoBehaviour
     }
     private void SpawnBug()
     {
-        
+
         if (currentPlant == null || currentPlant.plantData == null)
         {
             return;
@@ -89,7 +90,10 @@ public class RoundManager : MonoBehaviour
         else
             index = Random.Range(0, bugPrefabs.Length);
 
-        GameObject bugObj = Instantiate(bugPrefabs[index], GetRandomSpawnPosition(), Quaternion.identity);
+        PestType pestType = bugPrefabs[index].GetComponent<BugController>().entity.bugData.pestType;
+        Vector3 spawnPos = GetRandomSpawnPosition(pestType);
+
+        GameObject bugObj = Instantiate(bugPrefabs[index], spawnPos, Quaternion.identity);
         BugController bugCtrl = bugObj.GetComponent<BugController>();
         
         BugScriptObject pestData = bugCtrl.entity.bugData;
@@ -134,8 +138,15 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    Vector3 GetRandomSpawnPosition()
+    Vector3 GetRandomSpawnPosition(PestType pestType)
     {
+        if (pestType == PestType.OxygenLooter)
+        {
+            float spawnX = plantShelfTransform.position.x - 1f; // 선반보다 조금 더 왼쪽
+            float spawnY = plantShelfTransform.position.y + Random.Range(-2f, 2f); // 선반을 기준으로 위아래로 랜덤 위치
+            return new Vector3(spawnX, spawnY, 0f);
+        }
+
         Camera cam = Camera.main;
 
         Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
