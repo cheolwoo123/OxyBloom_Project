@@ -15,7 +15,6 @@ public class Plant : MonoBehaviour
     public void Start()
     {
         LoadPlantData();
-        NextGrowthSprite();
     }
 
     public void Seeding(PlantData Data)
@@ -110,6 +109,8 @@ public class Plant : MonoBehaviour
         plantData = GameManager.Instance.GetSaveData().plant;  // 데이터
         CurGrow = GameManager.Instance.GetSaveData().curGrow;  // 성장치
         GrowthStage = GameManager.Instance.GetSaveData().growthStage;   // 성장 단계
+        
+        Debug.Log(plantData + " / " + CurGrow + " / " + GrowthStage);
     }
 
 

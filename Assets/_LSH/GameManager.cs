@@ -32,6 +32,7 @@ public class GameManager : SingleTon<GameManager>
     public void SetOxygen(int i)  //산소 값, UI 초기화, 
     {
         Oxygen = Oxygen + i;
+        saveLoadManager.SetSaveData("Oxygen", Oxygen);
         uiManager.Oxygen(Oxygen);
     }
     
@@ -51,7 +52,6 @@ public class GameManager : SingleTon<GameManager>
         {
             //StartCoroutine(NotEnoughOxyzen(10000));
             saveLoadManager.SetSaveData("Oxygen", 10000);
-            saveLoadManager.Load();
             Oxygen = 10000;
             uiManager.Oxygen(Oxygen);
         }

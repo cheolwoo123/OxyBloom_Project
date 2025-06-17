@@ -10,15 +10,12 @@ using UnityEngine.UI;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    public Button SaveButton;
-
     private string _filePath;
-    private SaveData _saveData = new SaveData();  //데이터 저장용 클래스
+    private SaveData _saveData;  //데이터 저장용 클래스
 
     private void OnEnable()
     {
         _filePath = Path.Combine(Application.persistentDataPath, "SaveData.json");
-        SaveButton.onClick.AddListener(() => Save(_saveData));  //저장 버튼 클릭시 저장  
     }
 
     private void Start()
@@ -133,9 +130,9 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
     
-    public void Save(SaveData data)  //데이터를 json으로 저장
+    public void Save()  //데이터를 json으로 저장
     {
-        string json = JsonUtility.ToJson(data, true);
+        string json = JsonUtility.ToJson(_saveData, true);
         File.WriteAllText(_filePath, json);
         Debug.Log("저장 완료: " + _filePath);
     }
