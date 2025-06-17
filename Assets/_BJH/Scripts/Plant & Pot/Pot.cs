@@ -59,7 +59,7 @@ public class Pot : MonoBehaviour
 
     public void AutomaticGrowth()
     {
-        if (plant == null) return;
+        if (plant.plantData == null) return;
 
         plant.CurGrow += potData.growthSpeedBonus;
 
@@ -92,6 +92,7 @@ public class Pot : MonoBehaviour
         plant.Seeding(plant.plantData);
 
         Debug.Log($"{plant.plantData.Name}/{plant.plantData.Rarity}을 심었습니다!");
+        GameManager.Instance.roundManager.StartNextRound();
         GameManager.Instance.uiManager.DisplayPlantButton();
     }
 

@@ -10,8 +10,11 @@ public class GameManager : SingleTon<GameManager>
     public Canvas notEnoughOxyzen;
     public Player player;
     public SaveLoadManager saveLoadManager;
-    
     private SaveData saveData;
+
+    public RoundManager roundManager;
+    
+
 
     private void OnEnable()
     {
@@ -42,7 +45,7 @@ public class GameManager : SingleTon<GameManager>
         if (i > Oxygen)
         {
             notEnoughOxyzen.gameObject.SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             notEnoughOxyzen.gameObject.SetActive(false);
         }
     } 
