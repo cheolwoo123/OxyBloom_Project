@@ -83,12 +83,8 @@ public class Plant : MonoBehaviour
         plantData = null;
         CurGrow = 0;
         GrowthStage = 0;
-
-        if (GameManager.Instance.plantManager.plantShelf.plantDatas.Length <= 3 )
-        {
-            //Debug.Log("씨앗 심기 버튼생성");
-            GameManager.Instance.uiManager.DisplayPlantButton();
-        }
+        
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 }
 //plantData
