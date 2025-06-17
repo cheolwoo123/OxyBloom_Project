@@ -3,10 +3,12 @@
 public class Player : MonoBehaviour
 {
     public PlayerStat stat;
-    
-    public void Start()
+
+
+    public void Awake()
     {
-        LoadPlayerData();
+        stat = new PlayerStat(); 
+        stat.InitStat(9, 9);
     }
 
     private void SavePlayerData()
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance.GetSaveData().playerStat == null)
         {
-            stat.InitStat(9, 9);  //초기화
             return;
         }
 

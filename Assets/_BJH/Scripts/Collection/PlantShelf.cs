@@ -12,8 +12,9 @@ public class PlantShelf : MonoBehaviour
 
     public void Start()
     {
-        UpdateShelf();
         LoadPlantData();
+        UpdateShelf();
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void Update()
