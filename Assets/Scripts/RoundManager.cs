@@ -22,7 +22,10 @@ public class RoundManager : MonoBehaviour
     private float roundWaitTimer = 0f;
     public float roundWaitDuration = 10f; // 라운드 넘어갈 때 대기 시간
 
-    public int totalBug = 0;
+    public int totalBugStack = 0;
+    public int pollutionLv = 10;
+
+    private bool isProcessingBugCheck = false;
 
     private void Update()
     {
@@ -38,6 +41,7 @@ public class RoundManager : MonoBehaviour
 
         GetSurviveDays();
         GetRoundTime();
+        GetBugStack();
 
         if (isWaitingNextRound)
         {
@@ -104,38 +108,38 @@ public class RoundManager : MonoBehaviour
 
     private void CheckSpawnedBugs()
     {
-        totalBug = 0;
+        isProcessingBugCheck = true;
+
+        totalBugStack = 0;
         foreach (var bug in spawnedBugs)
         {
-            if(bug == null) continue;
-
-            totalBug += bug.entity.bugData.bugStack;
+            if (bug == null) continue;
+            totalBugStack += bug.entity.bugData.bugStack;
         }
 
-        if(totalBug >= 10 && GameManager.Instance.plantManager.pot.GetPlant().GrowthStage != 3) //총 스택이 10이고 성장단계가 3이 아니면 실행
+        if (totalBugStack >= pollutionLv && GameManager.Instance.plantManager.pot.GetPlant().GrowthStage != 3)
         {
-            if(currentPlant !=  null)
-            {
-                currentPlant.RemovePlant(); //식물 파괴
-            }
+            if (currentPlant != null)
+                currentPlant.RemovePlant();
 
-            foreach (var bug in spawnedBugs)
+            for (int i = spawnedBugs.Count - 1; i >= 0; i--)
             {
-                if(bug != null)
+                if (spawnedBugs[i] != null)
                 {
-                    bug.Die();
+                    var bug = spawnedBugs[i];
+                    spawnedBugs.RemoveAt(i); // 리스트에서 제거
+                    bug.Die();               // 죽음 처리
                 }
             }
 
-            spawnedBugs.Clear(); //생성된 벌레 리스트 초기화
+            spawnedBugs.Clear();
+            totalBugStack = 0;
             surviveDays--;
-            //roundWaitTimer = 0;
-            //difficultyIncreaseInterval = 10f;
-            //GetRoundTime();
-            //GetSurviveDays();
             isWaitingNextRound = true;
-            GameManager.Instance.uiManager.DisplayPlantButton();
+            GameManager.Instance.uiManager.PlantDestroyClearUI();
         }
+
+        isProcessingBugCheck = false;
     }
 
     Vector3 GetRandomSpawnPosition(PestType pestType)
@@ -181,14 +185,12 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.uiManager.DisplayWaveTime(difficultyIncreaseInterval - dayTimer);
     }
 
-    public void RemoveBug(BugController bug)
+    private void GetBugStack()
     {
-        if(spawnedBugs.Contains(bug))
-        {
-            spawnedBugs.Remove(bug);
-        }
+        GameManager.Instance.uiManager.DisPlayBugStack(totalBugStack,pollutionLv);
     }
 
+   
     public void StartNextRound()
     {
         isWaitingNextRound = false;
