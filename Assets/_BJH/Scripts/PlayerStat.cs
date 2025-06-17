@@ -1,10 +1,7 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerStat
 {
-
     public float plantMastery { get; private set; }
     public float attack { get; private set; }
     public int pmLevel { get; private set; }
@@ -14,8 +11,8 @@ public class PlayerStat
     {
         plantMastery = pm;
         attack = atk;
-        PMLevelUp();
-        ATKLevelUp();
+        pmLevel = 1;
+        atkLevel = 1;
     }
 
     public void PMLevelUp()
@@ -27,7 +24,7 @@ public class PlayerStat
     {
         atkLevel++;
     }
-    
+
     public bool UpgradePot(PotInstance pot)
     {
 

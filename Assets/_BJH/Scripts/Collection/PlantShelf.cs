@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlantShelf : MonoBehaviour
 {
+    [Header("진열된 식물 데이터")]
     public PlantData[] plantDatas = new PlantData[4];
 
+    [Header("진열된 식물 스프라이트")]
     public SpriteRenderer[] ShelfSpr = new SpriteRenderer[4];
 
     private float emissionTimer = 0f; // 산소 생산 타이머
 
     public void Start()
     {
+        LoadPlantData();
         UpdateShelf();
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void Update()
@@ -40,16 +43,21 @@ public class PlantShelf : MonoBehaviour
 
     public void AddToShelf(PlantData data)
     {
+        plantDatas[GetEmptyIndex()] = data;
+        UpdateShelf();
+        SavePlantData();
+    }
+
+    public int GetEmptyIndex() // 진열장 빈 공간 찾기
+    {
         for (int i = 0; i < plantDatas.Length; i++)
         {
             if (plantDatas[i] == null)
             {
-                plantDatas[i] = data;
-                break;
+                return i;
             }
         }
-
-        UpdateShelf();
+        return -1;
     }
 
     private void UpdateShelf()
@@ -73,19 +81,18 @@ public class PlantShelf : MonoBehaviour
 
         plantDatas[index] = null;
         UpdateShelf();
-
+        SavePlantData();
     }
 
-    //private void LoadPlantData()
-    //{
-    //    if (GameManager.Instance.GetSaveData().plantDatas != null)
-    //    {
-    //        plantDatas = GameManager.Instance.GetSaveData().plantDatas;
-    //    }
-    //}
+    private void LoadPlantData()
+    {
+        if (GameManager.Instance.GetSaveData().plantDatas == null) return;
 
-    //public void SavePlantData()
-    //{
-    //    GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantDatas", plantDatas);
-    //}
+        plantDatas = GameManager.Instance.GetSaveData().plantDatas;
+    }
+
+    public void SavePlantData()
+    {
+        GameManager.Instance.saveLoadManager.SetSaveData<PlantData[]>("PlantDatas", plantDatas);
+    }
 }
