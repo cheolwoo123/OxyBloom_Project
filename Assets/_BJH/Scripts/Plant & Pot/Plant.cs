@@ -88,7 +88,6 @@ public class Plant : MonoBehaviour
         }
     }
 
-
     private void PlantSpriteChange()
     {
         PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
@@ -115,6 +114,8 @@ public class Plant : MonoBehaviour
         GrowthStage = 0;
 
         GameManager.Instance.saveLoadManager.SetSaveData("Plant", plantData);  // 데이터
+        GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  // 성장치
+        GameManager.Instance.saveLoadManager.SetSaveData("GrowthStage", GrowthStage);  // 성장 단계
 
         GameManager.Instance.uiManager.DisplayPlantButton();
     }
@@ -131,6 +132,7 @@ public class Plant : MonoBehaviour
         CurGrow = GameManager.Instance.GetSaveData().curGrow;  // 성장치
         GrowthStage = GameManager.Instance.GetSaveData().growthStage;   // 성장 단계
 
+        PlantButtonControl();
         PlantSpriteChange();
     }
 }
