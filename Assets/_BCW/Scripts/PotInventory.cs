@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -6,7 +6,7 @@ public class PotInventory : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-    [SerializeField]private List<PotInstance> potInventory = new();
+    [SerializeField] private List<PotInstance> potInventory = new();
 
     public PlayerStat player = new();    
 
@@ -15,6 +15,7 @@ public class PotInventory : MonoBehaviour
     private void Start()
     {
         potInventory = GameManager.Instance.GetSaveData().potInventory;
+        RefreshUI();
     }
     
     public void RefreshUI()

@@ -15,6 +15,8 @@ public class Plant : MonoBehaviour
     public void Start()
     {
         LoadPlantData();
+        PlantSpriteChange();
+        PlantButtonControl();
     }
 
     public void Seeding(PlantData Data)
@@ -33,7 +35,7 @@ public class Plant : MonoBehaviour
         Debug.Log($"성장 {CurGrow} + {amount}");
         CurGrow += amount;
         GameManager.Instance.plantManager.growthGauge.UpdateGauge();
-        NextGrowthSprite();
+        NextGrowthStage();
 
         GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  // 성장치
     }
@@ -49,7 +51,7 @@ public class Plant : MonoBehaviour
         GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  // 성장치
     }
 
-    private void NextGrowthSprite() // 식물 외형 변화
+    public void NextGrowthStage()
     {
         if (PlantSpr.enabled != true) PlantSpr.enabled = true;
 
@@ -57,6 +59,7 @@ public class Plant : MonoBehaviour
         {
             CurGrow = 0;
             GrowthStage++;
+            PlantButtonControl();
             animator.SetTrigger("Grow");
 
             GameManager.Instance.saveLoadManager.SetSaveData("CurGrow", CurGrow);  // 성장치
@@ -64,19 +67,39 @@ public class Plant : MonoBehaviour
 
             if (GrowthStage == 3)
             {
-                PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+                PlantSpriteChange();
                 GameManager.Instance.uiManager.colletionUI.GetComponent<Collection>().AddColletion(plantData);
-                GameManager.Instance.uiManager.DisplaySheifButton();
             }
             else
             {
-                PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+                PlantSpriteChange();
             }
         }
     }
 
+    public void PlantButtonControl()
+    {
+        if (plantData == null)
+        {
+            GameManager.Instance.uiManager.DisplayPlantButton();
+            return;
+        }
+        if (GrowthStage == 3)
+        {
+            GameManager.Instance.uiManager.DisplaySheifButton();
+        }
+    }
+
+
+    private void PlantSpriteChange()
+    {
+        PlantSpr.sprite = plantData.GrowthSprite[GrowthStage];
+    }
+
     public void PutPlantOnSheif()
     {
+        Debug.Log("식물을 선반에 올립니다.");
+
         if (GameManager.Instance.plantManager.plantShelf.GetEmptyIndex() == -1) return; //선반에 식물이 꽉 찼을 때
 
         GameManager.Instance.plantManager.plantShelf.AddToShelf(plantData);
