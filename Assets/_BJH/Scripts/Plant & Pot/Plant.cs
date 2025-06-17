@@ -15,10 +15,7 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
-        if (plantData == null)
-        {
-            GameManager.Instance.uiManager.DisplayPlantButton();
-        }
+        GameManager.Instance.uiManager.DisplayPlantButton();
     }
 
     public void Seeding(PlantData Data)
