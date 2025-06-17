@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
   m_Name: CommonPot_5
   m_EditorClassIdentifier: 
-  potName: Common
+  potName: "\uD3C9\uBC94\uD55C \uD654\uBD84"
   potIcon: {fileID: 21300000, guid: 978f770d249d8af44af5b97a2e3bf0b9, type: 3}
-  description: 
+  description: "\uADF8\uB098\uB9C8 \uC81C\uC77C \uB098\uC740 \uD3C9\uBC94\uD55C \uD654\uBD84"
   rarity: 1
   CommonChance: 84
   RareChance: 10
