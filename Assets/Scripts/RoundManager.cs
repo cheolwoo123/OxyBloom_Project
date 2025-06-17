@@ -130,6 +130,7 @@ public class RoundManager : MonoBehaviour
             //GetRoundTime();
             //GetSurviveDays();
             isWaitingNextRound = true;
+            GameManager.Instance.uiManager.DisplayPlantButton();
         }
     }
 
