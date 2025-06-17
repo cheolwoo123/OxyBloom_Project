@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScenes.unity
     guid: 88e5e5ca3fb2f67409b1c90427f3d6c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/_LSH/Scene/LSHTest4.unity
     guid: 887e8805b5a7636469ccc70600ca5f62
   m_configObjects: {}
