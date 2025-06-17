@@ -1,20 +1,11 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public class PlayerStat
 {
-    public float plantMastery { get; private set; }
-    public float attack { get; private set; }
-    public int pmLevel { get; private set; }
-    public int atkLevel { get; private set; }
-    
-    public void InitStat(int pm, int atk)
-    {
-        plantMastery = pm;
-        attack = atk;
-        pmLevel = 1;
-        atkLevel = 1;
-    }
-
+    public int pmLevel = 1;
+    public int atkLevel = 1;
+  
     public void PMLevelUp()
     {
         pmLevel++;

@@ -33,7 +33,6 @@ public class GameManager : SingleTon<GameManager>
     {
         Oxygen = Oxygen + i;
         uiManager.Oxygen(Oxygen);
-        saveLoadManager.SetSaveData("Oxygen", Oxygen);
     }
     
     private IEnumerator NotEnoughOxyzen(int i)  //산소 부족 알림 띄우기

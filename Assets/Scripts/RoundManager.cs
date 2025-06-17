@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -48,7 +48,7 @@ public class RoundManager : MonoBehaviour
 
         GetSurviveDays();
         GetRoundTime();
-        GetBugStack();
+        //GetBugStack();
 
         if (isWaitingNextRound)
         {

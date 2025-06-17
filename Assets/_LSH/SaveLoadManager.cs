@@ -1,20 +1,24 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 // potData = GameManager.Instance.GetSaveData().potData;  //데이터 로드
 //GameManager.Instance.saveLoadManager.SetSaveData("PotData", potData);  //데이터 저장
 
 public class SaveLoadManager : MonoBehaviour
 {
+    public Button SaveButton;
+
     private string _filePath;
     private SaveData _saveData = new SaveData();  //데이터 저장용 클래스
 
     private void OnEnable()
     {
         _filePath = Path.Combine(Application.persistentDataPath, "SaveData.json");
+        SaveButton.onClick.AddListener(() => Save(_saveData));  //저장 버튼 클릭시 저장  
     }
 
     private void Start()
@@ -127,7 +131,6 @@ public class SaveLoadManager : MonoBehaviour
                 }
                 break;
         }
-        Save(_saveData);
     }
     
     public void Save(SaveData data)  //데이터를 json으로 저장

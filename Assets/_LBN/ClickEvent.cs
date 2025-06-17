@@ -39,7 +39,9 @@ public class ClickEvent : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Flower"))
             {
                 PlayerStat stat = GameManager.Instance.player.stat;
-                float power = stat.plantMastery * (1 + (stat.pmLevel * 0.2f));
+                float power = 10 + (stat.pmLevel * 0.2f);
+
+                Debug.Log($"PM Level: {stat.pmLevel}, Power: {power}");
 
                 hit.collider.GetComponent<Plant>().GrowPlant(power);
             }
@@ -50,7 +52,7 @@ public class ClickEvent : MonoBehaviour
                 if (bug != null)
                 {
                     PlayerStat stat = GameManager.Instance.player.stat;
-                    float damage = stat.attack;
+                    float damage = stat.atkLevel;
                     bug.TakeDamage((int)damage);
                 }
             }

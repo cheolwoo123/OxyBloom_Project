@@ -10,7 +10,7 @@ public class Collection : MonoBehaviour
 
     private void Start()
     {
-        LoadCollectionData();
+        //LoadCollectionData();
     }
 
     public void AddColletion(PlantData data)
@@ -36,24 +36,29 @@ public class Collection : MonoBehaviour
         GameManager.Instance.saveLoadManager.SetSaveData("PlantData", plantData);
     }
 
-    public void LoadCollectionData()
-    {
-        if (GameManager.Instance.GetSaveData().plantData != null)
-        {
-            plantData = GameManager.Instance.GetSaveData().plantData;
+    //public void LoadCollectionData()
+    //{
+    //    if (GameManager.Instance.GetSaveData().plantData != null)
+    //    {
+    //        plantData = GameManager.Instance.GetSaveData().plantData;
 
-            if (SlotPrefab != null)
-            {
-                Instantiate(SlotPrefab, Slots.transform);
 
-                GameObject obj = SlotPrefab;
-                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
-                collectionSlot.SetSlot(data);
-            }
-        }
-        else
-        {
-            plantData = new List<PlantData>();
-        }
-    }
+    //        for (int i = 0; i < plantData.Count; i++)
+    //        {
+    //            if (SlotPrefab != null)
+    //            {
+    //                Instantiate(SlotPrefab, Slots.transform);
+
+    //                GameObject obj = SlotPrefab;
+    //                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
+    //                collectionSlot.SetSlot(data);
+    //            }
+    //        }
+
+    //    }
+    //    else
+    //    {
+    //        plantData = new List<PlantData>();
+    //    }
+    //}
 }

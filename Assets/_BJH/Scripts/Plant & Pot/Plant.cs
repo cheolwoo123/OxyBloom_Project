@@ -14,7 +14,8 @@ public class Plant : MonoBehaviour
 
     public void Start()
     {
-        //LoadPlantData();
+        LoadPlantData();
+        NextGrowthSprite();
     }
 
     public void Seeding(PlantData Data)

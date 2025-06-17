@@ -39,7 +39,6 @@ public class Pot : MonoBehaviour
     public void Start()
     {
         LoadPotData();
-        ChangeSprite();
     }
 
     public void Update()
@@ -70,7 +69,9 @@ public class Pot : MonoBehaviour
     public void plantingRandomSeed() // 무작위 식물 심기 (버튼 연결)
     {
         if (plant.plantData != null) return;
-        
+
+        Debug.Log("무작위 식물 심기"); 
+
         PlantRarity targetRarity = GetRandomRarity();
 
         List<PlantData> allPlants = GameManager.Instance.plantManager.PlantDatas;
@@ -129,5 +130,6 @@ public class Pot : MonoBehaviour
         if (GameManager.Instance.GetSaveData().potData == null) return;
 
         potData = GameManager.Instance.GetSaveData().potData;
+        ChangeSprite();
     }
 }
