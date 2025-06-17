@@ -4,16 +4,22 @@ public class Player : MonoBehaviour
 {
     public PlayerStat stat;
 
-
-    public void Awake()
+    public void Start()
     {
-        stat = new PlayerStat(); 
-        stat.InitStat(9, 9);
+        stat = new PlayerStat();
+        LoadPlayerData();
     }
 
-    private void SavePlayerData()
+    public void PMLevelUp()
     {
-        GameManager.Instance.saveLoadManager.SetSaveData("PlayerStat", stat);  //데이터 저장
+        stat.PMLevelUp(); 
+        Debug.Log($"식물 숙련도 레벨업! 현재 숙련도 레벨: {stat.pmLevel}");
+    }
+
+    public void ATKLevelUp()
+    {
+        stat.ATKLevelUp();
+        Debug.Log($"공격력 레벨업! 현재 공격력 레벨: {stat.atkLevel}");   
     }
 
     public void LoadPlayerData()
@@ -24,5 +30,7 @@ public class Player : MonoBehaviour
         }
 
         stat = GameManager.Instance.GetSaveData().playerStat; 
+
+        Debug.Log($"플레이어 데이터 로드 완료: PM Level: {stat.pmLevel}, ATK Level: {stat.atkLevel}");
     }
 }
