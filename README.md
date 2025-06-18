@@ -88,7 +88,7 @@
 | **개발 플랫폼** | Unity 2022.3.18f1 (LTS)           |
 | **개발 언어**   | C#                               |
 | **버전 관리**   | Git / GitHub Desktop             |
-| **협업 도구**   | Discord, Draw.io, Figma          |
+| **협업 도구**   | Discord, Figma          |
 
 ---
 
