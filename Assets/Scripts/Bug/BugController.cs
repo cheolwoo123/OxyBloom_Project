@@ -126,16 +126,15 @@ public class BugController : MonoBehaviour
             {
                 case PestType.PlantDegrowth:
                     // 식물 성장 억제
-                    plant.DegrowPlant(entity.bugData.growUp);
-                    Debug.Log("성장 억제");
+                    plant.DegrowPlant(plant.CurGrow * entity.bugData.degrowPercent);
                     break;
                 case PestType.PlantDestruct:
-                // 식물 데미지(식물의 체력이 0이면 파괴)
-                    plant.DegrowPlant(entity.bugData.growUp);
+                    plant.DegrowPlant(plant.CurGrow * entity.bugData.degrowPercent);
                     break;
                 case PestType.OxygenLooter:
                 // 산소 감소
-                    GameManager.Instance.SetOxygen(-entity.bugData.oxygenAmount);
+                    float amount = -(float)GameManager.Instance.Oxygen * entity.bugData.oxygenAmountPercent;
+                    GameManager.Instance.SetOxygen((int)amount);
                     break;
             }
         
@@ -172,6 +171,8 @@ public class BugController : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
+        if (entity.IsDead) yield break;
+
         bugAnimator.enabled = false;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);

@@ -15,6 +15,6 @@ MonoBehaviour:
   pestType: 2
   maxHP: 250
   bugStack: 2
-  growUp: 3
+  degrowPercent: 0.15
   speed: 0.7
-  oxygenAmount: 0
+  oxygenAmountPercent: 0

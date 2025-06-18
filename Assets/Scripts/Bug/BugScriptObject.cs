@@ -20,7 +20,7 @@ public class BugScriptObject : ScriptableObject
     [Header("Stat")]
     public float maxHP = 3;
     public int bugStack = 1;
-    public int growUp = 10;
+    public float degrowPercent = 0.1f;
     public float speed = 1;
-    public int oxygenAmount;
+    public float oxygenAmountPercent;
 }
