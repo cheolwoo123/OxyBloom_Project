@@ -22,8 +22,7 @@ public class BugController : MonoBehaviour
     {
         entity = GetComponent<BugEntity>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
-         originalColor = spriteRenderer.color;
+        originalColor = spriteRenderer.color;
     }
 
     public void Setup(BugScriptObject bugData, Transform target)
@@ -173,9 +172,10 @@ public class BugController : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
+        bugAnimator.enabled = false;
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = originalColor;
-
+        bugAnimator.enabled = true;
     }
 }
