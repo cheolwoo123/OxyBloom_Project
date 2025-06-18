@@ -1,5 +1,4 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -85,7 +84,7 @@ public class UIManager : MonoBehaviour
 
     public void Oxygen(int oxygen)
     {
-        oxygenText.text = "- " + oxygen;
+        oxygenText.text = $"{oxygen}";
     }
 
     public void DisplaySheifButton()
