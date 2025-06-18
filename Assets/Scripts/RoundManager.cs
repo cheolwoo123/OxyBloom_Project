@@ -117,7 +117,7 @@ public class RoundManager : MonoBehaviour
         Debug.Log(index+"-인덱스 번호");
         PestType pestType = bugPrefabs[index].GetComponent<BugController>().entity.bugData.pestType;
         Vector3 spawnPos = GetRandomSpawnPosition(pestType);
-
+        
         GameObject bugObj = Instantiate(bugPrefabs[index], spawnPos, Quaternion.identity);
         BugController bugCtrl = bugObj.GetComponent<BugController>();
         
@@ -137,6 +137,8 @@ public class RoundManager : MonoBehaviour
 
     private void CheckSpawnedBugs()
     {
+        OxygenLooterWarning();
+
         isProcessingBugCheck = true;
 
         totalBugStack = 0;
@@ -240,7 +242,7 @@ public class RoundManager : MonoBehaviour
         }
 
         // UIManager에 OxygenLooter 경고 보여주는 함수 호출 (아이콘은 나중에 연결)
-        //GameManager.Instance.uiManager.
+        GameManager.Instance.uiManager.BugSpawnWarning(hasOxygenLooter);
     }
 
 

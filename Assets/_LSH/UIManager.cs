@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Image")]
     public Image bugStackBar;
+    public Image OxyBugWarning;
+
 
     private void OnEnable()
     {
@@ -104,6 +106,11 @@ public class UIManager : MonoBehaviour
     {
         plantButton.gameObject.SetActive(true);
         GameManager.Instance.uiManager.bugStackBar.fillAmount = 0;
+    }
+
+    public void BugSpawnWarning(bool isBugAlive)
+    {
+        OxyBugWarning.gameObject.SetActive(isBugAlive);
     }
 }
 
