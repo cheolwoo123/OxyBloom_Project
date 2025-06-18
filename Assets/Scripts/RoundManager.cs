@@ -96,7 +96,6 @@ public class RoundManager : MonoBehaviour
 
 
         CheckSpawnedBugs();
-        //OxygenLooterWarning(); 산소벌레 출현 경고 추후 추가
     }
     private void SpawnBug()
     {
