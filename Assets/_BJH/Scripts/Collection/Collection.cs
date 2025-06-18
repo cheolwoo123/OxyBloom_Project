@@ -8,10 +8,10 @@ public class Collection : MonoBehaviour
     public GameObject SlotPrefab;
     public Transform Slots;
 
-    private void Start()
-    {
-        //LoadCollectionData();
-    }
+    // private void Start()
+    // {
+    //     LoadCollectionData();
+    // }
 
     public void AddColletion(PlantData data)
     {
@@ -21,9 +21,7 @@ public class Collection : MonoBehaviour
         
         if (SlotPrefab != null)
         {
-            Instantiate(SlotPrefab, Slots.transform);
-
-            GameObject obj = SlotPrefab;
+            GameObject obj = Instantiate(SlotPrefab, Slots.transform);
             CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
             collectionSlot.SetSlot(data);
         }
@@ -33,32 +31,30 @@ public class Collection : MonoBehaviour
 
     private void SaveCollectionData()
     {
-        GameManager.Instance.saveLoadManager.SetSaveData("PlantData", plantData);
+        GameManager.Instance.saveLoadManager.SetSaveData<List<PlantData>>("PlantData", plantData);
     }
 
-    //public void LoadCollectionData()
-    //{
-    //    if (GameManager.Instance.GetSaveData().plantData != null)
-    //    {
-    //        plantData = GameManager.Instance.GetSaveData().plantData;
+    public void LoadCollectionData()
+    {
+        if (GameManager.Instance.GetSaveData().plantData != null)
+        {
+            Debug.Log("Collection Load Data");
 
+            plantData = GameManager.Instance.GetSaveData().plantData;
 
-    //        for (int i = 0; i < plantData.Count; i++)
-    //        {
-    //            if (SlotPrefab != null)
-    //            {
-    //                Instantiate(SlotPrefab, Slots.transform);
+            for (int i = 0; i < plantData.Count; i++)
+            {
+                if (SlotPrefab != null)
+                {
+                    Debug.Log($"Instantiate SlotPrefab for {plantData[i].Name}");
 
-    //                GameObject obj = SlotPrefab;
-    //                CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
-    //                collectionSlot.SetSlot(data);
-    //            }
-    //        }
+                    Instantiate(SlotPrefab, Slots.transform);
 
-    //    }
-    //    else
-    //    {
-    //        plantData = new List<PlantData>();
-    //    }
-    //}
+                    GameObject obj = SlotPrefab;
+                    CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
+                    collectionSlot.SetSlot(plantData[i]);
+                }
+            }
+        }
+    }
 }
