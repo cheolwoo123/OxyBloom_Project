@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
+  m_Name: CommonPot_5
+  m_EditorClassIdentifier: 
+  potName: "\uD3C9\uBC94\uD55C \uD654\uBD84"
+  potIcon: {fileID: 21300000, guid: 978f770d249d8af44af5b97a2e3bf0b9, type: 3}
+  description: "\uADF8\uB098\uB9C8 \uC81C\uC77C \uB098\uC740 \uD3C9\uBC94\uD55C \uD654\uBD84"
+  rarity: 1
+  CommonChance: 84
+  RareChance: 10
+  EpicChance: 6
+  LegendChance: 0
+  MysteryChance: 0
+  growthSpeedBonus: 2.5
+  upgradePot: 0.5
+  upgradePotExpense: 1.5
+  maxLevel: 5

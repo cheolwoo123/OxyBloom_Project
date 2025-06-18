@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734317e8e46164143bff96e971164bab, type: 3}
+  m_Name: EpicPot_1
+  m_EditorClassIdentifier: 
+  potName: "\uC57D\uAC04 \uD76C\uADC0\uD55C \uD654\uBD84"
+  potIcon: {fileID: 21300000, guid: 6d5899955e3e13d4685b4ebbc832f452, type: 3}
+  description: "\uC2DC\uC6D0\uD55C \uB290\uB08C\uC758 \uD654\uBD84"
+  rarity: 3
+  CommonChance: 50
+  RareChance: 40
+  EpicChance: 5
+  LegendChance: 1
+  MysteryChance: 0
+  growthSpeedBonus: 15
+  upgradePot: 0.5
+  upgradePotExpense: 1.5
+  maxLevel: 5
