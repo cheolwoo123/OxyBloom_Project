@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LegendPot_2
   m_EditorClassIdentifier: 
   potName: "\uBBF8\uC2A4\uD14C\uB9AC\uD14C\uB9AC\uD14C\uB9AC"
-  potIcon: {fileID: 21300000, guid: 87398ed018799a54b959b8fc9fd6d8e8, type: 3}
+  potIcon: {fileID: 21300000, guid: d9ec3a6d9a6cb934bbf3f450f0d75091, type: 3}
   description: E...VE?
   rarity: 5
   CommonChance: 0

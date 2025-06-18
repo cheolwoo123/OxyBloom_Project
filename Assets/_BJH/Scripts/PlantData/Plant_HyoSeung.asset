@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Plant_HyoSeung
   m_EditorClassIdentifier: 
   Rarity: 4
-  Name: "\uCE58\uCF54\uB9AC\uD0C0"
-  Description: "\uCE58\uCF54\uB9AC\uD0C0"
+  Name: "\uD6A8\uC2B9\uB098\uBB34"
+  Description: "\"\uC5D0\uC14B \uC4F0\uC2E0 \uAC70 \uC544\uB2C8\uC8E0?\""
   OxygenProd: 250
   GrowthCost: 2000
   GrowthSprite:

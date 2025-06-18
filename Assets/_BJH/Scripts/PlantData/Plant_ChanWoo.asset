@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Plant_ChanWoo
   m_EditorClassIdentifier: 
   Rarity: 4
-  Name: "\uC678\uACC4 \uD30C\uC778\uC560\uD50C"
-  Description: "\uC678\uACC4 \uD30C\uC778\uC560\uD50C"
+  Name: "\uCC2C\uC6B0\uC560\uD50C"
+  Description: "\"\uB4E4\uB9AC\uC2DC\uBA74 \uC810\uD504 \uD55C\uBC88\uC529\uB9CC
+    \uD574\uC8FC\uC138\uC694\""
   OxygenProd: 180
   GrowthCost: 900
   GrowthSprite:

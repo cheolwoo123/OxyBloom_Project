@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
@@ -11,7 +12,7 @@ public class GameManager : SingleTon<GameManager>
     public Player player;
     public SaveLoadManager saveLoadManager;
     public RoundManager roundManager;
-    
+    public Collection collection;
     private SaveData saveData;
 
     private void OnEnable()
@@ -26,7 +27,7 @@ public class GameManager : SingleTon<GameManager>
                 uiManager.Oxygen(Oxygen);
         }
     }
-    
+
     public int Oxygen{get{return _oxygen;} private set{_oxygen = value;}}
 
     public void SetOxygen(int i)  //산소 값, UI 초기화, 

@@ -15,6 +15,7 @@ public class PotInventory : MonoBehaviour
     private void Start()
     {
         potInventory = GameManager.Instance.GetSaveData().potInventory;
+
         RefreshUI();
     }
     
@@ -23,7 +24,8 @@ public class PotInventory : MonoBehaviour
         foreach (var slot in slotObjects)
             Destroy(slot);
         slotObjects.Clear();
-
+        if (potInventory == null || potInventory.Count == 0)
+            return; 
         foreach (var pot in potInventory)
         {
             var go = Instantiate(slotPrefab, slotParent);
