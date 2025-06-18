@@ -57,29 +57,29 @@ public class GachaEffect : MonoBehaviour
         yield return StartCoroutine(FadePanelColor(originalColor, new Color(0f, 0f, 0f, 1.0f)));
 
         // 랜덤 등급 이펙트 셔플
-        int shuffleCount = 3;
-        float delay = 1.0f;
+        //int shuffleCount = 3;
+        //float delay = 1.0f;
 
-        for (int i = 0; i < shuffleCount; i++)
-        {
-            //HideAllEffects();
-            // PotGrade random = GetRandomGrade();
-            // ShowEffect(random);       
-            // yield return new WaitForSeconds(delay);          
-            PotGrade random = GetRandomGrade();
-            ShowEffect(random);
-            yield return new WaitForSeconds(delay);
-            HideAllEffects(); 
+        //for (int i = 0; i < shuffleCount; i++)
+        //{
+        //    //HideAllEffects();
+        //    // PotGrade random = GetRandomGrade();
+        //    // ShowEffect(random);       
+        //    // yield return new WaitForSeconds(delay);          
+        //    PotGrade random = GetRandomGrade();
+        //    ShowEffect(random);
+        //    yield return new WaitForSeconds(delay);
+        //    HideAllEffects(); 
           
-        }
+        //}
         
 
         // 최종 등급 이펙트 보여주기
-        HideAllEffects();
+        // HideAllEffects();
         
         ShowEffect(finalGrade);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
       
         HideAllEffects();
 
