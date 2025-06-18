@@ -39,7 +39,7 @@ public class ClickEvent : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Flower"))
             {
                 PlayerStat stat = GameManager.Instance.player.stat;
-                float power = 10 + (stat.pmLevel * 0.2f);
+                float power = 10 + (stat.pmLevel * 1.5f);
 
                 Debug.Log($"PM Level: {stat.pmLevel}, Power: {power}");
 
