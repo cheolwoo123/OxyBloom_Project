@@ -25,4 +25,4 @@ MonoBehaviour:
   growthSpeedBonus: 7.5
   upgradePot: 0.5
   upgradePotExpense: 1.5
-  maxLevel: 10
+  maxLevel: 5

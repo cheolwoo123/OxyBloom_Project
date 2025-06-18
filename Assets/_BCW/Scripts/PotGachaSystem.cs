@@ -13,11 +13,11 @@ public class PotGachaSystem : MonoBehaviour
     // 가챠샵 확률 무조건 총합 100
     private Dictionary<PotGrade, float> gradeChances = new()
     {
-        { PotGrade.Common, 1f },
+        { PotGrade.Common, 50f },
         { PotGrade.Rare, 30f },
         { PotGrade.Epic, 12f },
         { PotGrade.Legendary, 7f },
-        { PotGrade.Mystery, 50f }
+        { PotGrade.Mystery, 1f }
     };
 
     private void Awake()
@@ -41,7 +41,7 @@ public class PotGachaSystem : MonoBehaviour
         int cost = gachaCost;
         if (GameManager.Instance.Oxygen < cost)
         {
-
+            GameManager.Instance.StartCoroutine("NotEnoughOxyzen", cost);
             return;
         }
 
