@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     [Header("Image")]
     public Image bugStackBar;
 
+
+    private bool LoadCollectionData;
     private void OnEnable()
     {
         optionButton.onClick.AddListener((() => UICanvas_OnClick()));
@@ -50,6 +52,12 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        if (!LoadCollectionData)
+        {
+            GameManager.Instance.collection.LoadCollectionData();
+            LoadCollectionData = true;
+        }
+        
         colletionUI.SetActive(true);
     }
 
@@ -96,7 +104,6 @@ public class UIManager : MonoBehaviour
             potCollectionUI.SetActive(false);
             return;
         }
-
         potCollectionUI.SetActive(true);
     }
 

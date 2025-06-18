@@ -69,6 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d7746d407e75943a4f3d3a9c66465b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stat:
+    pmLevel: 1
+    atkLevel: 1
 --- !u!114 &2495923375819555191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +1007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7426990175364954938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1512,11 +1515,11 @@ MonoBehaviour:
   InventoryButton: {fileID: 0}
   oxygenText: {fileID: 8111027785083073380}
   surviveDaysText: {fileID: 8336131703786097145}
-  roundTimeText: {fileID: 8336131703786097145}
   optionCanvas: {fileID: 1947739911575039782}
   colletionUI: {fileID: 0}
   upgradeUI: {fileID: 0}
   potCollectionUI: {fileID: 0}
+  bugStackBar: {fileID: 0}
 --- !u!1 &2375059952487644821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,6 +3287,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 3030145281464948349}
   titleButton: {fileID: 2053416749310739558}
   exitButton: {fileID: 8211417524360940379}
+  SaveButton: {fileID: 0}
   DeleteDataButton: {fileID: 1352588936252039655}
 --- !u!1 &4964320333187323889
 GameObject:

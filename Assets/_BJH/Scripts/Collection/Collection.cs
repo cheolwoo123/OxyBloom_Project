@@ -8,10 +8,10 @@ public class Collection : MonoBehaviour
     public GameObject SlotPrefab;
     public Transform Slots;
 
-    private void Start()
-    {
-        LoadCollectionData();
-    }
+    // private void Start()
+    // {
+    //     LoadCollectionData();
+    // }
 
     public void AddColletion(PlantData data)
     {
