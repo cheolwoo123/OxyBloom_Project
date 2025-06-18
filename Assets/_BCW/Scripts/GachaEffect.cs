@@ -57,7 +57,7 @@ public class GachaEffect : MonoBehaviour
         yield return StartCoroutine(FadePanelColor(originalColor, new Color(0f, 0f, 0f, 1.0f)));
 
         // ·£´ý µî±Þ ÀÌÆåÆ® ¼ÅÇÃ
-        int shuffleCount = 6;
+        int shuffleCount = 3;
         float delay = 1.0f;
 
         for (int i = 0; i < shuffleCount; i++)
@@ -79,7 +79,7 @@ public class GachaEffect : MonoBehaviour
         
         ShowEffect(finalGrade);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
       
         HideAllEffects();
 
