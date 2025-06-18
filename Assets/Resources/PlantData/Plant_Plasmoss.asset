@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764de753891f9b345b6ecf0e7cdf8ac6, type: 3}
+  m_Name: Plant_Plasmoss
+  m_EditorClassIdentifier: 
+  Rarity: 2
+  Name: "\uD50C\uB77C\uC2A4\uBAA8\uC2A4"
+  Description: "\uB2EC\uCF64\uD558\uACE0 \uD5A5\uAE30\uB85C\uC6B4 \uC5F4\uB9E4\uB97C
+    \uAC00\uC84C\uC2B5\uB2C8\uB2E4."
+  OxygenProd: 40
+  GrowthCost: 600
+  GrowthSprite:
+  - {fileID: 21300000, guid: a2f12ec3680717c44ade8299f7552da5, type: 3}
+  - {fileID: 21300000, guid: 32badfd0410cc8040b0276b5f8ba87df, type: 3}
+  - {fileID: 21300000, guid: 331fb6343940c724fb8aad2b8ffb31a6, type: 3}
+  - {fileID: 21300000, guid: 0758ca806cb607c49a75e314ce00daba, type: 3}
