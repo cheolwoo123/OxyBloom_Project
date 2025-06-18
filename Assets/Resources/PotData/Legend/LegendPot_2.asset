@@ -16,11 +16,11 @@ MonoBehaviour:
   potIcon: {fileID: 0}
   description: "\uC874\uC7AC\uAC10 \uB118\uCE58\uB294 \uBFDC\uBFDC \uD654\uBD84"
   rarity: 4
-  CommonChance: 10
+  CommonChance: 0
   RareChance: 28
   EpicChance: 50
-  LegendChance: 12
-  MysteryChance: 0
+  LegendChance: 17
+  MysteryChance: 5
   growthSpeedBonus: 20
   upgradePot: 0.5
   upgradePotExpense: 1.5

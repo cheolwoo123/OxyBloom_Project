@@ -17,11 +17,11 @@ MonoBehaviour:
   description: "\uC791\uC740 \uBCC4\uC774 \uB0B4\uB824\uC549\uC740 \uB4EF\uD55C \uB9D1\uC740
     \uBD84\uC704\uAE30 \uD654\uBD84"
   rarity: 4
-  CommonChance: 10
+  CommonChance: 0
   RareChance: 26
   EpicChance: 50
-  LegendChance: 13
-  MysteryChance: 1
+  LegendChance: 18
+  MysteryChance: 6
   growthSpeedBonus: 20
   upgradePot: 0.5
   upgradePotExpense: 1.5
