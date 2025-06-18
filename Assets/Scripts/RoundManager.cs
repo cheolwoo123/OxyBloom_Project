@@ -1,26 +1,26 @@
-ï»¿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    public GameObject[] bugPrefabs;            // ë²„ê·¸ í”„ë¦¬íŒ¹ 
-    public Transform plantTransform;        // ëª©í‘œ ì‹ë¬¼
-    public Transform plantShelfTransform; //ì„ ë°˜ ìœ„ì¹˜
+    public GameObject[] bugPrefabs;            // ¹ö±× ÇÁ¸®ÆÕ 
+    public Transform plantTransform;        // ¸ñÇ¥ ½Ä¹°
+    public Transform plantShelfTransform; //¼±¹İ À§Ä¡
 
     private Plant currentPlant;
 
     private List<BugController> spawnedBugs = new List<BugController>();
 
-    private int surviveDays = 0; //ë‚ ì§œì— ë”°ë¼ ë‚œì´ë„ ë³€ê²½
-    public float difficultyIncreaseInterval = 10f; //ì‚´ì•„ë‚¨ì€ ì¼ìˆ˜ ì¶”ê°€í•´ì£¼ëŠ” ì¡°ê±´, ë‚œì´ë„ ì¦ê°€ ì¡°ê±´
-    private float dayTimer = 0f; //ë‚ ì§œê°€ ë„˜ì–´ê°€ëŠ” ì‹œê°„
+    private int surviveDays = 0; //³¯Â¥¿¡ µû¶ó ³­ÀÌµµ º¯°æ
+    public float difficultyIncreaseInterval = 10f; //»ì¾Æ³²Àº ÀÏ¼ö Ãß°¡ÇØÁÖ´Â Á¶°Ç, ³­ÀÌµµ Áõ°¡ Á¶°Ç
+    private float dayTimer = 0f; //³¯Â¥°¡ ³Ñ¾î°¡´Â ½Ã°£
 
-    public float spawnInterval = 8f; //ìŠ¤í° ì‹œê°„ í…€
+    public float spawnInterval = 8f; //½ºÆù ½Ã°£ ÅÒ
     private float spawnTimer = 0f;
 
     private bool isWaitingNextRound = true;
     private float roundWaitTimer = 0f;
-    public float roundWaitDuration = 10f; // ë¼ìš´ë“œ ë„˜ì–´ê°ˆ ë•Œ ëŒ€ê¸° ì‹œê°„
+    public float roundWaitDuration = 10f; // ¶ó¿îµå ³Ñ¾î°¥ ¶§ ´ë±â ½Ã°£
 
     public int totalBugStack = 0;
     public int pollutionLv = 10;
@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
     private bool isProcessingBugCheck = false;
     private bool isRoundInitialized = false;
 
-    public void InitRound() // ì„¸ì´ë¸Œ ë¡œë“œ ì´í›„ì— í˜¸ì¶œ
+    public void InitRound() // ¼¼ÀÌºê ·Îµå ÀÌÈÄ¿¡ È£Ãâ
     {
         currentPlant = GameManager.Instance.plantManager.pot.GetPlant();
         isWaitingNextRound = false;
@@ -50,7 +50,7 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                return; // ì•„ì§ í”ŒëœíŠ¸ ì—†ìœ¼ë©´ ì•„ë¬´ê²ƒë„ ì•ˆ í•¨
+                return; // ¾ÆÁ÷ ÇÃ·£Æ® ¾øÀ¸¸é ¾Æ¹«°Íµµ ¾È ÇÔ
             }
         }
 
@@ -66,7 +66,7 @@ public class RoundManager : MonoBehaviour
                 roundWaitTimer = 0f;
 
             }
-            return; // ëŒ€ê¸° ì¤‘ì—ëŠ” ì•„ë˜ ì‹¤í–‰í•˜ì§€ ì•ŠìŒ
+            return; // ´ë±â Áß¿¡´Â ¾Æ·¡ ½ÇÇàÇÏÁö ¾ÊÀ½
         }
 
         dayTimer += Time.deltaTime;
@@ -83,10 +83,10 @@ public class RoundManager : MonoBehaviour
             dayTimer = 0f;
             surviveDays++;
 
-            // ë‚œì´ë„ ì¦ê°€ ì²˜ë¦¬(ìŠ¤í°ì‹œê°„ ë¹¨ë¼ì§€ëŠ”ê±°,ìŠ¤í”¼ë“œ ëŠ˜ì–´ë‚¨)
-            spawnInterval = Mathf.Max(2f, spawnInterval - 0.05f); // ìŠ¤í°ì´ ë¹¨ë¼ì§       
+            // ³­ÀÌµµ Áõ°¡ Ã³¸®(½ºÆù½Ã°£ »¡¶óÁö´Â°Å,½ºÇÇµå ´Ã¾î³²)
+            spawnInterval = Mathf.Max(2f, spawnInterval - 0.05f); // ½ºÆùÀÌ »¡¶óÁü       
 
-            if (surviveDays % 5 == 0) //5ì¼ì°¨ì— í•œë²ˆì”©
+            if (surviveDays % 5 == 0) //5ÀÏÂ÷¿¡ ÇÑ¹ø¾¿
             {
                 UpgradeSpawnedBugs();
             }
@@ -96,8 +96,6 @@ public class RoundManager : MonoBehaviour
 
 
         CheckSpawnedBugs();
-        Debug.Log($"{totalBugStack}");
-        //OxygenLooterWarning(); ì‚°ì†Œë²Œë ˆ ì¶œí˜„ ê²½ê³  ì¶”í›„ ì¶”ê°€
     }
     private void SpawnBug()
     {
@@ -115,7 +113,7 @@ public class RoundManager : MonoBehaviour
         else
             index = Random.Range(0, bugPrefabs.Length);
 
-        Debug.Log(index+"-ì¸ë±ìŠ¤ ë²ˆí˜¸");
+        Debug.Log(index+"-ÀÎµ¦½º ¹øÈ£");
         PestType pestType = bugPrefabs[index].GetComponent<BugController>().entity.bugData.pestType;
         Vector3 spawnPos = GetRandomSpawnPosition(pestType);
         
@@ -125,10 +123,10 @@ public class RoundManager : MonoBehaviour
         BugScriptObject pestData = bugCtrl.entity.bugData;
         bugCtrl.Setup(pestData, plantTransform);
 
-        // ë‚œì´ë„ì— ë”°ë¼ ëŠ¥ë ¥ì¹˜ ë³´ì •
+        // ³­ÀÌµµ¿¡ µû¶ó ´É·ÂÄ¡ º¸Á¤
         int levelMulti = surviveDays / 5;
-        float hpMulti = 1f + (levelMulti * 0.1f);    // surviveDays ë‹¹ ì²´ë ¥ 10% ì¦ê°€
-        float speedMulti = 1f + (levelMulti * 0.05f); // surviveDays ë‹¹ ì†ë„ 5% ì¦ê°€
+        float hpMulti = 1f + (levelMulti * 0.1f);    // surviveDays ´ç Ã¼·Â 10% Áõ°¡
+        float speedMulti = 1f + (levelMulti * 0.05f); // surviveDays ´ç ¼Óµµ 5% Áõ°¡
 
         bugCtrl.entity.SetHP(pestData.maxHP * hpMulti);
         bugCtrl.entity.SetSpeed(pestData.speed * speedMulti);
@@ -159,8 +157,8 @@ public class RoundManager : MonoBehaviour
                 if (spawnedBugs[i] != null)
                 {
                     var bug = spawnedBugs[i];
-                    spawnedBugs.RemoveAt(i); // ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
-                    bug.Die();               // ì£½ìŒ ì²˜ë¦¬
+                    spawnedBugs.RemoveAt(i); // ¸®½ºÆ®¿¡¼­ Á¦°Å
+                    bug.Die();               // Á×À½ Ã³¸®
                 }
             }
 
@@ -178,8 +176,8 @@ public class RoundManager : MonoBehaviour
     {
         if (pestType == PestType.OxygenLooter)
         {
-            float spawnX = plantShelfTransform.position.x - 1f; // ì„ ë°˜ë³´ë‹¤ ì¡°ê¸ˆ ë” ì™¼ìª½
-            float spawnY = plantShelfTransform.position.y + Random.Range(-2f, 2f); // ì„ ë°˜ì„ ê¸°ì¤€ìœ¼ë¡œ ìœ„ì•„ë˜ë¡œ ëœë¤ ìœ„ì¹˜
+            float spawnX = plantShelfTransform.position.x - 1f; // ¼±¹İº¸´Ù Á¶±İ ´õ ¿ŞÂÊ
+            float spawnY = plantShelfTransform.position.y + Random.Range(-2f, 2f); // ¼±¹İÀ» ±âÁØÀ¸·Î À§¾Æ·¡·Î ·£´ı À§Ä¡
             return new Vector3(spawnX, spawnY, 0f);
         }
 
@@ -191,9 +189,9 @@ public class RoundManager : MonoBehaviour
         float x = Random.Range(bottomLeft.x, topRight.x);
         float y;
 
-        // ìœ„ìª½ ë˜ëŠ” ì•„ë˜ìª½ì—ì„œ ìƒì„± (50% í™•ë¥ )
+        // À§ÂÊ ¶Ç´Â ¾Æ·¡ÂÊ¿¡¼­ »ı¼º (50% È®·ü)
         bool spawnAbove = Random.value > 0.5f;
-        float offset = 1f; // ì¹´ë©”ë¼ ë°–ìœ¼ë¡œ ì–¼ë§ˆë‚˜ ë–¨ì–´ì ¸ì„œ ìƒì„±í• ì§€
+        float offset = 1f; // Ä«¸Ş¶ó ¹ÛÀ¸·Î ¾ó¸¶³ª ¶³¾îÁ®¼­ »ı¼ºÇÒÁö
 
         if (spawnAbove)
         {
@@ -228,7 +226,7 @@ public class RoundManager : MonoBehaviour
 
     private void OxygenLooterWarning()
     {
-        // ì‚°ì†Œ ê°•íƒˆìê°€ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•˜ë©´ true
+        // »ê¼Ò °­Å»ÀÚ°¡ ÇÏ³ª¶óµµ Á¸ÀçÇÏ¸é true
         bool hasOxygenLooter = false;
 
         foreach (var bug in spawnedBugs)
@@ -242,15 +240,15 @@ public class RoundManager : MonoBehaviour
             }
         }
 
-        // UIManagerì— OxygenLooter ê²½ê³  ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜ í˜¸ì¶œ (ì•„ì´ì½˜ì€ ë‚˜ì¤‘ì— ì—°ê²°)
+        // UIManager¿¡ OxygenLooter °æ°í º¸¿©ÁÖ´Â ÇÔ¼ö È£Ãâ (¾ÆÀÌÄÜÀº ³ªÁß¿¡ ¿¬°á)
         GameManager.Instance.uiManager.BugSpawnWarning(hasOxygenLooter);
     }
 
 
     private void UpgradeSpawnedBugs()
     {
-        float hpIncreaseRate = 0.1f;   // ì²´ë ¥ 10% ì¦ê°€
-        float speedIncreaseRate = 0.05f; // ì†ë„ 5% ì¦ê°€
+        float hpIncreaseRate = 0.1f;   // Ã¼·Â 10% Áõ°¡
+        float speedIncreaseRate = 0.05f; // ¼Óµµ 5% Áõ°¡
 
         foreach (var bug in spawnedBugs)
         {
@@ -259,7 +257,7 @@ public class RoundManager : MonoBehaviour
             BugEntity entity = bug.entity;
             if (entity == null) continue;
 
-            // í˜„ì¬ HP ëŒ€ë¹„ ì¦ê°€ (ê¸°ë³¸ maxHP ëŒ€ë¹„ ì¦ê°€ë„ ê°€ëŠ¥)
+            // ÇöÀç HP ´ëºñ Áõ°¡ (±âº» maxHP ´ëºñ Áõ°¡µµ °¡´É)
             float newHP = entity.GetHP() * (1 + hpIncreaseRate);
             entity.SetHP(newHP);
 
