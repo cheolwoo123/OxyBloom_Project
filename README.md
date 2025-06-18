@@ -77,18 +77,31 @@
 
 ##  주요 기능
 
-https://cdn.discordapp.com/attachments/1382973946403749989/1384860689558143007/ce6609c100608fef.gif?ex=6853f785&is=6852a605&hm=fd55f80daa2089136f34c42b080ce2be4dd1ca3d70eb8bdbfb16cd2bc34a95c1&
-
 *식물 성장, 도감화/인벤토리 저장*
 
-![화면 녹화 중 2025-06-18 201400](https://github.com/user-attachments/assets/18a85d18-e017-4ae3-b074-d63fe448aa17)
+![7dc4d9c491419625](https://github.com/user-attachments/assets/43330c36-2e28-450b-84f9-a411a7f906c0)
 
 
-업그레이드 / 랜덤 뽑기
+*랜덤 뽑기*
 
-라운드 진행 중 벌레 제거 및 오염도 맥스시 식물/벌레 파괴
+![d92457320e1cd356](https://github.com/user-attachments/assets/568128dd-f32a-4416-bc66-12c92c8e81c6)
 
-타이틀 화면 메뉴 및 세이브/로드 기능
+
+*업그레이드*
+
+![2](https://github.com/user-attachments/assets/2d9367d6-fc5d-4a05-b822-6d2c19774cb4)
+
+
+*라운드 진행 중 벌레 제거 및 오염도 맥스시 식물/벌레 파괴*
+
+![629ab02076e01369](https://github.com/user-attachments/assets/5e954466-6d29-4d13-8ea7-b432b3e5c417)
+
+
+*타이틀 화면 메뉴 및 세이브/로드 기능*
+
+![1](https://github.com/user-attachments/assets/3739107b-18da-4918-80ca-780bd8543249)
+
+
 
 ---
 
