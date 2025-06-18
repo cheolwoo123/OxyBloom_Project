@@ -52,23 +52,23 @@
 
 #### 🧑‍💼 백철우 (팀장)
 - 담당: 무기 및 업그레이드
-- 블로그: [velog.io/@kingcjfn/posts]
+- 블로그: [[velog.io/@kingcjfn/posts]](https://velog.io/@kingcjfn/posts)
 
 #### 🧑‍🔧 백진환 (팀원)
 - 담당: 플레이어 능력치 및 업그레이드 
-- 블로그: [info8196.tistory.com]
+- 블로그: [[info8196.tistory.com]](https://info8196.tistory.com/)
   
 #### 🧑‍🎨 이서형 (팀원)
 - 담당: 게임 매니저
-- 블로그: [lsh000219.tistory.com]
+- 블로그: [[lsh000219.tistory.com]](https://lsh000219.tistory.com/)
 
 #### 🧑‍🚀 윤병길 (팀원)
 - 담당: 적 및 스테이지
-- 블로그: [gigayoun.tistory.com]
+- 블로그: [[gigayoun.tistory.com]](https://gigayoun.tistory.com/)
 
 #### 🧑‍💻 이빛나 (팀원)
 - 담당: 클릭 이벤트
-- 블로그: [shining5.tistory.com]
+- 블로그: [[shining5.tistory.com]](https://shining5.tistory.com/)
 
 #### 🧑‍🏫 박정식 (튜터)
 - 담당: 피드백 제공, 프로젝트 기술 질의 응답
