@@ -54,8 +54,7 @@ public class Pot : MonoBehaviour
 
     public void AutomaticGrowth()
     {
-        if (plant.plantData == null || Time.timeScale != 0) return;
-
+        if (plant.plantData == null || Time.timeScale == 0) return;
         plant.GrowPlant(potData.growthSpeedBonus);
     }
 
