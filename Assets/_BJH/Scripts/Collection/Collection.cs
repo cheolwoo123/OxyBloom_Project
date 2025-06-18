@@ -8,10 +8,10 @@ public class Collection : MonoBehaviour
     public GameObject SlotPrefab;
     public Transform Slots;
 
-    // private void Start()
-    // {
-    //     LoadCollectionData();
-    // }
+    private void Start()
+    {
+        LoadCollectionData();
+    }
 
     public void AddColletion(PlantData data)
     {
@@ -38,19 +38,19 @@ public class Collection : MonoBehaviour
     {
         if (GameManager.Instance.GetSaveData().plantData != null)
         {
-            Debug.Log("Collection Load Data");
-
             plantData = GameManager.Instance.GetSaveData().plantData;
+
+            foreach (Transform child in Slots.transform)
+            {
+                Destroy(child.gameObject);
+            }
 
             for (int i = 0; i < plantData.Count; i++)
             {
+
                 if (SlotPrefab != null)
                 {
-                    Debug.Log($"Instantiate SlotPrefab for {plantData[i].Name}");
-
-                    Instantiate(SlotPrefab, Slots.transform);
-
-                    GameObject obj = SlotPrefab;
+                    GameObject obj = Instantiate(SlotPrefab, Slots.transform);
                     CollectionSlot collectionSlot = obj.GetComponent<CollectionSlot>();
                     collectionSlot.SetSlot(plantData[i]);
                 }

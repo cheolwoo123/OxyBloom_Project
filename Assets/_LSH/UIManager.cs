@@ -52,13 +52,6 @@ public class UIManager : MonoBehaviour
             colletionUI.SetActive(false);
             return;
         }
-
-        if (!LoadCollectionData)
-        {
-            GameManager.Instance.collection.LoadCollectionData();
-            LoadCollectionData = true;
-        }
-        
         colletionUI.SetActive(true);
     }
 
