@@ -216,7 +216,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!114 &6419648400692459527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,4 +233,3 @@ MonoBehaviour:
   target: {fileID: 0}
   bugAnimator: {fileID: 5626225897705169540}
   actCooldown: 2
-  spriteRenderer: {fileID: 5639237768731106911}
