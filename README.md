@@ -96,6 +96,7 @@
 ##  와이어 프레임
 
 
+![스크린샷 2025-06-18 193047](https://github.com/user-attachments/assets/3ee89d2c-f279-4d12-895f-fba913362eee)
 
 
 ---
